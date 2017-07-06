@@ -117,35 +117,17 @@ class FormViewController: UITableViewController {
                 ]).with(identifier: "section-additional")
         ]
     
-        dataSource.sections = form.sections
-        
-        
-        // -- Refactor in Form
-        SignalProducer.combineLatest([
-            firstNameField.isHidden.producer,
-            middleNameField.isHidden.producer,
-            lastNameField.isHidden.producer
-        ])
-        .throttle(0, on: QueueScheduler.main)
-        .combinePrevious([firstNameField.isHidden.value, middleNameField.isHidden.value, lastNameField.isHidden.value])
-        .startWithValues { (isHiddenFlags, previousHiddenFlags) in
-            if isHiddenFlags == previousHiddenFlags {
-                print("visibility did not change")
-            } else {
-                print("reload UI")
-                self.reloadUI()
-            }
-        }
-        
-        firstNameField.text.producer.startWithValues { _ in
+        form.didChange = {
             self.reloadUI()
         }
         
-        // --
+        dataSource.sections = form.sections
+        
+        switchField.isOn.producer.startWithValues { value in
+            self.reloadUI()
+        }
         
         dataSource.reloadData(tableView, animated: false)
-
-       
     }
     
     func reloadUI() {
@@ -172,19 +154,24 @@ enum ValidationState {
     case error(text: String?)
 }
 
-struct Form {
+class Form {
     
     init() {}
+    
+    var changeDisposable: Disposable?
     
     var sections = [SectionType]() {
         didSet {
             updateFields()
+            updateChange()
         }
     }
     
     var fields = [String : [Field]]()
     
-    private mutating func updateFields() {
+    var didChange: (() -> Void)? = nil
+    
+    private func updateFields() {
         fields.removeAll()
         for section in sections {
             if let dataSourceSection = section as? Section {
@@ -195,6 +182,21 @@ struct Form {
             }
         }
         print(fields)
+    }
+    
+    private func updateChange() {
+        let fieldArray = fields.flatMap { $1 }
+        changeDisposable?.dispose()
+        changeDisposable =  SignalProducer
+            .combineLatest(fieldArray.map { $0.isHidden.producer })
+            .throttle(0, on: QueueScheduler.main)
+            .combinePrevious(fieldArray.map { $0.isHidden.value })
+            .startWithValues { [unowned self] (isHiddenFlags, previousHiddenFlags) in
+                if isHiddenFlags != previousHiddenFlags {
+                    print("reload UI")
+                    self.didChange?()
+                }
+        }
     }
     
     class Field: Diffable {
