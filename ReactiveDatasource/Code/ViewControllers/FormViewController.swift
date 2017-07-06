@@ -17,25 +17,50 @@ import ReactiveCocoa
 class FormViewController: UITableViewController {
     
     lazy var firstNameField: Form.TextField = {
-        Form.TextField(id: "firstname", placeholder: "First Name", changed: self.textFieldChanged)
+        Form.TextField(id: "firstname", placeholder: "First Name", bindings: { (field) in
+            field.validationState <~ field.text.producer.map { (text) in
+                if let text = text {
+                    if text.characters.count > 5 {
+                        return .warning(text: "more than 5")
+                    } else if text.characters.count > 3 {
+                        return .error(text: "more than 3")
+                    }
+                }
+                
+                return .success
+            }
+            
+        })
     }()
     
     lazy var lastNameField: Form.TextField = {
-        Form.TextField(id: "lastname", placeholder: "Last Name", changed: self.textFieldChanged, hiddenCondition: {
-            return self.firstNameField.text?.isEmpty ?? true
-        }, evaluationSignal: self.firstNameField.changeSignal,
-        hiddenAction: {
-            self.dataSource.reloadData(self.tableView, animated: true)
-        },
-        isHidden: true)
+        Form.TextField(id: "lastname", placeholder: "Last Name",
+            bindings: { (field) in
+                field.isHidden <~ self.firstNameField.text.producer.map {
+                    $0?.isEmpty ?? true
+                }
+                
+                field.text <~ self.firstNameField.text
+            }
+        )
+    }()
+    
+    lazy var middleNameField: Form.TextField = {
+        Form.TextField(id: "middlename", placeholder: "Middle Name",
+            bindings: { (field) in
+                self.firstNameField.text.producer.startWithValues { (text) in
+                    field.isHidden.value = text?.isEmpty ?? true
+                }
+            }
+        )
     }()
     
     lazy var switchField: Form.SwitchField = {
-        Form.SwitchField(id: "additional", title: "Show additional options", changed: self.switchFieldChanged)
+        Form.SwitchField(id: "additional", title: "Show additional options")
     }()
     
     lazy var emailField: Form.TextField = {
-        Form.TextField(id: "email", placeholder: "E-Mail", keyboardType: .emailAddress, changed: self.textFieldChanged)
+        Form.TextField(id: "email", placeholder: "E-Mail", keyboardType: .emailAddress)
     }()
     
     lazy var dataSource: DataSource = {
@@ -43,10 +68,14 @@ class FormViewController: UITableViewController {
             cellDescriptors: [
                 TextFieldCell.descriptor
                     .isHidden { (field, indexPath) in
-                        return field.isHidden
+                        return field.isHidden.value
                 },
                 SwitchCell.descriptor,
                 TitleCell.descriptor,
+                ValidationCell.descriptor
+                    .isHidden { (field, indexPath) in
+                        return field.isHidden.value
+                }
                 ],
             sectionDescriptors: [
                 SectionDescriptor<Void>("section-name")
@@ -60,10 +89,12 @@ class FormViewController: UITableViewController {
                         .title("Here are some additional fields")
                     }
                     .isHidden {
-                        !self.switchField.isOn
+                        !self.switchField.isOn.value
                 }
             ])
     }()
+    
+    var form = Form()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +102,11 @@ class FormViewController: UITableViewController {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         
-        dataSource.sections = [
+        form.sections = [
             Section(items: [
                 firstNameField,
+                firstNameField.validationField(),
+                middleNameField,
                 lastNameField,
                 switchField
                 ]).with(identifier: "section-name"),
@@ -83,14 +116,44 @@ class FormViewController: UITableViewController {
                 "some random text"
                 ]).with(identifier: "section-additional")
         ]
+    
+        dataSource.sections = form.sections
+        
+        
+        // -- Refactor in Form
+        SignalProducer.combineLatest([
+            firstNameField.isHidden.producer,
+            middleNameField.isHidden.producer,
+            lastNameField.isHidden.producer
+        ])
+        .throttle(0, on: QueueScheduler.main)
+        .combinePrevious([firstNameField.isHidden.value, middleNameField.isHidden.value, lastNameField.isHidden.value])
+        .startWithValues { (isHiddenFlags, previousHiddenFlags) in
+            if isHiddenFlags == previousHiddenFlags {
+                print("visibility did not change")
+            } else {
+                print("reload UI")
+                self.reloadUI()
+            }
+        }
+        
+        firstNameField.text.producer.startWithValues { _ in
+            self.reloadUI()
+        }
+        
+        // --
         
         dataSource.reloadData(tableView, animated: false)
+
+       
+    }
+    
+    func reloadUI() {
+        dataSource.reloadData(tableView, animated: true)
     }
     
     func textFieldChanged(id: String, text: String) {
         print("changed field \(id): \(text)")
-        
-        //dataSource.reloadData(tableView, animated: true)
     }
     
     func switchFieldChanged(id: String, isOn: Bool) {
@@ -102,95 +165,151 @@ class FormViewController: UITableViewController {
 
 // MARK: - Form
 
-protocol FormField: Diffable {
-    
-    var id: String { get }
-}
-
-extension FormField {
-    
-    var diffIdentifier: String {
-        return id
-    }
+enum ValidationState {
+    case success
+    case info(text: String?)
+    case warning(text: String?)
+    case error(text: String?)
 }
 
 struct Form {
     
-    class TextField: FormField {
-        
-        let id: String
-        var text: String?
-        let placeholder: String?
-        let keyboardType: UIKeyboardType
-        let changed: ((String, String) -> ())?
-        var isHidden: Bool
-        
-        let hiddenCondition: (() -> Bool)?
-        let evaluationSignal: Signal<String, NoError>?
-        let changeSink: Observer<String, NoError>
-        let changeSignal: Signal<String, NoError>
-
-        
-        init(id: String,
-             text: String? = nil,
-             placeholder: String? = nil,
-             keyboardType: UIKeyboardType = .default,
-             changed: ((String, String) -> ())? = nil,
-             hiddenCondition: (() -> Bool)? = nil,
-             evaluationSignal: Signal<String, NoError>? = nil,
-             hiddenAction: (() -> Void)? = nil,
-             isHidden: Bool = false) {
-            self.id = id
-            self.text = text
-            self.placeholder = placeholder
-            self.keyboardType = keyboardType
-            self.changed = changed
-            
-            let (signal, sink) = Signal<String, NoError>.pipe()
-            self.changeSignal = signal
-            self.changeSink = sink
-            
-            self.isHidden = isHidden
-            self.hiddenCondition = hiddenCondition
-            self.evaluationSignal = evaluationSignal
-            
-            self.evaluationSignal?.observeValues { (value) in
-                    self.isHidden = self.hiddenCondition?() ?? false
-                    hiddenAction?()
+    init() {}
+    
+    var sections = [SectionType]() {
+        didSet {
+            updateFields()
+        }
+    }
+    
+    var fields = [String : [Field]]()
+    
+    private mutating func updateFields() {
+        fields.removeAll()
+        for section in sections {
+            if let dataSourceSection = section as? Section {
+                let fieldsFromSection = dataSourceSection.fields()
+                if !fieldsFromSection.isEmpty {
+                    fields[dataSourceSection.identifier] = fieldsFromSection
+                }
             }
-            
+        }
+        print(fields)
+    }
+    
+    class Field: Diffable {
+        let id: String
+        let isHidden = MutableProperty(false)
+        let validationState = MutableProperty<ValidationState>(.success)
+        
+        var anyValue: Any? { return nil }
+        
+        init(id: String) {
+            self.id = id
+        }
+        
+        var diffIdentifier: String {
+            return id
         }
         
         func isEqualToDiffable(_ other: Diffable?) -> Bool {
-            guard let other = other as? TextField else { return false }
+            guard let other = other as? Form.Field else { return false }
             
             return self.id == other.id
-                && self.text == other.text
+        }
+        
+        private let _changed = Signal<Form.Field, NoError>.pipe()
+        var changed: Signal<Form.Field, NoError> {
+            return _changed.output
+        }
+        
+        func notifyChanged() {
+            _changed.input.send(value: self)
+        }
+    }
+    
+    class TextField: Form.Field {
+        let text: MutableProperty<String?>
+        let placeholder: String?
+        let keyboardType: UIKeyboardType
+        
+        init(id: String, text: String? = nil, placeholder: String? = nil, keyboardType: UIKeyboardType = .default, bindings: ((TextField) -> Void)? = nil) {
+            self.text = MutableProperty(text)
+            self.placeholder = placeholder
+            self.keyboardType = keyboardType
+            super.init(id: id)
+            
+            self.text.signal.observeValues { [unowned self] _ in
+                self.notifyChanged()
+            }
+            
+            bindings?(self)
+        }
+        
+        override func isEqualToDiffable(_ other: Diffable?) -> Bool {
+            guard let other = other as? TextField else { return false }
+            
+            return super.isEqualToDiffable(other)
+                && self.text.value == other.text.value
                 && self.placeholder == other.placeholder
                 && self.keyboardType == other.keyboardType
         }
     }
     
-    class SwitchField: FormField {
-        
-        let id: String
+    class SwitchField: Form.Field {
         let title: String
-        var isOn: Bool
-        let changed: ((String, Bool) -> ())?
-        
-        init(id: String, title: String, isOn: Bool = false, changed: ((String, Bool) -> ())? = nil) {
-            self.id = id
+        var isOn: MutableProperty<Bool>
+
+        init(id: String, title: String, isOn: Bool = false, bindings: ((SwitchField) -> Void)? = nil) {
             self.title = title
-            self.isOn = isOn
-            self.changed = changed
+            self.isOn = MutableProperty(isOn)
+            super.init(id: id)
+            
+            bindings?(self)
         }
         
-        func isEqualToDiffable(_ other: Diffable?) -> Bool {
+        override func isEqualToDiffable(_ other: Diffable?) -> Bool {
             guard let other = other as? SwitchField else { return false }
             
-            return self.id == other.id
+            return super.isEqualToDiffable(other)
                 && self.title == other.title
-                && self.isOn == other.isOn
+                && self.isOn.value == other.isOn.value
         }
+    }
+    
+    class ValidationField: Form.Field {
+        let displayedState = MutableProperty<ValidationState>(.success)
+    }
+}
+
+extension Section {
+    func fields() -> [Form.Field] {
+        var fieldsFromSection: [Form.Field] = []
+        for row in self.rows {
+            if let field = row.item as? Form.Field {
+                fieldsFromSection += [field]
+            }
+        }
+        return fieldsFromSection
+    }
+}
+
+extension Form.Field {
+    
+    func validationField() -> Form.ValidationField {
+        let validationField = Form.ValidationField(id: self.id + ".validation")
+        
+        validationState.producer.startWithValues { (state) in
+            validationField.displayedState.value = state
+            
+            switch state {
+            case .success:
+                validationField.isHidden.value = true
+            default:
+                validationField.isHidden.value = false
+            }
+        }
+    
+        return validationField
     }
 }

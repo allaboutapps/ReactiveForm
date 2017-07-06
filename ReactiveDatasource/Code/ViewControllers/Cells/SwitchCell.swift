@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 import DataSource
 
 class SwitchCell: UITableViewCell {
@@ -20,12 +22,10 @@ class SwitchCell: UITableViewCell {
         self.field  = field
         
         titleLabel.text = field.title
-        onSwitch.isOn = field.isOn
-    }
-    
-    @IBAction func valueChanged(_ sender: Any) {
-        field.isOn = onSwitch.isOn
-        field.changed?(field.id, field.isOn)
+        onSwitch.isOn = field.isOn.value
+        
+        field.isOn <~ onSwitch.reactive.isOnValues
+        onSwitch.reactive.isOn <~ field.isOn
     }
 }
 

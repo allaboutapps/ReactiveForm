@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 import DataSource
 
 class TextFieldCell: UITableViewCell {
@@ -18,17 +20,14 @@ class TextFieldCell: UITableViewCell {
     func configure(field: Form.TextField) {
         self.field = field
         
-        textField.text = field.text
+        textField.text = field.text.value
         textField.placeholder = field.placeholder
+        
         textField.keyboardType = field.keyboardType
         textField.autocorrectionType = .no
-    }
-    
-    @IBAction func textChanged(_ sender: Any) {
-        field.text = textField.text
-        field.changed?(field.id, field.text ?? "")
         
-        field.changeSink.send(value: field.text ?? "")
+        field.text <~ textField.reactive.continuousTextValues
+        textField.reactive.text <~ field.text
     }
 }
 

@@ -38,6 +38,8 @@
 		4C2CA3121F0CF25D00CFFD92 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CA30D1F0CF25D00CFFD92 /* TitleCell.swift */; };
 		4C2CA3131F0CF25D00CFFD92 /* TitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2CA30E1F0CF25D00CFFD92 /* TitleCell.xib */; };
 		4C2CA3151F0D0FAF00CFFD92 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4C2CA3141F0D0FAF00CFFD92 /* .gitignore */; };
+		4C2CA3181F0E3B2700CFFD92 /* ValidationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CA3161F0E3B2700CFFD92 /* ValidationCell.swift */; };
+		4C2CA3191F0E3B2700CFFD92 /* ValidationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2CA3171F0E3B2700CFFD92 /* ValidationCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		4C2CA30D1F0CF25D00CFFD92 /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		4C2CA30E1F0CF25D00CFFD92 /* TitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleCell.xib; sourceTree = "<group>"; };
 		4C2CA3141F0D0FAF00CFFD92 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4C2CA3161F0E3B2700CFFD92 /* ValidationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationCell.swift; sourceTree = "<group>"; };
+		4C2CA3171F0E3B2700CFFD92 /* ValidationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +305,8 @@
 				4C2CA30C1F0CF25D00CFFD92 /* TextFieldCell.swift */,
 				4C2CA30D1F0CF25D00CFFD92 /* TitleCell.swift */,
 				4C2CA30E1F0CF25D00CFFD92 /* TitleCell.xib */,
+				4C2CA3161F0E3B2700CFFD92 /* ValidationCell.swift */,
+				4C2CA3171F0E3B2700CFFD92 /* ValidationCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				4C2CA2D41F0CEA8800CFFD92 /* Assets.xcassets in Resources */,
 				4C2CA2E81F0CEA8800CFFD92 /* .gitkeep in Resources */,
 				4C2CA2EC1F0CEBA100CFFD92 /* Cartfile in Resources */,
+				4C2CA3191F0E3B2700CFFD92 /* ValidationCell.xib in Resources */,
 				4C2CA3151F0D0FAF00CFFD92 /* .gitignore in Resources */,
 				4C2CA2E21F0CEA8800CFFD92 /* Main.storyboard in Resources */,
 				4C2CA2E11F0CEA8800CFFD92 /* LaunchScreen.storyboard in Resources */,
@@ -485,6 +492,7 @@
 				4C2CA2ED1F0CEBA100CFFD92 /* Makefile in Sources */,
 				4C2CA3101F0CF25D00CFFD92 /* SwitchCell.swift in Sources */,
 				4C2CA2D71F0CEA8800CFFD92 /* Config.swift in Sources */,
+				4C2CA3181F0E3B2700CFFD92 /* ValidationCell.swift in Sources */,
 				4C2CA3111F0CF25D00CFFD92 /* TextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,7 +19,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="LiN-1P-LPq" customClass="TextFieldCell" customModule="ReactiveDatasource" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LiN-1P-LPq" id="xMq-Vp-Ly5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -30,9 +30,6 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <action selector="textChanged:" destination="LiN-1P-LPq" eventType="editingChanged" id="MsY-iY-cfd"/>
-                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -46,7 +43,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="U7K-zE-cOw" customClass="SwitchCell" customModule="ReactiveDatasource" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="105" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="106" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7K-zE-cOw" id="sRe-1J-XH5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
