@@ -19,10 +19,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="LiN-1P-LPq" customClass="TextFieldCell" customModule="ReactiveDatasource" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LiN-1P-LPq" id="xMq-Vp-Ly5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6nJ-4K-caQ">
@@ -43,10 +43,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="U7K-zE-cOw" customClass="SwitchCell" customModule="ReactiveDatasource" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="106" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="105" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7K-zE-cOw" id="sRe-1J-XH5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vau-O2-QzL">
@@ -78,7 +78,13 @@
                             <outlet property="delegate" destination="13z-kU-ren" id="qtO-Jb-NsK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="SMm-VL-Kdz"/>
+                    <navigationItem key="navigationItem" id="SMm-VL-Kdz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="omP-4M-kQk">
+                            <connections>
+                                <action selector="reloadButtonTapped:" destination="13z-kU-ren" id="x23-yg-tiz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuD-br-haU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

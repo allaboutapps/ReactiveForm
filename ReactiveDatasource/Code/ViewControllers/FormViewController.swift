@@ -16,6 +16,26 @@ import ReactiveCocoa
 
 class FormViewController: UITableViewController {
     
+    @IBAction func reloadButtonTapped(_ sender: Any) {
+        dataSource.sections = [
+            Section(items: [
+                middleNameField,
+                middleNameField.validationField(),
+                firstNameField,
+                firstNameField.validationField(),
+                lastNameField,
+                switchField
+                ]).with(identifier: "section-name"),
+            
+            Section(items: [
+                emailField,
+                "some random text"
+                ]).with(identifier: "section-additional")
+        ]
+        
+        reloadUI()
+    }
+    
     lazy var firstNameField: Form.TextField = {
         Form.TextField(id: "firstname", placeholder: "First Name", bindings: { (field) in
             field.validationState <~ field.text.producer.map { (text) in
