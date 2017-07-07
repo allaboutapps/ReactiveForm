@@ -128,6 +128,8 @@ class FormViewController: UITableViewController {
         }
         
         dataSource.reloadData(tableView, animated: false)
+        
+        print("Exported field data:", form.exportFieldData())
     }
     
     func reloadUI() {
@@ -161,6 +163,17 @@ class Form {
     
     var didChange: (() -> Void)? = nil
     
+    public func exportFieldData(with filter: ((Field) -> Bool)? = nil) -> [String : Any?] {
+        return fields.flatMap { $1 }
+            .reduce([String : Any?]()) { (dict, field) in
+                guard !(field is ValidationField) else { return dict }
+                guard filter?(field) ?? true else { return dict }
+                var varDict = dict
+                varDict[field.id] = field.anyValue
+                return varDict
+        }
+    }
+    
     private func updateFields() {
         fields.removeAll()
         for section in sections {
@@ -171,7 +184,6 @@ class Form {
                 }
             }
         }
-        print(fields)
     }
     
     private func updateChange() {
@@ -194,7 +206,7 @@ class Form {
         let isHidden = MutableProperty(false)
         let validationState = MutableProperty<ValidationState>(.success)
         
-        var anyValue: Any? { return nil }
+        var anyValue: Any? = nil
         
         init(id: String) {
             self.id = id
@@ -238,6 +250,15 @@ class Form {
             bindings?(self)
         }
         
+        override var anyValue: Any? {
+            get {
+                return text.value
+            }
+            set(value) {
+                text.value = value as! String?
+            }
+        }
+        
         override func isEqualToDiffable(_ other: Diffable?) -> Bool {
             guard let other = other as? TextField else { return false }
             
@@ -258,6 +279,16 @@ class Form {
             super.init(id: id)
             
             bindings?(self)
+        }
+        
+        override var anyValue: Any? {
+            get {
+                return isOn.value
+            }
+            set(value) {
+                isOn.value = value as! Bool
+            }
+
         }
         
         override func isEqualToDiffable(_ other: Diffable?) -> Bool {
