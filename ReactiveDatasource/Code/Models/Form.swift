@@ -18,12 +18,9 @@ class Form {
         self.dataSource = dataSource
     }
     
-    private var changeDisposable: Disposable?
-    private var fields = [String : [Field]]()
-    
     var dataSource: DataSource
     
-    var didChange: (() -> Void)? = nil
+    // MARK: - Import & Export
     
     public func importFieldData(from dict:[String : Any?]) {
         let fieldDict = fields.flatMap { $1 }
@@ -49,6 +46,13 @@ class Form {
                 return varDict
         }
     }
+    
+    // MARK: - Change
+    
+    var didChange: (() -> Void)? = nil
+    
+    private var changeDisposable: Disposable?
+    private var fields = [String : [Field]]()
     
     public func setup() {
         updateFields()
@@ -82,6 +86,8 @@ class Form {
         }
     }
     
+    // MARK: - Field
+    
     class Field: Diffable {
         let id: String
         let isHidden = MutableProperty(false)
@@ -112,6 +118,8 @@ class Form {
             _changed.input.send(value: self)
         }
     }
+    
+    // MARK: - Sub fields
     
     class TextField: Form.Field {
         let text: MutableProperty<String?>
@@ -184,6 +192,8 @@ class Form {
         let displayedState = MutableProperty<ValidationState>(.success)
     }
 }
+
+// MARK: - Util
 
 enum ValidationState {
     case success
