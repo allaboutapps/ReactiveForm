@@ -335,15 +335,26 @@ extension Form.Field {
     func validationField() -> Form.ValidationField {
         let validationField = Form.ValidationField(id: self.id + ".validation")
         
-        validationState.producer.startWithValues { (state) in
-            validationField.displayedState.value = state
-            
-            switch state {
-            case .success:
-                validationField.isHidden.value = true
-            default:
-                validationField.isHidden.value = false
-            }
+        SignalProducer.combineLatest(validationState.producer, isHidden.producer)
+            .startWithValues { (value) in
+                let validationState = value.0
+                let isHidden = value.1
+                
+                validationField.displayedState.value = validationState
+                
+                
+                if isHidden {
+                    // Hide validation field if dependent field is hidden
+                    validationField.isHidden.value = true
+                } else {
+                    // if dependent field is visible, hide validation field if state is success
+                    switch validationState {
+                    case .success:
+                        validationField.isHidden.value = true
+                    default:
+                        validationField.isHidden.value = false
+                    }
+                }
         }
     
         return validationField
