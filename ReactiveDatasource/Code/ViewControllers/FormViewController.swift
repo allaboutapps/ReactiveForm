@@ -133,16 +133,6 @@ class FormViewController: UITableViewController {
     func reloadUI() {
         dataSource.reloadData(tableView, animated: true)
     }
-    
-    func textFieldChanged(id: String, text: String) {
-        print("changed field \(id): \(text)")
-    }
-    
-    func switchFieldChanged(id: String, isOn: Bool) {
-        print("changed field \(id): \(isOn)")
-        
-        dataSource.reloadData(tableView, animated: true)
-    }
 }
 
 // MARK: - Form
