@@ -39,6 +39,14 @@ extension UITextField {
     
     func assignTraits(_ traits: TextInputTraits?) {
         guard let traits = traits else { return }
+        self.autocapitalizationType = traits.autocapitalizationType
+        self.autocorrectionType = traits.autocorrectionType
+        self.spellCheckingType = traits.spellCheckingType
         self.keyboardType = traits.keyboardType
+        self.keyboardAppearance = traits.keyboardAppearance
+        self.returnKeyType = traits.returnKeyType
+        self.enablesReturnKeyAutomatically = traits.enablesReturnKeyAutomatically
+        self.isSecureTextEntry = traits.isSecureTextEntry
+        self.textContentType = traits.textContentType
     }
 }
