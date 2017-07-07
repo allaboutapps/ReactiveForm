@@ -126,7 +126,9 @@ class FormViewController: UITableViewController {
             ])
     }()
     
-    var form = Form()
+    lazy var form: Form = {
+        Form(dataSource: self.dataSource)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,7 +136,7 @@ class FormViewController: UITableViewController {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         
-        form.sections = [
+        dataSource.sections = [
             Section(items: [
                 firstNameField,
                 firstNameField.validationField(),
@@ -153,8 +155,6 @@ class FormViewController: UITableViewController {
         form.didChange = {
             self.reloadUI()
         }
-        
-        dataSource.sections = form.sections
         
         switchField.isOn.producer.startWithValues { value in
             self.reloadUI()
@@ -181,16 +181,20 @@ enum ValidationState {
 
 class Form {
     
-    init() {}
+    init(dataSource: DataSource) {
+        self.dataSource = dataSource
+        self.sections = MutableProperty<[SectionType]>(self.dataSource.sections)
+        self.sections.producer.startWithValues { [unowned self] _ in
+            self.updateFields()
+            self.updateChange()
+        }
+    }
+    
+    var sections: MutableProperty<[SectionType]>
     
     var changeDisposable: Disposable?
     
-    var sections = [SectionType]() {
-        didSet {
-            updateFields()
-            updateChange()
-        }
-    }
+    var dataSource: DataSource
     
     var fields = [String : [Field]]()
     
@@ -209,7 +213,7 @@ class Form {
     
     private func updateFields() {
         fields.removeAll()
-        for section in sections {
+        for section in dataSource.sections {
             if let dataSourceSection = section as? Section {
                 let fieldsFromSection = dataSourceSection.fields()
                 if !fieldsFromSection.isEmpty {
