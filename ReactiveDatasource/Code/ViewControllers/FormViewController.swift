@@ -33,6 +33,28 @@ class FormViewController: UITableViewController {
         })
     }()
     
+    lazy var middleNameField: Form.TextField = {
+        Form.TextField(id: "middlename", placeholder: "Middle Name",
+            bindings: { (field) in
+                self.firstNameField.text.producer.startWithValues { (text) in
+                    field.isHidden.value = text?.isEmpty ?? true
+                }
+                
+                field.validationState <~ field.text.producer.map { (text) in
+                    if let text = text {
+                        if text.characters.count > 3 {
+                            return .warning(text: "more than 3")
+                        } else if text.characters.count > 2 {
+                            return .error(text: "more than 2")
+                        }
+                    }
+                    
+                    return .success
+                }
+            }
+        )
+    }()
+    
     lazy var lastNameField: Form.TextField = {
         Form.TextField(id: "lastname", placeholder: "Last Name",
             bindings: { (field) in
@@ -41,16 +63,6 @@ class FormViewController: UITableViewController {
                 }
                 
                 field.text <~ self.firstNameField.text
-            }
-        )
-    }()
-    
-    lazy var middleNameField: Form.TextField = {
-        Form.TextField(id: "middlename", placeholder: "Middle Name",
-            bindings: { (field) in
-                self.firstNameField.text.producer.startWithValues { (text) in
-                    field.isHidden.value = text?.isEmpty ?? true
-                }
             }
         )
     }()
@@ -107,6 +119,7 @@ class FormViewController: UITableViewController {
                 firstNameField,
                 firstNameField.validationField(),
                 middleNameField,
+                middleNameField.validationField(),
                 lastNameField,
                 switchField
                 ]).with(identifier: "section-name"),
