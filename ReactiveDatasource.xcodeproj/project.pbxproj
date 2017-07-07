@@ -40,6 +40,7 @@
 		4C2CA3151F0D0FAF00CFFD92 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4C2CA3141F0D0FAF00CFFD92 /* .gitignore */; };
 		4C2CA3181F0E3B2700CFFD92 /* ValidationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CA3161F0E3B2700CFFD92 /* ValidationCell.swift */; };
 		4C2CA3191F0E3B2700CFFD92 /* ValidationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2CA3171F0E3B2700CFFD92 /* ValidationCell.xib */; };
+		4C2CA31D1F0FA5F300CFFD92 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CA31C1F0FA5F300CFFD92 /* Form.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		4C2CA3141F0D0FAF00CFFD92 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4C2CA3161F0E3B2700CFFD92 /* ValidationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationCell.swift; sourceTree = "<group>"; };
 		4C2CA3171F0E3B2700CFFD92 /* ValidationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationCell.xib; sourceTree = "<group>"; };
+		4C2CA31C1F0FA5F300CFFD92 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 		4C2CA2BA1F0CEA8800CFFD92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4C2CA31C1F0FA5F300CFFD92 /* Form.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				4C2CA2D51F0CEA8800CFFD92 /* AppDelegate.swift in Sources */,
 				4C2CA2E41F0CEA8800CFFD92 /* Strings.swift in Sources */,
 				4C2CA3121F0CF25D00CFFD92 /* TitleCell.swift in Sources */,
+				4C2CA31D1F0FA5F300CFFD92 /* Form.swift in Sources */,
 				4C2CA2D91F0CEA8800CFFD92 /* Environment.swift in Sources */,
 				4C2CA2D61F0CEA8800CFFD92 /* Appearance.swift in Sources */,
 				4C2CA2E31F0CEA8800CFFD92 /* Storyboard.swift in Sources */,
