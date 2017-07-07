@@ -17,6 +17,9 @@ class TextFieldCell: UITableViewCell {
     
     var field: Form.TextField!
     
+    var disposableUiToData: Disposable?
+    var disposableDataToUi: Disposable?
+    
     func configure(field: Form.TextField) {
         self.field = field
         
@@ -26,8 +29,13 @@ class TextFieldCell: UITableViewCell {
         textField.keyboardType = field.keyboardType
         textField.autocorrectionType = .no
         
-        field.text <~ textField.reactive.continuousTextValues
-        textField.reactive.text <~ field.text
+        // Need to reset bindings on configure (cell reuse)
+        disposableUiToData?.dispose()
+        disposableDataToUi?.dispose()
+        
+        // Bind field data to UI and vise versa
+        disposableUiToData = field.text <~ textField.reactive.continuousTextValues
+        disposableDataToUi = textField.reactive.text <~ field.text
     }
 }
 

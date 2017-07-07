@@ -17,9 +17,12 @@ class ValidationCell: UITableViewCell {
     
     var field: Form.ValidationField!
     
+    var disposableDataToUi: Disposable?
+    
     func configure(field: Form.ValidationField) {
 
-        field.displayedState.producer.startWithValues { [unowned self] state in
+        disposableDataToUi?.dispose()
+        disposableDataToUi = field.displayedState.producer.startWithValues { [unowned self] state in
             switch state {
             case let .warning(text: text):
                 self.stateLabel.text = text
