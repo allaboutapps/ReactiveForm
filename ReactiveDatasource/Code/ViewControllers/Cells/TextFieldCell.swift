@@ -26,8 +26,7 @@ class TextFieldCell: UITableViewCell {
         textField.text = field.text.value
         textField.placeholder = field.placeholder
         
-        textField.keyboardType = field.keyboardType
-        textField.autocorrectionType = .no
+        field.configureTextInputTraits?(textField)
         
         // Need to reset bindings on configure (cell reuse)
         disposableUiToData?.dispose()

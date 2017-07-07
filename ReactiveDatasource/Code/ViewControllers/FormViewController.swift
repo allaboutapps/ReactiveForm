@@ -82,7 +82,9 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var emailField: Form.TextField = {
-        Form.TextField(id: "email", placeholder: "E-Mail", keyboardType: .emailAddress)
+        Form.TextField(id: "email", text: "E-Mail", placeholder: "", bindings: { _ in }, configureTextInputTraits: {
+            $0.keyboardType = .emailAddress
+        })
     }()
     
     lazy var dataSource: DataSource = {
@@ -276,12 +278,12 @@ class Form {
     class TextField: Form.Field {
         let text: MutableProperty<String?>
         let placeholder: String?
-        let keyboardType: UIKeyboardType
+        let configureTextInputTraits: ((UITextField) -> Void)?
         
-        init(id: String, text: String? = nil, placeholder: String? = nil, keyboardType: UIKeyboardType = .default, bindings: ((TextField) -> Void)? = nil) {
+        init(id: String, text: String? = nil, placeholder: String? = nil, bindings: ((TextField) -> Void)? = nil, configureTextInputTraits: ((UITextField) -> Void)? = nil) {
             self.text = MutableProperty(text)
             self.placeholder = placeholder
-            self.keyboardType = keyboardType
+            self.configureTextInputTraits = configureTextInputTraits
             super.init(id: id)
             
             self.text.signal.observeValues { [unowned self] _ in
@@ -306,7 +308,6 @@ class Form {
             return super.isEqualToDiffable(other)
                 && self.text.value == other.text.value
                 && self.placeholder == other.placeholder
-                && self.keyboardType == other.keyboardType
         }
     }
     
