@@ -124,12 +124,12 @@ class Form {
     class TextField: Form.Field {
         let text: MutableProperty<String?>
         let placeholder: String?
-        let configureTextInputTraits: ((UITextField) -> Void)?
+        let textInputTraits: TextInputTraits?
         
-        init(id: String, text: String? = nil, placeholder: String? = nil, bindings: ((TextField) -> Void)? = nil, configureTextInputTraits: ((UITextField) -> Void)? = nil) {
+        init(id: String, text: String? = nil, placeholder: String? = nil, textInputTraits: TextInputTraits? = nil, bindings: ((TextField) -> Void)? = nil) {
             self.text = MutableProperty(text)
             self.placeholder = placeholder
-            self.configureTextInputTraits = configureTextInputTraits
+            self.textInputTraits = textInputTraits
             super.init(id: id)
             
             self.text.signal.observeValues { [unowned self] _ in

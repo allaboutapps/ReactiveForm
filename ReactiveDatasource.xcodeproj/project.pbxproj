@@ -41,6 +41,7 @@
 		4C2CA3181F0E3B2700CFFD92 /* ValidationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CA3161F0E3B2700CFFD92 /* ValidationCell.swift */; };
 		4C2CA3191F0E3B2700CFFD92 /* ValidationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2CA3171F0E3B2700CFFD92 /* ValidationCell.xib */; };
 		4C2CA31D1F0FA5F300CFFD92 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CA31C1F0FA5F300CFFD92 /* Form.swift */; };
+		4C2CA31F1F0FAD2600CFFD92 /* TextInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2CA31E1F0FAD2600CFFD92 /* TextInputTraits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		4C2CA3161F0E3B2700CFFD92 /* ValidationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationCell.swift; sourceTree = "<group>"; };
 		4C2CA3171F0E3B2700CFFD92 /* ValidationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationCell.xib; sourceTree = "<group>"; };
 		4C2CA31C1F0FA5F300CFFD92 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		4C2CA31E1F0FAD2600CFFD92 /* TextInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTraits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2CA31C1F0FA5F300CFFD92 /* Form.swift */,
+				4C2CA31E1F0FAD2600CFFD92 /* TextInputTraits.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				4C2CA2E31F0CEA8800CFFD92 /* Storyboard.swift in Sources */,
 				4C2CA2ED1F0CEBA100CFFD92 /* Makefile in Sources */,
 				4C2CA3101F0CF25D00CFFD92 /* SwitchCell.swift in Sources */,
+				4C2CA31F1F0FAD2600CFFD92 /* TextInputTraits.swift in Sources */,
 				4C2CA2D71F0CEA8800CFFD92 /* Config.swift in Sources */,
 				4C2CA3181F0E3B2700CFFD92 /* ValidationCell.swift in Sources */,
 				4C2CA3111F0CF25D00CFFD92 /* TextFieldCell.swift in Sources */,

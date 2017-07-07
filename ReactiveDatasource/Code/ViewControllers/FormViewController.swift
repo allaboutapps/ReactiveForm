@@ -27,18 +27,20 @@ class FormViewController: UITableViewController {
     }
     
     lazy var firstNameField: Form.TextField = {
-        Form.TextField(id: "firstname", placeholder: "First Name", bindings: { (field) in
-            field.validationState <~ field.text.producer.map { (text) in
-                if let text = text {
-                    if text.characters.count > 5 {
-                        return .warning(text: "more than 5")
-                    } else if text.characters.count > 3 {
-                        return .error(text: "more than 3")
+        Form.TextField(id: "firstname", placeholder: "First Name",
+            textInputTraits: TextInputTraits.defaultNameTraits,
+            bindings: { (field) in
+                field.validationState <~ field.text.producer.map { (text) in
+                    if let text = text {
+                        if text.characters.count > 5 {
+                            return .warning(text: "more than 5")
+                        } else if text.characters.count > 3 {
+                            return .error(text: "more than 3")
+                        }
                     }
+                    
+                    return .success
                 }
-                
-                return .success
-            }
             
         })
     }()
@@ -82,9 +84,9 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var emailField: Form.TextField = {
-        Form.TextField(id: "email", text: "E-Mail", placeholder: "", bindings: { _ in }, configureTextInputTraits: {
+        Form.TextField(id: "email", text: "E-Mail", placeholder: "", textInputTraits: TextInputTraits.create({
             $0.keyboardType = .emailAddress
-        })
+        }))
     }()
     
     lazy var dataSource: DataSource = {

@@ -25,8 +25,8 @@ class TextFieldCell: UITableViewCell {
         
         textField.text = field.text.value
         textField.placeholder = field.placeholder
-        
-        field.configureTextInputTraits?(textField)
+
+        textField.assignTraits(field.textInputTraits)
         
         // Need to reset bindings on configure (cell reuse)
         disposableUiToData?.dispose()
