@@ -152,6 +152,7 @@ class FormViewController: UITableViewController {
             self.reloadUI()
         }
         
+        form.setup()
         dataSource.reloadData(tableView, animated: false)
         
         print("Exported field data:", form.exportFieldData())
@@ -175,21 +176,13 @@ class Form {
     
     init(dataSource: DataSource) {
         self.dataSource = dataSource
-        self.sections = MutableProperty<[SectionType]>(self.dataSource.sections)
-        self.sections.producer.startWithValues { [unowned self] _ in
-            self.updateFields()
-            self.updateChange()
-        }
     }
     
-    var sections: MutableProperty<[SectionType]>
-    
-    var changeDisposable: Disposable?
+    private var changeDisposable: Disposable?
+    private var fields = [String : [Field]]()
     
     var dataSource: DataSource
-    
-    var fields = [String : [Field]]()
-    
+
     var didChange: (() -> Void)? = nil
     
     public func importFieldData(from dict:[String : Any?]) {
@@ -215,6 +208,11 @@ class Form {
                 varDict[field.id] = field.anyValue
                 return varDict
         }
+    }
+    
+    public func setup() {
+        updateFields()
+        updateChange()
     }
     
     private func updateFields() {
