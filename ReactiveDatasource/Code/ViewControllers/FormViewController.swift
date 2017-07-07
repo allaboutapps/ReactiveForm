@@ -17,21 +17,11 @@ import ReactiveCocoa
 class FormViewController: UITableViewController {
     
     @IBAction func reloadButtonTapped(_ sender: Any) {
-        dataSource.sections = [
-            Section(items: [
-                middleNameField,
-                middleNameField.validationField(),
-                firstNameField,
-                firstNameField.validationField(),
-                lastNameField,
-                switchField
-                ]).with(identifier: "section-name"),
-            
-            Section(items: [
-                emailField,
-                "some random text"
-                ]).with(identifier: "section-additional")
-        ]
+        form.importFieldData(from:
+            ["additional": true,
+             "middlename": "Franz",
+             "email": "test@test.at"
+            ])
         
         reloadUI()
     }
@@ -199,6 +189,20 @@ class Form {
     var fields = [String : [Field]]()
     
     var didChange: (() -> Void)? = nil
+    
+    public func importFieldData(from dict:[String : Any?]) {
+        let fieldDict = fields.flatMap { $1 }
+            .reduce([String : Field]()) { (dict, field) in
+                var varDict = dict
+                varDict[field.id] = field
+                return varDict
+        }
+        dict.forEach { (key, value) in
+            if let field = fieldDict[key] {
+                field.anyValue = value
+            }
+        }
+    }
     
     public func exportFieldData(with filter: ((Field) -> Bool)? = nil) -> [String : Any?] {
         return fields.flatMap { $1 }
