@@ -121,9 +121,7 @@ class FormViewController: UITableViewController {
             ])
     }()
     
-    lazy var form: Form = {
-        Form(dataSource: self.dataSource)
-    }()
+    let form = Form()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,7 +153,9 @@ class FormViewController: UITableViewController {
             self.reloadUI()
         }
         
+        form.sections = dataSource.sections
         form.setup()
+        
         dataSource.reloadData(tableView, animated: false)
         
         print("Exported field data:", form.exportFieldData())

@@ -14,11 +14,7 @@ import ReactiveCocoa
 
 public class Form {
     
-    public init(dataSource: DataSource) {
-        self.dataSource = dataSource
-    }
-    
-    var dataSource: DataSource
+    public init() {}
     
     // MARK: - Import & Export
     
@@ -49,6 +45,8 @@ public class Form {
     
     // MARK: - Change
     
+    public var sections = [SectionType]()
+    
     public var didChange: (() -> Void)? = nil
     
     private var changeDisposable: Disposable?
@@ -61,7 +59,7 @@ public class Form {
     
     private func updateFields() {
         fields.removeAll()
-        for section in dataSource.sections {
+        for section in sections {
             if let dataSourceSection = section as? Section {
                 let fieldsFromSection = dataSourceSection.fields()
                 if !fieldsFromSection.isEmpty {
