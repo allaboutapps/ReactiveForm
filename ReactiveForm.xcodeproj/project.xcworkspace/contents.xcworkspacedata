@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ReactiveDatasource.xcodeproj">
+      location = "self:ReactiveForm.xcodeproj">
    </FileRef>
 </Workspace>

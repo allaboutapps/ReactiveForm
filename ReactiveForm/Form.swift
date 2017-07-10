@@ -12,9 +12,9 @@ import Result
 import ReactiveSwift
 import ReactiveCocoa
 
-class Form {
+public class Form {
     
-    init(dataSource: DataSource) {
+    public init(dataSource: DataSource) {
         self.dataSource = dataSource
     }
     
@@ -49,7 +49,7 @@ class Form {
     
     // MARK: - Change
     
-    var didChange: (() -> Void)? = nil
+    public var didChange: (() -> Void)? = nil
     
     private var changeDisposable: Disposable?
     private var fields = [String : [Field]]()
@@ -88,22 +88,22 @@ class Form {
     
     // MARK: - Field
     
-    class Field: Diffable {
-        let id: String
-        let isHidden = MutableProperty(false)
-        let validationState = MutableProperty<ValidationState>(.success)
+    public class Field: Diffable {
+        public let id: String
+        public let isHidden = MutableProperty(false)
+        public let validationState = MutableProperty<ValidationState>(.success)
         
-        var anyValue: Any? = nil
+        public var anyValue: Any? = nil
         
-        init(id: String) {
+        public init(id: String) {
             self.id = id
         }
         
-        var diffIdentifier: String {
+        public var diffIdentifier: String {
             return id
         }
         
-        func isEqualToDiffable(_ other: Diffable?) -> Bool {
+        public func isEqualToDiffable(_ other: Diffable?) -> Bool {
             guard let other = other as? Form.Field else { return false }
             
             return self.id == other.id
@@ -121,12 +121,12 @@ class Form {
     
     // MARK: - Sub fields
     
-    class TextField: Form.Field {
-        let text: MutableProperty<String?>
-        let placeholder: String?
-        let textInputTraits: TextInputTraits?
+    public class TextField: Form.Field {
+        public let text: MutableProperty<String?>
+        public let placeholder: String?
+        public let textInputTraits: TextInputTraits?
         
-        init(id: String, text: String? = nil, placeholder: String? = nil, textInputTraits: TextInputTraits? = nil, bindings: ((TextField) -> Void)? = nil) {
+        public init(id: String, text: String? = nil, placeholder: String? = nil, textInputTraits: TextInputTraits? = nil, bindings: ((TextField) -> Void)? = nil) {
             self.text = MutableProperty(text)
             self.placeholder = placeholder
             self.textInputTraits = textInputTraits
@@ -139,7 +139,7 @@ class Form {
             bindings?(self)
         }
         
-        override var anyValue: Any? {
+        public override var anyValue: Any? {
             get {
                 return text.value
             }
@@ -148,7 +148,7 @@ class Form {
             }
         }
         
-        override func isEqualToDiffable(_ other: Diffable?) -> Bool {
+        public override func isEqualToDiffable(_ other: Diffable?) -> Bool {
             guard let other = other as? TextField else { return false }
             
             return super.isEqualToDiffable(other)
@@ -157,11 +157,11 @@ class Form {
         }
     }
     
-    class SwitchField: Form.Field {
-        let title: String
-        var isOn: MutableProperty<Bool>
+    public class SwitchField: Form.Field {
+        public let title: String
+        public var isOn: MutableProperty<Bool>
         
-        init(id: String, title: String, isOn: Bool = false, bindings: ((SwitchField) -> Void)? = nil) {
+        public init(id: String, title: String, isOn: Bool = false, bindings: ((SwitchField) -> Void)? = nil) {
             self.title = title
             self.isOn = MutableProperty(isOn)
             super.init(id: id)
@@ -169,7 +169,7 @@ class Form {
             bindings?(self)
         }
         
-        override var anyValue: Any? {
+        public override var anyValue: Any? {
             get {
                 return isOn.value
             }
@@ -179,7 +179,7 @@ class Form {
             
         }
         
-        override func isEqualToDiffable(_ other: Diffable?) -> Bool {
+        public override func isEqualToDiffable(_ other: Diffable?) -> Bool {
             guard let other = other as? SwitchField else { return false }
             
             return super.isEqualToDiffable(other)
@@ -188,14 +188,14 @@ class Form {
         }
     }
     
-    class ValidationField: Form.Field {
-        let displayedState = MutableProperty<ValidationState>(.success)
+    public class ValidationField: Form.Field {
+        public let displayedState = MutableProperty<ValidationState>(.success)
     }
 }
 
 // MARK: - Util
 
-enum ValidationState {
+public enum ValidationState {
     case success
     case info(text: String?)
     case warning(text: String?)
@@ -216,7 +216,7 @@ extension Section {
 
 extension Form.Field {
     
-    func validationField() -> Form.ValidationField {
+    public func validationField() -> Form.ValidationField {
         let validationField = Form.ValidationField(id: self.id + ".validation")
         
         SignalProducer.combineLatest(validationState.producer, isHidden.producer)

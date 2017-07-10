@@ -10,6 +10,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import DataSource
+import ReactiveForm
 
 class SwitchCell: UITableViewCell {
     

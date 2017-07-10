@@ -1,15 +1,15 @@
 //
-//  ReactiveDatasourceTests.swift
-//  ReactiveDatasourceTests
+//  ReactiveFormTests.swift
+//  ReactiveFormTests
 //
-//  Created by Michael Heinzl on 05.07.17.
+//  Created by Michael Heinzl on 10.07.17.
 //  Copyright © 2017 aaa - all about apps GmbH. All rights reserved.
 //
 
 import XCTest
-@testable import ReactiveDatasource
+@testable import ReactiveForm
 
-class ReactiveDatasourceTests: XCTestCase {
+class ReactiveFormTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

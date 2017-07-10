@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextInputTraits {
+public class TextInputTraits {
     
     public var autocapitalizationType: UITextAutocapitalizationType = .sentences
     public var autocorrectionType: UITextAutocorrectionType = .default
@@ -20,13 +20,13 @@ class TextInputTraits {
     public var isSecureTextEntry: Bool = false
     public var textContentType: UITextContentType? = nil
     
-    static func create(_ configure: (TextInputTraits) -> Void) -> TextInputTraits {
+    public static func create(_ configure: (TextInputTraits) -> Void) -> TextInputTraits {
         let traits = TextInputTraits()
         configure(traits)
         return traits
     }
     
-    static var defaultNameTraits: TextInputTraits {
+    public static var defaultNameTraits: TextInputTraits {
         return create {
             $0.autocapitalizationType = .words
             $0.autocorrectionType = .no
@@ -37,7 +37,7 @@ class TextInputTraits {
 
 extension UITextField {
     
-    func assignTraits(_ traits: TextInputTraits?) {
+    public func assignTraits(_ traits: TextInputTraits?) {
         guard let traits = traits else { return }
         self.autocapitalizationType = traits.autocapitalizationType
         self.autocorrectionType = traits.autocorrectionType
