@@ -138,7 +138,7 @@ public class Form {
     
     // MARK: - Sub fields
     
-    public class TextField: Form.Field {
+    public class TextField: Form.Field, Focusable {
         public let text: MutableProperty<String?>
         public let placeholder: String?
         public let textInputTraits: TextInputTraits?

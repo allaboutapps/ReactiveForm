@@ -26,6 +26,7 @@ class TextFieldCell: UITableViewCell {
         
         textField.text = field.text.value
         textField.placeholder = field.placeholder
+        textField.delegate = self
 
         textField.assignTraits(field.textInputTraits)
         
@@ -36,6 +37,16 @@ class TextFieldCell: UITableViewCell {
         // Bind field data to UI and vise versa
         disposableUiToData = field.text <~ textField.reactive.continuousTextValues
         disposableDataToUi = textField.reactive.text <~ field.text
+        
+        // Set Focus
+        field.focus = {
+            self.textField.becomeFirstResponder()
+        }
+extension TextFieldCell: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        field.nextFocusableField?.focus?()
+        return false
     }
 }
 

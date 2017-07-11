@@ -41,6 +41,7 @@
 		4C5C20A71F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
+		4C869AE71F13C8F400FAA3E2 /* Focusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C869AE61F13C8F400FAA3E2 /* Focusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		4C5C20981F13750000D52B41 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		4C5C20991F13750000D52B41 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		4C869AE61F13C8F400FAA3E2 /* Focusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Focusable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				4C5C202B1F13713000D52B41 /* Form.swift */,
 				4C5C202E1F13713000D52B41 /* TextInputTraits.swift */,
+				4C869AE61F13C8F400FAA3E2 /* Focusable.swift */,
 				4C5C202C1F13713000D52B41 /* Info.plist */,
 				4C5C202D1F13713000D52B41 /* ReactiveForm.h */,
 			);
@@ -414,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C869AE71F13C8F400FAA3E2 /* Focusable.swift in Sources */,
 				4C5C203C1F13713000D52B41 /* TextInputTraits.swift in Sources */,
 				4C5C20391F13713000D52B41 /* Form.swift in Sources */,
 			);
