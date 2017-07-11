@@ -42,6 +42,22 @@ class TextFieldCell: UITableViewCell {
         field.focus = {
             self.textField.becomeFirstResponder()
         }
+        
+        // Return key
+        configureReturnKey()
+        field.configureReturnKey = configureReturnKey
+    }
+    
+    func configureReturnKey() {
+        if field.nextFocusableField == nil {
+            textField.returnKeyType = field.form.returnKey
+        } else {
+            textField.returnKeyType = .next
+        }
+        textField.reloadInputViews()
+    }
+}
+
 extension TextFieldCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

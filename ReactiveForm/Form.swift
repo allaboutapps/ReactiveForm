@@ -82,6 +82,14 @@ public class Form {
         }
     }
     
+    // MARK: - Return key
+    
+    public var returnKey: UIReturnKeyType = .send
+    
+    private func updateReturnKeys() {
+        focusableFields.forEach { $0.configureReturnKey?() }
+    }
+    
     // MARK: - Field
     
     public class Field: Diffable {
