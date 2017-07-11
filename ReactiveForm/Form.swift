@@ -115,6 +115,25 @@ public class Form {
         func notifyChanged() {
             _changed.input.send(value: self)
         }
+        
+        public var index: Int {
+            let _myIndex =  form.fields.index { self.id == $0.id }
+            guard let myIndex = _myIndex else { fatalError() } // Field not found in form
+            return myIndex
+        }
+        
+        public var nextField: Field? {
+            let nextIndex = index + 1
+            guard nextIndex < form.fields.count else { return nil }
+            return form.fields[nextIndex]
+        }
+        
+        public var previousField: Field? {
+            let nextIndex = index - 1
+            guard nextIndex >= 0 else { return nil }
+            return form.fields[nextIndex]
+        }
+        
     }
     
     // MARK: - Sub fields
