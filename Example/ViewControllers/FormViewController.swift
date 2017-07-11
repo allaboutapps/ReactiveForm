@@ -27,8 +27,10 @@ class FormViewController: UITableViewController {
         reloadUI()
     }
     
+    let form = Form()
+    
     lazy var firstNameField: Form.TextField = {
-        Form.TextField(id: "firstname", placeholder: "First Name",
+        Form.TextField(id: "firstname", form: self.form, placeholder: "First Name",
             textInputTraits: TextInputTraits.defaultNameTraits,
             bindings: { (field) in
                 field.validationState <~ field.text.producer.map { (text) in
@@ -47,7 +49,7 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var middleNameField: Form.TextField = {
-        Form.TextField(id: "middlename", placeholder: "Middle Name",
+        Form.TextField(id: "middlename", form: self.form, placeholder: "Middle Name",
             bindings: { (field) in
                 self.firstNameField.text.producer.startWithValues { (text) in
                     field.isHidden.value = text?.isEmpty ?? true
@@ -69,7 +71,7 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var lastNameField: Form.TextField = {
-        Form.TextField(id: "lastname", placeholder: "Last Name",
+        Form.TextField(id: "lastname", form: self.form, placeholder: "Last Name",
             bindings: { (field) in
                 field.isHidden <~ self.firstNameField.text.producer.map {
                     $0?.isEmpty ?? true
@@ -81,13 +83,18 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var switchField: Form.SwitchField = {
-        Form.SwitchField(id: "additional", title: "Show additional options")
+        Form.SwitchField(id: "additional", form: self.form, title: "Show additional options")
     }()
     
     lazy var emailField: Form.TextField = {
-        Form.TextField(id: "email", text: "E-Mail", placeholder: "", textInputTraits: TextInputTraits.create({
-            $0.keyboardType = .emailAddress
-        }))
+        Form.TextField(id: "email", form: self.form, text: "E-Mail", placeholder: "",
+            textInputTraits: TextInputTraits.create({
+                $0.keyboardType = .emailAddress
+            }),
+            bindings: { (field) in
+                field.isHidden <~ self.switchField.isOn.producer.map { !$0 }
+            }
+        )
     }()
     
     lazy var dataSource: DataSource = {
@@ -115,13 +122,8 @@ class FormViewController: UITableViewController {
                     .footer {
                         .title("Here are some additional fields")
                     }
-                    .isHidden {
-                        !self.switchField.isOn.value
-                }
             ])
     }()
-    
-    let form = Form()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,10 +148,6 @@ class FormViewController: UITableViewController {
         ]
     
         form.didChange = {
-            self.reloadUI()
-        }
-        
-        switchField.isOn.producer.startWithValues { value in
             self.reloadUI()
         }
         
