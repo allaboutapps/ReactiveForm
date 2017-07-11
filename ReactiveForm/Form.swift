@@ -19,7 +19,7 @@ public class Form {
     // MARK: - Import & Export
     
     public func importFieldData(from dict:[String : Any?]) {
-        let fieldDict = fields.flatMap { $1 }
+        let fieldDict = fields
             .reduce([String : Field]()) { (dict, field) in
                 var varDict = dict
                 varDict[field.id] = field
@@ -33,7 +33,7 @@ public class Form {
     }
     
     public func exportFieldData(with filter: ((Field) -> Bool)? = nil) -> [String : Any?] {
-        return fields.flatMap { $1 }
+        return fields
             .reduce([String : Any?]()) { (dict, field) in
                 guard !(field is ValidationField) else { return dict }
                 guard filter?(field) ?? true else { return dict }
@@ -46,11 +46,11 @@ public class Form {
     // MARK: - Change
     
     public var sections = [SectionType]()
-    
     public var didChange: (() -> Void)? = nil
     
     private var changeDisposable: Disposable?
-    private var fields = [String : [Field]]()
+    
+    internal var fields = [Field]()
     
     public func setup() {
         updateFields()
@@ -62,23 +62,21 @@ public class Form {
         for section in sections {
             if let dataSourceSection = section as? Section {
                 let fieldsFromSection = dataSourceSection.fields()
-                if !fieldsFromSection.isEmpty {
-                    fields[dataSourceSection.identifier] = fieldsFromSection
-                }
+                fields.append(contentsOf: fieldsFromSection)
             }
         }
     }
     
     private func updateChange() {
-        let fieldArray = fields.flatMap { $1 }
         changeDisposable?.dispose()
         changeDisposable =  SignalProducer
-            .combineLatest(fieldArray.map { $0.isHidden.producer })
+            .combineLatest(fields.map { $0.isHidden.producer })
             .throttle(0, on: QueueScheduler.main)
-            .combinePrevious(fieldArray.map { $0.isHidden.value })
+            .combinePrevious(fields.map { $0.isHidden.value })
             .startWithValues { [unowned self] (isHiddenFlags, previousHiddenFlags) in
                 if isHiddenFlags != previousHiddenFlags {
                     print("reload UI")
+                    self.updateReturnKeys()
                     self.didChange?()
                 }
         }
