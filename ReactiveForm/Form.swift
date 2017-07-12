@@ -55,12 +55,14 @@ public class Form {
     public var didChange: (() -> Void)? = nil
     
     private var changeDisposable: Disposable?
+    private var enableDisposable: Disposable?
     
     internal var fields = [Field]()
     
     public func setup() {
         updateFields()
         updateChange()
+        updateEnabled()
     }
     
     private func updateFields() {
@@ -92,6 +94,15 @@ public class Form {
         }
     }
     
+    private func updateEnabled() {
+        enableDisposable?.dispose()
+        enableDisposable = SignalProducer
+            .combineLatest(fields.map { $0.isEnabled.producer })
+            .startWithValues { [unowned self] (values) in
+                self.updateReturnKeys()
+            }
+    }
+    
     // MARK: - Return key
     
     public var returnKey: UIReturnKeyType = .send
@@ -107,6 +118,7 @@ public class Form {
         public let id: String
         public let isHidden = MutableProperty(false)
         public let validationState = MutableProperty<ValidationState>(.success)
+        public let isEnabled = MutableProperty(true)
         
         public var anyValue: Any? = nil
         

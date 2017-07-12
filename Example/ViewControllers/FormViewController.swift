@@ -97,6 +97,18 @@ class FormViewController: UITableViewController {
         )
     }()
     
+    lazy var enableSwitchField: Form.SwitchField = {
+        Form.SwitchField(id: "enableSwitch", form: self.form, title: "Enable next textfield")
+    }()
+    
+    lazy var enableTextField: Form.TextField = {
+        Form.TextField(id: "enableTextField", form: self.form, placeholder: "Enable me!",
+            bindings: { (field) in
+                field.isEnabled <~ self.enableSwitchField.isOn
+            }
+        )
+    }()
+    
     lazy var dataSource: DataSource = {
         DataSource(
             cellDescriptors: [
@@ -114,6 +126,11 @@ class FormViewController: UITableViewController {
             sectionDescriptors: [
                 SectionDescriptor<Void>("section-name")
                     .headerHeight { .zero },
+                
+                SectionDescriptor<Void>("section-enable")
+                    .header {
+                        .title("Enable")
+                    },
                 
                 SectionDescriptor<Void>("section-additional")
                     .header {
@@ -140,6 +157,11 @@ class FormViewController: UITableViewController {
                 lastNameField,
                 switchField
                 ]).with(identifier: "section-name"),
+            
+            Section(items: [
+                enableSwitchField,
+                enableTextField
+                ]).with(identifier: "section-enable"),
             
             Section(items: [
                 emailField,

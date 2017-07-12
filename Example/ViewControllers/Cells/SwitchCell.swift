@@ -21,20 +21,24 @@ class SwitchCell: UITableViewCell {
     
     var disposableUiToData: Disposable?
     var disposableDataToUi: Disposable?
+    var disposableEnabled: Disposable?
     
     func configure(field: Form.SwitchField) {
         self.field  = field
         
         titleLabel.text = field.title
         onSwitch.isOn = field.isOn.value
+        onSwitch.isEnabled = field.isEnabled.value
         
         //Need to reset bindings on configure (cell reuse)
         disposableUiToData?.dispose()
         disposableDataToUi?.dispose()
+        disposableEnabled?.dispose()
         
         // Bind field data to UI and vise versa
         disposableUiToData = field.isOn <~ onSwitch.reactive.isOnValues
         disposableDataToUi = onSwitch.reactive.isOn <~ field.isOn
+        disposableEnabled = onSwitch.reactive.isEnabled <~ field.isEnabled
     }
 }
 
