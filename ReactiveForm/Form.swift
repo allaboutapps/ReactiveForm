@@ -76,7 +76,11 @@ public class Form {
             .startWithValues { [unowned self] (isHiddenFlags, previousHiddenFlags) in
                 if isHiddenFlags != previousHiddenFlags {
                     print("reload UI")
-                    self.updateReturnKeys()
+                    
+                    // Fix: Reload of input views cause tableview reload animation to bug
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01, execute: { 
+                        self.updateReturnKeys()
+                    })
                     self.didChange?()
                 }
         }
