@@ -40,8 +40,8 @@ extension Focusable where Self: Form.Field {
         return form.focusableFields[nextIndex]
     }
     
-    public func configureReturnKey() {
-        
+    public var isLastFocuFocusableField: Bool {
+        return nextFocusableField == nil
     }
 }
 

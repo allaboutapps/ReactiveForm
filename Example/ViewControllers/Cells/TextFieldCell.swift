@@ -49,11 +49,7 @@ class TextFieldCell: UITableViewCell {
     }
     
     func configureReturnKey() {
-        if field.nextFocusableField == nil {
-            textField.returnKeyType = field.form.returnKey
-        } else {
-            textField.returnKeyType = .next
-        }
+        textField.returnKeyType = (field.nextFocusableField == nil) ? field.form.returnKey : .next
         textField.reloadInputViews()
     }
 }
@@ -61,8 +57,13 @@ class TextFieldCell: UITableViewCell {
 extension TextFieldCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        field.nextFocusableField?.focus?()
-        return false
+        if field.isLastFocuFocusableField {
+            field.form.submit(sender: field)
+            return true
+        } else {
+            field.nextFocusableField?.focus?()
+            return false
+        }
     }
 }
 

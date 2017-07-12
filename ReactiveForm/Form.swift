@@ -43,6 +43,12 @@ public class Form {
         }
     }
     
+    public var onSubmit: ((_ data: [String : Any?], _ sender: Form.Field) -> Void)? = nil
+    
+    public func submit(sender: Form.Field) {
+        onSubmit?(exportFieldData(), sender)
+    }
+    
     // MARK: - Change
     
     public var sections = [SectionType]()

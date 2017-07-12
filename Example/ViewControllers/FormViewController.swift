@@ -87,7 +87,7 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var emailField: Form.TextField = {
-        Form.TextField(id: "email", form: self.form, text: "E-Mail", placeholder: "",
+        Form.TextField(id: "email", form: self.form, placeholder: "E-Mail",
             textInputTraits: TextInputTraits.create({
                 $0.keyboardType = .emailAddress
             }),
@@ -149,6 +149,10 @@ class FormViewController: UITableViewController {
     
         form.didChange = {
             self.reloadUI()
+        }
+        
+        form.onSubmit = { (data) in
+            print("Form was submitted:", data)
         }
         
         form.sections = dataSource.sections
