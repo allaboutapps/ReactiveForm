@@ -19,7 +19,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="LiN-1P-LPq" customClass="TextFieldCell" customModule="Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LiN-1P-LPq" id="xMq-Vp-Ly5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -43,7 +43,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="U7K-zE-cOw" customClass="SwitchCell" customModule="Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="105" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="106" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7K-zE-cOw" id="sRe-1J-XH5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -159,12 +159,12 @@
         <scene sceneID="8Aq-mf-PHk">
             <objects>
                 <tableViewController title="Registration" id="Qu3-gt-BDA" customClass="RegistrationViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qvw-pj-5d0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qvw-pj-5d0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="9xO-I9-ouc">
-                            <rect key="frame" x="0.0" y="161.5" width="375" height="64"/>
+                            <rect key="frame" x="0.0" y="205.5" width="375" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qW2-as-nWo">
@@ -244,6 +244,30 @@
                                     <outlet property="titleLabel" destination="bot-ym-Rtc" id="qKw-7r-ftn"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExternalDateCell" id="ABu-hJ-i3J" customClass="ExternalDateCell" customModule="Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="144" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ABu-hJ-i3J" id="i1n-rf-wDX">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxN-hm-8Z3">
+                                            <rect key="frame" x="15" y="11.5" width="34" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MxN-hm-8Z3" firstAttribute="centerY" secondItem="i1n-rf-wDX" secondAttribute="centerY" id="43g-bs-YjB"/>
+                                        <constraint firstItem="MxN-hm-8Z3" firstAttribute="leading" secondItem="i1n-rf-wDX" secondAttribute="leading" constant="15" id="z9J-YQ-E7M"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="MxN-hm-8Z3" id="pjK-yv-9rG"/>
+                                    <segue destination="mMC-HU-SqV" kind="show" identifier="showBirthdatePicker" id="ph1-3F-Lgx"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -277,6 +301,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dj-7X-xla" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1209" y="1255"/>
+        </scene>
+        <!--Select Date-->
+        <scene sceneID="2fi-cx-sgZ">
+            <objects>
+                <viewController id="mMC-HU-SqV" customClass="DateViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tpr-KB-AmS"/>
+                        <viewControllerLayoutGuide type="bottom" id="mDV-Xr-iXN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OYS-pY-c03">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nlw-nv-fwc">
+                                <rect key="frame" x="0.0" y="225" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="521630660.99548101">
+                                    <!--2017-07-13 09:24:20 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Select Date" id="38E-E0-Bl5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bJg-E2-pRp">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="mMC-HU-SqV" id="yqt-gb-OOa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="nlw-nv-fwc" id="jlM-Fe-T80"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vf9-jV-Cgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3700" y="1772"/>
         </scene>
     </scenes>
 </document>

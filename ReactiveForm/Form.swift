@@ -216,6 +216,10 @@ public class Form {
             self.isOn = MutableProperty(isOn)
             super.init(id: id, form: form)
             
+            self.isOn.signal.observeValues { [unowned self] _ in
+                self.notifyChanged()
+            }
+            
             bindings?(self)
         }
         
@@ -235,6 +239,37 @@ public class Form {
             return super.isEqualToDiffable(other)
                 && self.title == other.title
                 && self.isOn.value == other.isOn.value
+        }
+    }
+    
+    public class DateField: Form.Field {
+        public var date: MutableProperty<Date?>
+        
+        public init(id: String, form: Form, date: Date? = nil, bindings: ((DateField) -> Void)? = nil) {
+            self.date = MutableProperty(date)
+            super.init(id: id, form: form)
+            
+            self.date.signal.observeValues { [unowned self] _ in
+                self.notifyChanged()
+            }
+            
+            bindings?(self)
+        }
+        
+        public override var anyValue: Any? {
+            get {
+                return date.value
+            }
+            set(value) {
+                date.value = value as! Date?
+            }
+        }
+        
+        public override func isEqualToDiffable(_ other: Diffable?) -> Bool {
+            guard let other = other as? DateField else { return false }
+            
+            return super.isEqualToDiffable(other)
+                && self.date.value == other.date.value
         }
     }
     

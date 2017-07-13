@@ -43,6 +43,8 @@
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
 		4C869AE71F13C8F400FAA3E2 /* Focusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C869AE61F13C8F400FAA3E2 /* Focusable.swift */; };
 		4C889B7D1F16690A009A55D1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */; };
+		4C889B811F1768E4009A55D1 /* ExternalDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C889B801F1768E4009A55D1 /* ExternalDateCell.swift */; };
+		4C889B831F1775BA009A55D1 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C889B821F1775BA009A55D1 /* DateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		4C5C20991F13750000D52B41 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		4C869AE61F13C8F400FAA3E2 /* Focusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Focusable.swift; sourceTree = "<group>"; };
 		4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		4C889B801F1768E4009A55D1 /* ExternalDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalDateCell.swift; sourceTree = "<group>"; };
+		4C889B821F1775BA009A55D1 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,7 @@
 				4C5C207B1F1372EE00D52B41 /* Cells */,
 				4C5C20821F1372EE00D52B41 /* FormViewController.swift */,
 				4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */,
+				4C889B821F1775BA009A55D1 /* DateViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				4C5C207F1F1372EE00D52B41 /* TitleCell.xib */,
 				4C5C20801F1372EE00D52B41 /* ValidationCell.swift */,
 				4C5C20811F1372EE00D52B41 /* ValidationCell.xib */,
+				4C889B801F1768E4009A55D1 /* ExternalDateCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -438,9 +444,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C889B831F1775BA009A55D1 /* DateViewController.swift in Sources */,
 				4C5C20881F1372EE00D52B41 /* Storyboard.swift in Sources */,
 				4C5C20831F1372EE00D52B41 /* AppDelegate.swift in Sources */,
 				4C889B7D1F16690A009A55D1 /* RegistrationViewController.swift in Sources */,
+				4C889B811F1768E4009A55D1 /* ExternalDateCell.swift in Sources */,
 				4C5C208F1F1372EE00D52B41 /* FormViewController.swift in Sources */,
 				4C5C208B1F1372EE00D52B41 /* TitleCell.swift in Sources */,
 				4C5C20891F1372EE00D52B41 /* SwitchCell.swift in Sources */,

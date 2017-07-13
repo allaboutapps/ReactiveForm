@@ -59,6 +59,10 @@ class RegistrationViewController: UITableViewController {
         )
     }()
     
+    lazy var birthdateField: Form.DateField = {
+        Form.DateField(id: "birthdate", form: self.form)
+    }()
+    
     lazy var newsletterField: Form.SwitchField = {
         Form.SwitchField(id: "newsletterSwitch", form: self.form, title: "Newsletter",
             bindings: { (field) in
@@ -118,12 +122,16 @@ class RegistrationViewController: UITableViewController {
                 TextFieldCell.descriptor
                     .isHidden { (field, indexPath) in
                         return field.isHidden.value
-                },
-                SwitchCell.descriptor,
+                    }
+                    .willSelect { nil },
+                SwitchCell.descriptor
+                    .willSelect { nil },
                 ValidationCell.descriptor
                     .isHidden { (field, indexPath) in
                         return field.isHidden.value
-                }
+                    }
+                    .willSelect { nil },
+                ExternalDateCell.descriptor
             ],
             sectionDescriptors: [
                 SectionDescriptor<Void>("section-user")
@@ -152,6 +160,7 @@ class RegistrationViewController: UITableViewController {
                 nameField.validationField(),
                 emailField,
                 emailField.validationField(),
+                birthdateField,
                 newsletterField
                 ]).with(identifier: "section-user"),
             
@@ -169,6 +178,7 @@ class RegistrationViewController: UITableViewController {
         
         form.onSubmit = { (data) in
             print("Form was submitted:", data)
+            
         }
         
         form.sections = dataSource.sections
@@ -184,6 +194,20 @@ class RegistrationViewController: UITableViewController {
     
     func reloadUI() {
         dataSource.reloadData(tableView, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+        case "showBirthdatePicker":
+            guard let controller = segue.destination as? DateViewController else { return }
+            guard let cell = sender as? ExternalDateCell else { return }
+            
+            controller.field = cell.field
+        default:
+            break
+        }
     }
     
 }
