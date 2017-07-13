@@ -43,9 +43,9 @@ public class Form {
         }
     }
     
-    public var onSubmit: ((_ data: [String : Any?], _ sender: Form.Field) -> Void)? = nil
+    public var onSubmit: ((_ data: [String : Any?], _ sender: Form.Field?) -> Void)? = nil
     
-    public func submit(sender: Form.Field) {
+    public func submit(sender: Form.Field? = nil) {
         onSubmit?(exportFieldData(), sender)
     }
     

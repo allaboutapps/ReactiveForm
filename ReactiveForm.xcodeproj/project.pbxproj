@@ -42,6 +42,7 @@
 		4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
 		4C869AE71F13C8F400FAA3E2 /* Focusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C869AE61F13C8F400FAA3E2 /* Focusable.swift */; };
+		4C889B7D1F16690A009A55D1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		4C5C20981F13750000D52B41 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		4C5C20991F13750000D52B41 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		4C869AE61F13C8F400FAA3E2 /* Focusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Focusable.swift; sourceTree = "<group>"; };
+		4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			children = (
 				4C5C207B1F1372EE00D52B41 /* Cells */,
 				4C5C20821F1372EE00D52B41 /* FormViewController.swift */,
+				4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			files = (
 				4C5C20881F1372EE00D52B41 /* Storyboard.swift in Sources */,
 				4C5C20831F1372EE00D52B41 /* AppDelegate.swift in Sources */,
+				4C889B7D1F16690A009A55D1 /* RegistrationViewController.swift in Sources */,
 				4C5C208F1F1372EE00D52B41 /* FormViewController.swift in Sources */,
 				4C5C208B1F1372EE00D52B41 /* TitleCell.swift in Sources */,
 				4C5C20891F1372EE00D52B41 /* SwitchCell.swift in Sources */,
