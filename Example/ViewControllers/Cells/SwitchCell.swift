@@ -19,9 +19,7 @@ class SwitchCell: UITableViewCell {
     
     var field: Form.SwitchField!
     
-    var disposableUiToData: Disposable?
-    var disposableDataToUi: Disposable?
-    var disposableEnabled: Disposable?
+    var disposable = CompositeDisposable()
     
     func configure(field: Form.SwitchField) {
         self.field  = field
@@ -30,15 +28,18 @@ class SwitchCell: UITableViewCell {
         onSwitch.isOn = field.isOn.value
         onSwitch.isEnabled = field.isEnabled.value
         
-        //Need to reset bindings on configure (cell reuse)
-        disposableUiToData?.dispose()
-        disposableDataToUi?.dispose()
-        disposableEnabled?.dispose()
-        
         // Bind field data to UI and vise versa
-        disposableUiToData = field.isOn <~ onSwitch.reactive.isOnValues
-        disposableDataToUi = onSwitch.reactive.isOn <~ field.isOn
-        disposableEnabled = onSwitch.reactive.isEnabled <~ field.isEnabled
+        disposable += field.isOn <~ onSwitch.reactive.isOnValues
+        disposable += onSwitch.reactive.isOn <~ field.isOn
+        disposable += onSwitch.reactive.isEnabled <~ field.isEnabled
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Need to reset bindings on configure (cell reuse)
+        disposable.dispose()
+        disposable = CompositeDisposable()
     }
 }
 

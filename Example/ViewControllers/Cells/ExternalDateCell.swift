@@ -18,7 +18,7 @@ class ExternalDateCell: UITableViewCell {
     
     var field: Form.DateField!
     
-    var disposableDataToUi: Disposable?
+    var disposable = CompositeDisposable()
     
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -30,11 +30,8 @@ class ExternalDateCell: UITableViewCell {
     func configure(field: Form.DateField) {
         self.field  = field
         
-        //Need to reset bindings on configure (cell reuse)
-        disposableDataToUi?.dispose()
-        
         // Bind field data to UI
-        disposableDataToUi = field.date.producer.startWithValues { (date) in
+        disposable += field.date.producer.startWithValues { (date) in
             if let date = date {
                 self.dateLabel.text = self.dateFormatter.string(from: date)
                 self.dateLabel.textColor = .darkText
@@ -43,6 +40,14 @@ class ExternalDateCell: UITableViewCell {
                 self.dateLabel.textColor = UIColor.init(red: 199.0/255.0, green: 199.0/255.0, blue: 205.0/255.0, alpha: 1)
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Need to reset bindings on configure (cell reuse)
+        disposable.dispose()
+        disposable = CompositeDisposable()
     }
     
 }

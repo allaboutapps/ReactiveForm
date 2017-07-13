@@ -18,12 +18,11 @@ class ValidationCell: UITableViewCell {
     
     var field: Form.ValidationField!
     
-    var disposableDataToUi: Disposable?
+    var disposable = CompositeDisposable()
     
     func configure(field: Form.ValidationField) {
 
-        disposableDataToUi?.dispose()
-        disposableDataToUi = field.displayedState.producer.startWithValues { [unowned self] state in
+        disposable += field.displayedState.producer.startWithValues { [unowned self] state in
             switch state {
             case let .warning(text: text):
                 self.stateLabel.text = text
@@ -39,6 +38,14 @@ class ValidationCell: UITableViewCell {
                 self.stateLabel.textColor = .clear
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Need to reset bindings on configure (cell reuse)
+        disposable.dispose()
+        disposable = CompositeDisposable()
     }
 }
 

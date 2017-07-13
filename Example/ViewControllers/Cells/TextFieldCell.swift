@@ -18,9 +18,7 @@ class TextFieldCell: UITableViewCell {
     
     var field: Form.TextField!
     
-    var disposableUiToData: Disposable?
-    var disposableDataToUi: Disposable?
-    var disposableEnabled: Disposable?
+    var disposable = CompositeDisposable()
     
     func configure(field: Form.TextField) {
         self.field = field
@@ -32,15 +30,10 @@ class TextFieldCell: UITableViewCell {
 
         textField.assignTraits(field.textInputTraits)
         
-        // Need to reset bindings on configure (cell reuse)
-        disposableUiToData?.dispose()
-        disposableDataToUi?.dispose()
-        disposableEnabled?.dispose()
-        
         // Bind field data to UI and vise versa
-        disposableUiToData = field.text <~ textField.reactive.continuousTextValues
-        disposableDataToUi = textField.reactive.text <~ field.text
-        disposableEnabled = textField.reactive.isEnabled <~ field.isEnabled
+        disposable += field.text <~ textField.reactive.continuousTextValues
+        disposable += textField.reactive.text <~ field.text
+        disposable += textField.reactive.isEnabled <~ field.isEnabled
         
         // Set Focus
         field.focus = {
@@ -50,6 +43,14 @@ class TextFieldCell: UITableViewCell {
         // Return key
         configureReturnKey()
         field.configureReturnKey = configureReturnKey
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Need to reset bindings on configure (cell reuse)
+        disposable.dispose()
+        disposable = CompositeDisposable()
     }
     
     func configureReturnKey() {
