@@ -68,7 +68,7 @@ class RegistrationViewController: UITableViewController {
             bindings: { (field) in
                 field.isOn.signal.observeValues { (value) in
                     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: [], animations: {
-                        self.thumbsUpLabel.frame = self.thumbsUpLabel.frame.offsetBy(dx: value ? -100 : 100, dy: 0)
+                        self.thumbsUpLabel.frame = self.thumbsUpLabel.frame.offsetBy(dx: 0, dy: value ? -70 : 70)
                     }, completion: nil)
                 }
             }
@@ -149,7 +149,7 @@ class RegistrationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        thumbsUpLabel.frame = thumbsUpLabel.frame.offsetBy(dx: 100, dy: 0)
+        thumbsUpLabel.frame = thumbsUpLabel.frame.offsetBy(dx: 0, dy: 70)
         
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
