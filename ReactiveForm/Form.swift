@@ -52,6 +52,7 @@ public class Form {
     // MARK: - Change
     
     public var sections = [SectionType]()
+    
     public var didChange: (() -> Void)? = nil
     
     private var changeDisposable: Disposable?
@@ -61,6 +62,7 @@ public class Form {
     
     public func setup() {
         updateFields()
+        setFormOnFields()
         updateChange()
         updateEnabled()
     }
@@ -72,6 +74,12 @@ public class Form {
                 let fieldsFromSection = dataSourceSection.fields()
                 fields.append(contentsOf: fieldsFromSection)
             }
+        }
+    }
+    
+    private func setFormOnFields() {
+        fields.forEach { (field) in
+            field.form = self
         }
     }
     
@@ -114,7 +122,7 @@ public class Form {
     // MARK: - Field
     
     public class Field: Diffable {
-        public unowned let form: Form
+        public weak var form: Form!
         public let id: String
         public let isHidden = MutableProperty(false)
         public let validationState = MutableProperty<ValidationState>(.success)
@@ -122,9 +130,8 @@ public class Form {
         
         public var anyValue: Any? = nil
         
-        public init(id: String, form: Form) {
+        public init(id: String) {
             self.id = id
-            self.form = form
         }
         
         public var diffIdentifier: String {
@@ -176,11 +183,11 @@ public class Form {
         public var focus: (() -> Void)? = nil
         public var configureReturnKey: (() -> Void)? = nil
         
-        public init(id: String, form: Form, text: String? = nil, placeholder: String? = nil, textInputTraits: TextInputTraits? = nil, bindings: ((TextField) -> Void)? = nil) {
+        public init(id: String, text: String? = nil, placeholder: String? = nil, textInputTraits: TextInputTraits? = nil, bindings: ((TextField) -> Void)? = nil) {
             self.text = MutableProperty(text)
             self.placeholder = placeholder
             self.textInputTraits = textInputTraits
-            super.init(id: id, form: form)
+            super.init(id: id)
             
             self.text.signal.observeValues { [unowned self] _ in
                 self.notifyChanged()
@@ -211,10 +218,10 @@ public class Form {
         public let title: String
         public var isOn: MutableProperty<Bool>
         
-        public init(id: String, form: Form, title: String, isOn: Bool = false, bindings: ((SwitchField) -> Void)? = nil) {
+        public init(id: String, title: String, isOn: Bool = false, bindings: ((SwitchField) -> Void)? = nil) {
             self.title = title
             self.isOn = MutableProperty(isOn)
-            super.init(id: id, form: form)
+            super.init(id: id)
             
             self.isOn.signal.observeValues { [unowned self] _ in
                 self.notifyChanged()
@@ -246,10 +253,10 @@ public class Form {
         public var date: MutableProperty<Date?>
         public let placeholder: String?
         
-        public init(id: String, form: Form, placeholder: String? = nil, date: Date? = nil, bindings: ((DateField) -> Void)? = nil) {
+        public init(id: String, placeholder: String? = nil, date: Date? = nil, bindings: ((DateField) -> Void)? = nil) {
             self.date = MutableProperty(date)
             self.placeholder = placeholder
-            super.init(id: id, form: form)
+            super.init(id: id)
             
             self.date.signal.observeValues { [unowned self] _ in
                 self.notifyChanged()
@@ -304,7 +311,7 @@ extension Section {
 extension Form.Field {
     
     public func validationField() -> Form.ValidationField {
-        let validationField = Form.ValidationField(id: self.id + ".validation", form: self.form)
+        let validationField = Form.ValidationField(id: self.id + ".validation")
         
         SignalProducer.combineLatest(validationState.producer, isHidden.producer)
             .startWithValues { (value) in
