@@ -36,7 +36,7 @@ class ExternalDateCell: UITableViewCell {
                 self.dateLabel.text = self.dateFormatter.string(from: date)
                 self.dateLabel.textColor = .darkText
             } else {
-                self.dateLabel.text = "Birthdate"
+                self.dateLabel.text = self.field.placeholder
                 self.dateLabel.textColor = UIColor.init(red: 199.0/255.0, green: 199.0/255.0, blue: 205.0/255.0, alpha: 1)
             }
         }

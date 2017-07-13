@@ -60,7 +60,7 @@ class RegistrationViewController: UITableViewController {
     }()
     
     lazy var birthdateField: Form.DateField = {
-        Form.DateField(id: "birthdate", form: self.form)
+        Form.DateField(id: "birthdate", form: self.form, placeholder: "Birthdate")
     }()
     
     lazy var newsletterField: Form.SwitchField = {

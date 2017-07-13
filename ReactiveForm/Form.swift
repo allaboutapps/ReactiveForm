@@ -244,9 +244,11 @@ public class Form {
     
     public class DateField: Form.Field {
         public var date: MutableProperty<Date?>
+        public let placeholder: String?
         
-        public init(id: String, form: Form, date: Date? = nil, bindings: ((DateField) -> Void)? = nil) {
+        public init(id: String, form: Form, placeholder: String? = nil, date: Date? = nil, bindings: ((DateField) -> Void)? = nil) {
             self.date = MutableProperty(date)
+            self.placeholder = placeholder
             super.init(id: id, form: form)
             
             self.date.signal.observeValues { [unowned self] _ in
