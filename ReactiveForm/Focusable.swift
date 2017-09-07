@@ -47,7 +47,9 @@ extension Focusable where Self: Form.Field {
 
 extension Form {
     public var focusableFields: [Focusable] {
-        return fields.filter { $0.isHidden.value == false && $0.isEnabled.value }
-                         .flatMap{ $0 as? Focusable }
+        let x = fields.filter { $0.isHidden.value == false && $0.isEnabled.value }
+            .flatMap{ $0 as? Focusable }
+        return x
     }
 }
+

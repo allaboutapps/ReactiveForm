@@ -45,6 +45,11 @@
 		4C889B7D1F16690A009A55D1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */; };
 		4C889B811F1768E4009A55D1 /* ExternalDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C889B801F1768E4009A55D1 /* ExternalDateCell.swift */; };
 		4C889B831F1775BA009A55D1 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C889B821F1775BA009A55D1 /* DateViewController.swift */; };
+		BC489ECF1F61777E00FCA758 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC489ECE1F61777E00FCA758 /* Field.swift */; };
+		BC489ED11F61781700FCA758 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC489ED01F61781700FCA758 /* TextField.swift */; };
+		BC489ED41F61787200FCA758 /* SwitchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC489ED31F61787200FCA758 /* SwitchField.swift */; };
+		BC489ED61F6178A300FCA758 /* DateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC489ED51F6178A300FCA758 /* DateField.swift */; };
+		BC489ED81F6179E700FCA758 /* ValidationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC489ED71F6179E700FCA758 /* ValidationField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +103,11 @@
 		4C889B7C1F16690A009A55D1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4C889B801F1768E4009A55D1 /* ExternalDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalDateCell.swift; sourceTree = "<group>"; };
 		4C889B821F1775BA009A55D1 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		BC489ECE1F61777E00FCA758 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		BC489ED01F61781700FCA758 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		BC489ED31F61787200FCA758 /* SwitchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchField.swift; sourceTree = "<group>"; };
+		BC489ED51F6178A300FCA758 /* DateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateField.swift; sourceTree = "<group>"; };
+		BC489ED71F6179E700FCA758 /* ValidationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,11 +187,12 @@
 		4C5C202A1F13713000D52B41 /* ReactiveForm */ = {
 			isa = PBXGroup;
 			children = (
+				4C5C202D1F13713000D52B41 /* ReactiveForm.h */,
+				4C5C202C1F13713000D52B41 /* Info.plist */,
+				4C869AE61F13C8F400FAA3E2 /* Focusable.swift */,
 				4C5C202B1F13713000D52B41 /* Form.swift */,
 				4C5C202E1F13713000D52B41 /* TextInputTraits.swift */,
-				4C869AE61F13C8F400FAA3E2 /* Focusable.swift */,
-				4C5C202C1F13713000D52B41 /* Info.plist */,
-				4C5C202D1F13713000D52B41 /* ReactiveForm.h */,
+				BC489ED21F61784300FCA758 /* Fields */,
 			);
 			path = ReactiveForm;
 			sourceTree = "<group>";
@@ -251,6 +262,18 @@
 				4C5C20991F13750000D52B41 /* Result.framework */,
 			);
 			name = Carthage;
+			sourceTree = "<group>";
+		};
+		BC489ED21F61784300FCA758 /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				BC489ECE1F61777E00FCA758 /* Field.swift */,
+				BC489ED51F6178A300FCA758 /* DateField.swift */,
+				BC489ED01F61781700FCA758 /* TextField.swift */,
+				BC489ED31F61787200FCA758 /* SwitchField.swift */,
+				BC489ED71F6179E700FCA758 /* ValidationField.swift */,
+			);
+			path = Fields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,9 +451,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC489ED41F61787200FCA758 /* SwitchField.swift in Sources */,
 				4C869AE71F13C8F400FAA3E2 /* Focusable.swift in Sources */,
 				4C5C203C1F13713000D52B41 /* TextInputTraits.swift in Sources */,
+				BC489ED61F6178A300FCA758 /* DateField.swift in Sources */,
+				BC489ECF1F61777E00FCA758 /* Field.swift in Sources */,
+				BC489ED11F61781700FCA758 /* TextField.swift in Sources */,
 				4C5C20391F13713000D52B41 /* Form.swift in Sources */,
+				BC489ED81F6179E700FCA758 /* ValidationField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
