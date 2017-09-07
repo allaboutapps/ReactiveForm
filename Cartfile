@@ -1,2 +1,2 @@
-github "ReactiveCocoa/ReactiveCocoa" ~> 5.0
+github "ReactiveCocoa/ReactiveCocoa" ~> 6.0
 github "mbuchetics/DataSource"

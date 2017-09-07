@@ -173,7 +173,7 @@ class FormViewController: UITableViewController {
             self.reloadUI()
         }
         
-        form.onSubmit = { (data) in
+        form.onSubmit = { (data, sender) in
             print("Form was submitted:", data)
         }
         
