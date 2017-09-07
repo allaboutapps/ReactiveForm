@@ -22,7 +22,7 @@ public class Form {
         let fieldDict = fields
             .reduce([String : Field]()) { (dict, field) in
                 var varDict = dict
-                varDict[field.id] = field
+                varDict[field.identifier] = field
                 return varDict
         }
         dict.forEach { (key, value) in
@@ -38,7 +38,7 @@ public class Form {
                 guard !(field is ValidationField) else { return dict }
                 guard filter?(field) ?? true else { return dict }
                 var varDict = dict
-                varDict[field.id] = field.anyValue
+                varDict[field.identifier] = field.anyValue
                 return varDict
         }
     }

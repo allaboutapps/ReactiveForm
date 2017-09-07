@@ -16,7 +16,7 @@ extension Form {
     
     public class Field: Diffable {
         public weak var form: Form!
-        public let id: String
+        public let identifier: String
         public let isHidden = MutableProperty(false)
         public let validationState = MutableProperty<ValidationState>(.success)
         public let isEnabled = MutableProperty(true)
@@ -24,7 +24,7 @@ extension Form {
         public var anyValue: Any? = nil
         
         public init(id: String) {
-            self.id = id
+            self.identifier = id
         }
         
         
@@ -38,7 +38,7 @@ extension Form {
         }
         
         public var index: Int {
-            let _myIndex =  form.fields.index { self.id == $0.id }
+            let _myIndex =  form.fields.index { self.identifier == $0.identifier }
             guard let myIndex = _myIndex else { fatalError("") } 
             return myIndex
         }
@@ -57,12 +57,12 @@ extension Form {
         
         
         public var diffIdentifier: String {
-            return id
+            return identifier
         }
         
         public func isEqualToDiffable(_ other: Diffable?) -> Bool {
             guard let other = other as? Form.Field else { return false }
-            return self.id == other.id
+            return self.identifier == other.identifier
         }
         
     }
@@ -72,7 +72,7 @@ extension Form {
 extension Form.Field: Equatable {
     
     public static func ==(lhs: Form.Field, rhs: Form.Field) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.identifier == rhs.identifier
     }
     
 }

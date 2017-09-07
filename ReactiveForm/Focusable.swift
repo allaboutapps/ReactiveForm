@@ -23,7 +23,7 @@ public protocol Focusable {
 extension Focusable where Self: Form.Field {
     
     public var focusableIndex: Int {
-        let _myIndex =  form.focusableFields.index { self.id == $0.id }
+        let _myIndex =  form.focusableFields.index { self.identifier == $0.id }
         guard let myIndex = _myIndex else { fatalError() } // Field not found in form
         return myIndex
     }
