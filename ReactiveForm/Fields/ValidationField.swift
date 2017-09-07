@@ -40,7 +40,7 @@ extension Section {
 extension Form.Field {
     
     public func validationField() -> Form.ValidationField {
-        let validationField = Form.ValidationField(id: self.identifier + ".validation")
+        let validationField = Form.ValidationField(identifier: self.identifier + ".validation")
         
         SignalProducer.combineLatest(validationState.producer, isHidden.producer)
             .startWithValues { (value) in

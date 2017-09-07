@@ -19,10 +19,10 @@ extension Form {
         public let title: String
         public var isOn: MutableProperty<Bool>
         
-        public init(id: String, title: String, isOn: Bool = false, bindings: ((SwitchField) -> Void)? = nil) {
+        public init(identifier: String, title: String, isOn: Bool = false, bindings: ((SwitchField) -> Void)? = nil) {
             self.title = title
             self.isOn = MutableProperty(isOn)
-            super.init(id: id)
+            super.init(identifier: identifier)
             
             self.isOn.signal.observeValues { [unowned self] _ in
                 self.notifyChanged()

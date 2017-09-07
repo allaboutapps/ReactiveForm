@@ -30,7 +30,7 @@ class FormViewController: UITableViewController {
     let form = Form()
     
     lazy var firstNameField: Form.TextField = {
-        Form.TextField(id: "firstname", placeholder: "First Name",
+        Form.TextField(identifier: "firstname", placeholder: "First Name",
             textInputTraits: TextInputTraits.defaultNameTraits,
             bindings: { (field) in
                 field.validationState <~ field.text.producer.map { (text) in
@@ -49,7 +49,7 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var middleNameField: Form.TextField = {
-        Form.TextField(id: "middlename", placeholder: "Middle Name",
+        Form.TextField(identifier: "middlename", placeholder: "Middle Name",
             bindings: { (field) in
                 self.firstNameField.text.producer.startWithValues { (text) in
                     field.isHidden.value = text?.isEmpty ?? true
@@ -71,7 +71,7 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var lastNameField: Form.TextField = {
-        Form.TextField(id: "lastname", placeholder: "Last Name",
+        Form.TextField(identifier: "lastname", placeholder: "Last Name",
             bindings: { (field) in
                 field.isHidden <~ self.firstNameField.text.producer.map {
                     $0?.isEmpty ?? true
@@ -83,11 +83,11 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var switchField: Form.SwitchField = {
-        Form.SwitchField(id: "additional", title: "Show additional options")
+        Form.SwitchField(identifier: "additional", title: "Show additional options")
     }()
     
     lazy var emailField: Form.TextField = {
-        Form.TextField(id: "email", placeholder: "E-Mail",
+        Form.TextField(identifier: "email", placeholder: "E-Mail",
             textInputTraits: TextInputTraits.create({
                 $0.keyboardType = .emailAddress
             }),
@@ -98,11 +98,11 @@ class FormViewController: UITableViewController {
     }()
     
     lazy var enableSwitchField: Form.SwitchField = {
-        Form.SwitchField(id: "enableSwitch", title: "Enable next textfield")
+        Form.SwitchField(identifier: "enableSwitch", title: "Enable next textfield")
     }()
     
     lazy var enableTextField: Form.TextField = {
-        Form.TextField(id: "enableTextField", placeholder: "Enable me!",
+        Form.TextField(identifier: "enableTextField", placeholder: "Enable me!",
             bindings: { (field) in
                 field.isEnabled <~ self.enableSwitchField.isOn
             }

@@ -23,8 +23,8 @@ extension Form {
         
         public var anyValue: Any? = nil
         
-        public init(id: String) {
-            self.identifier = id
+        public init(identifier: String) {
+            self.identifier = identifier
         }
         
         

@@ -23,11 +23,11 @@ extension Form {
         public var focus: (() -> Void)? = nil
         public var configureReturnKey: (() -> Void)? = nil
         
-        public init(id: String, text: String? = nil, placeholder: String? = nil, textInputTraits: TextInputTraits? = nil, bindings: ((TextField) -> Void)? = nil) {
+        public init(identifier: String, text: String? = nil, placeholder: String? = nil, textInputTraits: TextInputTraits? = nil, bindings: ((TextField) -> Void)? = nil) {
             self.text = MutableProperty(text)
             self.placeholder = placeholder
             self.textInputTraits = textInputTraits
-            super.init(id: id)
+            super.init(identifier: identifier)
             
             self.text.signal.observeValues { [unowned self] _ in
                 self.notifyChanged()

@@ -21,7 +21,7 @@ class RegistrationViewController: UITableViewController {
     let form = Form()
     
     lazy var nameField: Form.TextField = {
-        Form.TextField(id: "name", placeholder: "Name",
+        Form.TextField(identifier: "name", placeholder: "Name",
                        textInputTraits: TextInputTraits.defaultNameTraits,
                        bindings: { (field) in
                         field.validationState <~ field.text.producer.map { (text) in
@@ -40,7 +40,7 @@ class RegistrationViewController: UITableViewController {
     }()
     
     lazy var emailField: Form.TextField = {
-        Form.TextField(id: "email", placeholder: "E-Mail",
+        Form.TextField(identifier: "email", placeholder: "E-Mail",
                        textInputTraits: TextInputTraits.create({
                         $0.keyboardType = .emailAddress
                         $0.autocapitalizationType = .none
@@ -60,11 +60,11 @@ class RegistrationViewController: UITableViewController {
     }()
     
     lazy var birthdateField: Form.DateField = {
-        Form.DateField(id: "birthdate", placeholder: "Birthdate")
+        Form.DateField(identifier: "birthdate", placeholder: "Birthdate")
     }()
     
     lazy var newsletterField: Form.SwitchField = {
-        Form.SwitchField(id: "newsletterSwitch", title: "Newsletter",
+        Form.SwitchField(identifier: "newsletterSwitch", title: "Newsletter",
             bindings: { (field) in
                 field.isOn.signal.observeValues { (value) in
                     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: [], animations: {
@@ -76,7 +76,7 @@ class RegistrationViewController: UITableViewController {
     }()
     
     lazy var passwordField: Form.TextField = {
-        Form.TextField(id: "password", placeholder: "Password",
+        Form.TextField(identifier: "password", placeholder: "Password",
                        textInputTraits: TextInputTraits.create({
                         $0.isSecureTextEntry = true
                        }),
@@ -98,7 +98,7 @@ class RegistrationViewController: UITableViewController {
     }()
     
     lazy var passwordConfirmationField: Form.TextField = {
-        Form.TextField(id: "passwordConfirmation", placeholder: "Confirmation",
+        Form.TextField(identifier: "passwordConfirmation", placeholder: "Confirmation",
                        textInputTraits: TextInputTraits.create({
                         $0.isSecureTextEntry = true
                        }),

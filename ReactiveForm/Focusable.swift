@@ -13,7 +13,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 public protocol Focusable {
-    var id: String { get }
+    var identifier: String { get }
     var configureReturnKey: (() -> Void)? { get set }
     var focus: (() -> Void)? { get set }
     var nextFocusableField: Focusable? { get }
@@ -23,7 +23,7 @@ public protocol Focusable {
 extension Focusable where Self: Form.Field {
     
     public var focusableIndex: Int {
-        let _myIndex =  form.focusableFields.index { self.identifier == $0.id }
+        let _myIndex =  form.focusableFields.index { self.identifier == $0.identifier }
         guard let myIndex = _myIndex else { fatalError() } // Field not found in form
         return myIndex
     }

@@ -19,10 +19,10 @@ extension Form {
         public var date: MutableProperty<Date?>
         public let placeholder: String?
         
-        public init(id: String, placeholder: String? = nil, date: Date? = nil, bindings: ((DateField) -> Void)? = nil) {
+        public init(identifier: String, placeholder: String? = nil, date: Date? = nil, bindings: ((DateField) -> Void)? = nil) {
             self.date = MutableProperty(date)
             self.placeholder = placeholder
-            super.init(id: id)
+            super.init(identifier: identifier)
             
             self.date.signal.observeValues { [unowned self] _ in
                 self.notifyChanged()
