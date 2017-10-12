@@ -67,8 +67,8 @@ class RegisterViewModel: CardViewModel {
         
         super.init()
         
-        primaryActionSettings.value = ActionButtonSettings(title: "Register", action: { [weak self] (viewModel, controller) in
-//            self?.register(controller: controller)
+        primaryActionSettings.value = ActionButtonSettings(title: "Register", action: { (viewModel, controller) in
+            Toast.shared.show("Erfolgreich registriert.")
         })
         
         let emailField = Form.Field<String>(identifier: "email", type: .textField, title: "Email", isRequired: true, validationRule: "(value.length >= 3) && value.includes('@')", validationErrorText: "Invalid email")
