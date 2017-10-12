@@ -5,7 +5,7 @@ import UIKit
 enum Storyboard: String {
     case launchScreen = "LaunchScreen"
     case main = "Main"
-    /// ... your storyboard names
+    case form = "Form"
 }
 
 // MARK: StoryboardIdentifiable

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="142" id="AvG-GR-ajX" customClass="ImageCell" customModule="SmartSpender" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AvG-GR-ajX" id="vfG-ia-Vk6">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="141.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qzQ-to-oJo">
+                        <rect key="frame" x="0.0" y="10" width="375" height="121.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="375" id="HxH-YQ-R2S"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qzQ-to-oJo" firstAttribute="width" relation="lessThanOrEqual" secondItem="vfG-ia-Vk6" secondAttribute="width" id="BMW-wJ-PoJ"/>
+                    <constraint firstItem="qzQ-to-oJo" firstAttribute="top" secondItem="vfG-ia-Vk6" secondAttribute="top" constant="10" id="SrA-FE-HOO"/>
+                    <constraint firstAttribute="bottom" secondItem="qzQ-to-oJo" secondAttribute="bottom" constant="10" id="bBG-TU-8h3"/>
+                    <constraint firstItem="qzQ-to-oJo" firstAttribute="centerX" secondItem="vfG-ia-Vk6" secondAttribute="centerX" id="erl-6r-k1F"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageContentView" destination="qzQ-to-oJo" id="s5h-8l-dQh"/>
+                <outlet property="imageWidthConstraint" destination="HxH-YQ-R2S" id="woB-AO-ZSG"/>
+                <outlet property="spacingAboveConstraint" destination="SrA-FE-HOO" id="Ea1-Fo-fiA"/>
+                <outlet property="spacingBelowConstraint" destination="bBG-TU-8h3" id="TOf-Kb-Jou"/>
+            </connections>
+            <point key="canvasLocation" x="20.5" y="-45"/>
+        </tableViewCell>
+    </objects>
+</document>
