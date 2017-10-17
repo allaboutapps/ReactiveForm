@@ -84,7 +84,6 @@
 		BC7FEC0C1F8D09E50011C443 /* SimpleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */; };
 		BC7FEC0E1F8D0A380011C443 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */; };
 		BC7FEC101F8E014F0011C443 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC0F1F8E014E0011C443 /* UIView+Extension.swift */; };
-		BCB1AEA01F8F5376007DC284 /* Form.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB1AE9E1F8F5375007DC284 /* Form.storyboard */; };
 		BCB1AEA21F8F53AC007DC284 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */; };
 		BCB1AEA51F8F548A007DC284 /* ReactiveForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCB1AEA91F8F56A6007DC284 /* ModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77651C1F8CFF3600C49D7E /* ModalTransitioningDelegate.swift */; };
@@ -205,7 +204,7 @@
 		BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleButton.framework; path = Carthage/Build/iOS/SimpleButton.framework; sourceTree = "<group>"; };
 		BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		BC7FEC0F1F8E014E0011C443 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		BCB1AE9F1F8F5375007DC284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../hagleitner-ios/SmartSpender/Code/Storyboards/Base.lproj/Form.storyboard"; sourceTree = "<group>"; };
+		BC8D38071F90939500043D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Form.storyboard; sourceTree = "<group>"; };
 		BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -485,7 +484,7 @@
 		BCB1AEA81F8F567B007DC284 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				BCB1AE9E1F8F5375007DC284 /* Form.storyboard */,
+				BC8D38061F90939500043D06 /* Form.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -629,7 +628,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC6792E21F8D0653007BE23F /* BodyTextCell.xib in Resources */,
-				BCB1AEA01F8F5376007DC284 /* Form.storyboard in Resources */,
 				BC6792F21F8D0653007BE23F /* ToggleCell.xib in Resources */,
 				BC6792E71F8D0653007BE23F /* ImageCell.xib in Resources */,
 				BC6792E01F8D0653007BE23F /* ActivityIndicatorCell.xib in Resources */,
@@ -776,10 +774,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		BCB1AE9E1F8F5375007DC284 /* Form.storyboard */ = {
+		BC8D38061F90939500043D06 /* Form.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BCB1AE9F1F8F5375007DC284 /* Base */,
+				BC8D38071F90939500043D06 /* Base */,
 			);
 			name = Form.storyboard;
 			sourceTree = "<group>";

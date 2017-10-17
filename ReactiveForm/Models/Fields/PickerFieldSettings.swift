@@ -10,7 +10,7 @@ import Foundation
 import ReactiveSwift
 
 public protocol GenericPickerViewModelProtocol {
-    var items: [PickerItem] { get }
+    var items: [PickerItem] { get set }
     var selectedItem: MutableProperty<PickerItem?> { get }
     var title: String { get }
 }
