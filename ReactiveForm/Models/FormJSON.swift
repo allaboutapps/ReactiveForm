@@ -53,6 +53,7 @@ extension Form {
         
         public struct Action: Decodable {
             public let type: ActionType
+            public let title: String?
             public let execute: ActionExecute
             public let card: String?
         }
