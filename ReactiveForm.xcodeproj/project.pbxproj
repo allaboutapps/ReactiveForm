@@ -81,6 +81,8 @@
 		BC6792F21F8D0653007BE23F /* ToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC77650B1F8CFF3600C49D7E /* ToggleCell.xib */; };
 		BC6792F31F8D0653007BE23F /* ValidationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765081F8CFF3600C49D7E /* ValidationCell.swift */; };
 		BC6792F41F8D0653007BE23F /* ValidationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC77650D1F8CFF3600C49D7E /* ValidationCell.xib */; };
+		BC724EDF1F9DF4E6005464F8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC724EDE1F9DF4E6005464F8 /* HomeViewModel.swift */; };
+		BC724EE11F9DF669005464F8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC724EE01F9DF669005464F8 /* Settings.swift */; };
 		BC7FEC0C1F8D09E50011C443 /* SimpleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */; };
 		BC7FEC0E1F8D0A380011C443 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */; };
 		BC7FEC101F8E014F0011C443 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC0F1F8E014E0011C443 /* UIView+Extension.swift */; };
@@ -152,6 +154,8 @@
 		BC6792D61F8D0614007BE23F /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		BC6792D71F8D0614007BE23F /* DesignableGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableGradientView.swift; sourceTree = "<group>"; };
 		BC6792D81F8D0614007BE23F /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
+		BC724EDE1F9DF4E6005464F8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BC724EE01F9DF669005464F8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BC7764EF1F8CFF3600C49D7E /* Focusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focusable.swift; sourceTree = "<group>"; };
 		BC7764F01F8CFF3600C49D7E /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		BC7764F11F8CFF3600C49D7E /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
@@ -448,6 +452,8 @@
 			children = (
 				BC7765221F8D00B400C49D7E /* CardViewModel.swift */,
 				BC7765231F8D00B400C49D7E /* RegisterViewModel.swift */,
+				BC724EDE1F9DF4E6005464F8 /* HomeViewModel.swift */,
+				BC724EE01F9DF669005464F8 /* Settings.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -710,6 +716,7 @@
 				BC6792DD1F8D0614007BE23F /* DesignableGradientView.swift in Sources */,
 				BCB1AEAD1F8F56A6007DC284 /* GenericPickerViewController.swift in Sources */,
 				BC6792CF1F8D030C007BE23F /* CardViewController.swift in Sources */,
+				BC724EE11F9DF669005464F8 /* Settings.swift in Sources */,
 				BC6792D11F8D0311007BE23F /* RegisterViewModel.swift in Sources */,
 				4C5C20881F1372EE00D52B41 /* Storyboard.swift in Sources */,
 				BC6792ED1F8D0653007BE23F /* TextFieldCell.swift in Sources */,
@@ -723,6 +730,7 @@
 				BCB1AEA91F8F56A6007DC284 /* ModalTransitioningDelegate.swift in Sources */,
 				BC6792EB1F8D0653007BE23F /* SpacerCell.swift in Sources */,
 				BC6792CE1F8D0308007BE23F /* NavigationController.swift in Sources */,
+				BC724EDF1F9DF4E6005464F8 /* HomeViewModel.swift in Sources */,
 				BC7FEC101F8E014F0011C443 /* UIView+Extension.swift in Sources */,
 				BC6792EF1F8D0653007BE23F /* TitleCell.swift in Sources */,
 				BC6792EA1F8D0653007BE23F /* ReactiveFormFieldCell.swift in Sources */,

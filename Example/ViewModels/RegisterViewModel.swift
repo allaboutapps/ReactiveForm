@@ -64,8 +64,9 @@ class RegisterViewModel: CardViewModel {
     // MARK: - Lifecycle
     
     override init() {
-        
         super.init()
+        
+        tintColor = #colorLiteral(red: 0.6156862745, green: 0.7803921569, blue: 0.2392156863, alpha: 1)
         
         primaryActionSettings.value = ActionButtonSettings(title: "Register", action: { (viewModel, controller) in
             Toast.shared.show("Erfolgreich registriert.")
@@ -141,7 +142,7 @@ class RegisterViewModel: CardViewModel {
                     return settings
             },
             Form.Field<CGFloat>(type: .spacer, title: "Spacer", content: 8),
-            Form.Field<Bool>(identifier: "privacyAccepted", type: .toggle, title: "Privacy", isRequired: true, validationRule: "value == true")
+            Form.Field<Bool>(identifier: "privacyAccepted", type: .toggle, title: "Privacy")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.privacyAccepted <~ field.content.map { $0 ?? false }
@@ -152,7 +153,7 @@ class RegisterViewModel: CardViewModel {
                     }
                     return settings
             },
-            Form.Field<Bool>(identifier: "tosAccepted", type: .toggle, title: "Terms of service", isRequired: true, validationRule: "value == true")
+            Form.Field<Bool>(identifier: "tosAccepted", type: .toggle, title: "Terms of service")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.tosAccepted <~ field.content.map { $0 ?? false }
@@ -166,6 +167,8 @@ class RegisterViewModel: CardViewModel {
             ])
         
         form.returnKey = .join
+        
+        form.validationRule = "form['privacyAccepted'] && form['tosAccepted']"
         
         bind()
     }

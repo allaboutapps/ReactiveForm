@@ -110,7 +110,14 @@ public extension Form {
         // MARK: Import and export
         
         public var isExportable: Bool {
-            return settings?.isExportable ?? false
+            let isExportableType: Bool
+            switch type {
+            case .textField, .picker, .toggle:
+                isExportableType = true
+            default:
+                isExportableType = false
+            }
+            return settings?.isExportable ?? isExportableType
         }
 
         public func exportContent() -> Any? {
