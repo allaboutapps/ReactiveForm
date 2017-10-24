@@ -20,6 +20,7 @@ public extension Form {
         case picker
         case button
         case toggle
+        case stepper
         
         case activityIndicator
         
@@ -112,7 +113,7 @@ public extension Form {
         public var isExportable: Bool {
             let isExportableType: Bool
             switch type {
-            case .textField, .picker, .toggle:
+            case .textField, .picker, .toggle, .stepper:
                 isExportableType = true
             default:
                 isExportableType = false

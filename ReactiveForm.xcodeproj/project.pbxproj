@@ -32,6 +32,10 @@
 		4C5C20A71F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
+		BC13F89E1F9F483E00AA95F7 /* StepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */; };
+		BC13F8A01F9F4D8F00AA95F7 /* StepperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */; };
+		BC13F8A21F9F592300AA95F7 /* ListOfFieldsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13F8A11F9F592300AA95F7 /* ListOfFieldsViewModel.swift */; };
+		BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */; };
 		BC6792B71F8D02E8007BE23F /* Focusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7764EF1F8CFF3600C49D7E /* Focusable.swift */; };
 		BC6792B81F8D02E8007BE23F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7764F01F8CFF3600C49D7E /* Validation.swift */; };
 		BC6792B91F8D02E8007BE23F /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7764F11F8CFF3600C49D7E /* Form.swift */; };
@@ -148,6 +152,10 @@
 		4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		4C5C20981F13750000D52B41 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		4C5C20991F13750000D52B41 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperCell.swift; sourceTree = "<group>"; };
+		BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperCell.xib; sourceTree = "<group>"; };
+		BC13F8A11F9F592300AA95F7 /* ListOfFieldsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfFieldsViewModel.swift; sourceTree = "<group>"; };
+		BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperFieldSettings.swift; sourceTree = "<group>"; };
 		BC6792D31F8D0614007BE23F /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		BC6792D41F8D0614007BE23F /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		BC6792D51F8D0614007BE23F /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
@@ -386,6 +394,7 @@
 				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
 				BC7764FA1F8CFF3600C49D7E /* TitleFieldSettings.swift */,
 				BC7764FC1F8CFF3600C49D7E /* ToggleFieldSettings.swift */,
+				BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */,
 				BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */,
 			);
 			path = Fields;
@@ -417,6 +426,8 @@
 				BC7765161F8CFF3600C49D7E /* ReactiveFormFieldCell.swift */,
 				BC77650E1F8CFF3600C49D7E /* SpacerCell.swift */,
 				BC7765131F8CFF3600C49D7E /* SpacerCell.xib */,
+				BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */,
+				BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */,
 				BC77650A1F8CFF3600C49D7E /* TextFieldCell.swift */,
 				BC7765151F8CFF3600C49D7E /* TextFieldCell.xib */,
 				BC7765071F8CFF3600C49D7E /* TitleCell.swift */,
@@ -454,6 +465,7 @@
 				BC7765231F8D00B400C49D7E /* RegisterViewModel.swift */,
 				BC724EDE1F9DF4E6005464F8 /* HomeViewModel.swift */,
 				BC724EE01F9DF669005464F8 /* Settings.swift */,
+				BC13F8A11F9F592300AA95F7 /* ListOfFieldsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -646,6 +658,7 @@
 				BC6792F01F8D0653007BE23F /* TitleCell.xib in Resources */,
 				BC6792EC1F8D0653007BE23F /* SpacerCell.xib in Resources */,
 				4C5C20841F1372EE00D52B41 /* Assets.xcassets in Resources */,
+				BC13F8A01F9F4D8F00AA95F7 /* StepperCell.xib in Resources */,
 				4C5C20871F1372EE00D52B41 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +698,7 @@
 				BC6792C01F8D02EC007BE23F /* FormFieldProtocol.swift in Sources */,
 				BC6792C71F8D02F0007BE23F /* FormJSON.swift in Sources */,
 				BC6792C31F8D02EC007BE23F /* TextFieldSettings.swift in Sources */,
+				BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */,
 				BC6792BC1F8D02EC007BE23F /* ButtonFieldSettings.swift in Sources */,
 				BC6792B81F8D02E8007BE23F /* Validation.swift in Sources */,
 				BC6792C61F8D02EC007BE23F /* ValidationFieldSettings.swift in Sources */,
@@ -723,6 +737,7 @@
 				BCB1AEAB1F8F56A6007DC284 /* ModalAnimationController.swift in Sources */,
 				BC6792E81F8D0653007BE23F /* PickerCell.swift in Sources */,
 				BC6792DA1F8D0614007BE23F /* DesignableTextField.swift in Sources */,
+				BC13F89E1F9F483E00AA95F7 /* StepperCell.swift in Sources */,
 				BC6792E61F8D0653007BE23F /* ImageCell.swift in Sources */,
 				BC6792F11F8D0653007BE23F /* ToggleCell.swift in Sources */,
 				BC6792F31F8D0653007BE23F /* ValidationCell.swift in Sources */,
@@ -732,6 +747,7 @@
 				BC6792CE1F8D0308007BE23F /* NavigationController.swift in Sources */,
 				BC724EDF1F9DF4E6005464F8 /* HomeViewModel.swift in Sources */,
 				BC7FEC101F8E014F0011C443 /* UIView+Extension.swift in Sources */,
+				BC13F8A21F9F592300AA95F7 /* ListOfFieldsViewModel.swift in Sources */,
 				BC6792EF1F8D0653007BE23F /* TitleCell.swift in Sources */,
 				BC6792EA1F8D0653007BE23F /* ReactiveFormFieldCell.swift in Sources */,
 				BCB1AEAA1F8F56A6007DC284 /* ModalPresentationController.swift in Sources */,

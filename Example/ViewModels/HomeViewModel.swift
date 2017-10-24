@@ -30,6 +30,12 @@ class HomeViewModel: CardViewModel {
                     let setup = CardViewController.create(with: SettingsViewModel())
                     controller.show(setup, sender: controller)
             },
+            Form.Field<Empty>(type: .button, title: "Felder")
+                .buttonAction { field in
+                    guard let controller = self.viewController else { return }
+                    let setup = CardViewController.create(with: ListOfFieldsViewModel())
+                    controller.show(setup, sender: controller)
+            },
         ])
         
     }
