@@ -19,14 +19,14 @@ public extension Form {
                 
         override public var isExportable: Bool { return true }
         
-        public var minValue: Double
-        public var maxValue: Double
+        public var minimumValue: Double
+        public var maximumValue: Double
         public var stepValue: Double
         public var formatterClosure: FormatterClosure?
         
-        public init(minValue: Double = -Double.greatestFiniteMagnitude, maxValue: Double = Double.greatestFiniteMagnitude, stepValue: Double = 1.0, formatterClosure: FormatterClosure? = nil) {
-            self.minValue = minValue
-            self.maxValue = maxValue
+        public init(minimumValue: Double = -Double.greatestFiniteMagnitude, maximumValue: Double = Double.greatestFiniteMagnitude, stepValue: Double = 1.0, formatterClosure: FormatterClosure? = nil) {
+            self.minimumValue = minimumValue
+            self.maximumValue = maximumValue
             self.stepValue = stepValue
             self.formatterClosure = formatterClosure
         }

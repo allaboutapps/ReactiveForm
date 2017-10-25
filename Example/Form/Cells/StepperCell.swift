@@ -17,8 +17,7 @@ class StepperCell: ReactiveFormFieldCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var stepDownButton: UIButton!
-    @IBOutlet weak var stepUpButton: UIButton!
+    @IBOutlet weak var stepper: UIStepper!
 
     func configure(field: Form.Field<Double>) {
         super.configure(field: field)
@@ -35,37 +34,17 @@ class StepperCell: ReactiveFormFieldCell {
             return formatter(displayValue) ?? String(displayValue)
         }
         
-        // Enable stepper buttons only if we don't hit min/max values
-        disposable += stepDownButton.reactive.isEnabled <~ field.content.map { value -> Bool in
-            guard let settings = field.settings as? Form.StepperFieldSettings else { return true }
-            let newValue = (field.content.value ?? 0) - settings.stepValue
-            return newValue >= settings.minValue
+        stepper.value = field.content.value ?? 0
+        disposable += field.content <~ stepper.reactive.values
+        if let settings = field.settings as? Form.StepperFieldSettings {
+            stepper.stepValue = settings.stepValue
+            stepper.minimumValue = settings.minimumValue
+            stepper.maximumValue = settings.maximumValue
         }
-        disposable += stepUpButton.reactive.isEnabled <~ field.content.map { value -> Bool in
-            guard let settings = field.settings as? Form.StepperFieldSettings else { return true }
-            let newValue = (field.content.value ?? 0) + settings.stepValue
-            return newValue <= settings.maxValue
-        }
-
+        
         disposable += field.validationState <~ field.content.map { value -> Form.ValidationState in
             return field.validate(value: value)
         }
-    }
-    
-    @IBAction func stepDown(_ sender: Any?) {
-        guard let settings = field.settings as? Form.StepperFieldSettings else { return }
-        guard let field = field as? Form.Field<Double> else { return }
-        let newValue = (field.content.value ?? 0) - settings.stepValue
-        guard newValue >= settings.minValue else { return }
-        field.content.value = newValue
-    }
-    
-    @IBAction func stepUp(_ sender: Any?) {
-        guard let settings = field.settings as? Form.StepperFieldSettings else { return }
-        guard let field = field as? Form.Field<Double> else { return }
-        let newValue = (field.content.value ?? 0) + settings.stepValue
-        guard newValue <= settings.maxValue else { return }
-        field.content.value = newValue
     }
     
 }
