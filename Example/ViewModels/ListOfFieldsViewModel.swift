@@ -67,8 +67,18 @@ class ListOfFieldsViewModel: CardViewModel {
                     let settings = Form.PickerFieldSettings(viewModel: viewModel)
                     return settings
             },
+            Form.Field<Double>(identifier: "stepperField", type: .stepper, title: "StepperField", descriptionText: "Use stepper buttons.")
+                .configure { [weak self] field in
+                    guard let `self` = self else { return nil }
+                    self.stepperFieldValue <~ field.content
+                    
+                    let formatter = NumberFormatter()
+                    formatter.allowsFloats = true
+                    formatter.maximumFractionDigits = 2
+                    let settings = Form.StepperFieldSettings(minValue: -1.0, maxValue: 3.0, stepValue: 0.5, formatter: nil)
+                    return settings
+            },
 
-            
             ]
         
         setFields(fields)

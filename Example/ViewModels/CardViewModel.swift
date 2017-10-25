@@ -68,6 +68,7 @@ class CardViewModel {
                     }
                     return .deselect
                 },
+            StepperCell.descriptor,
             ButtonCell.descriptor,
             ToggleCell.descriptor,
             ActivityIndicatorCell.descriptor,

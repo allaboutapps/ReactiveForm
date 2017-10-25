@@ -23,34 +23,56 @@ class StepperCell: ReactiveFormFieldCell {
     func configure(field: Form.Field<Double>) {
         super.configure(field: field)
         guard field.type == .stepper else { return }
+
         disposable += titleLabel.reactive.text <~ field.title
+        disposable += subtitleLabel.reactive.text <~ field.descriptionText
+        disposable += subtitleLabel.reactive.isHidden <~ field.descriptionText.map { $0 == nil }
+
         disposable += valueLabel.reactive.text <~ field.content.map { value -> String in
-            guard let value = value else { return "" }
+            let displayValue = value ?? 0
             guard let settings = field.settings as? Form.StepperFieldSettings,
-            let formatter = settings.formatter else { return String(value) }
-            return formatter.string(from: value as NSNumber) ?? ""
+                let formatter = settings.formatter else { return String(displayValue) }
+            return formatter.string(from: displayValue as NSNumber) ?? "\(displayValue)"
         }
         
+        // Enable stepper buttons only if we don't hit min/max values
+        disposable += stepDownButton.reactive.isEnabled <~ field.content.map { value -> Bool in
+            guard let settings = field.settings as? Form.StepperFieldSettings else { return true }
+            let newValue = (field.content.value ?? 0) - settings.stepValue
+            return newValue >= settings.minValue
+        }
+        disposable += stepUpButton.reactive.isEnabled <~ field.content.map { value -> Bool in
+            guard let settings = field.settings as? Form.StepperFieldSettings else { return true }
+            let newValue = (field.content.value ?? 0) + settings.stepValue
+            return newValue <= settings.maxValue
+        }
+
         disposable += field.validationState <~ field.content.map { value -> Form.ValidationState in
             return field.validate(value: value)
         }
-        
-        if let settings = field.settings as? Form.StepperFieldSettings {
-            
-        }
-        
     }
     
-    @IBAction func link(_ sender: Any?) {
-        guard let settings = field.settings as? Form.ToggleFieldSettings else { return }
-        settings.link?()
+    @IBAction func stepDown(_ sender: Any?) {
+        guard let settings = field.settings as? Form.StepperFieldSettings else { return }
+        guard let field = field as? Form.Field<Double> else { return }
+        let newValue = (field.content.value ?? 0) - settings.stepValue
+        guard newValue >= settings.minValue else { return }
+        field.content.value = newValue
+    }
+    
+    @IBAction func stepUp(_ sender: Any?) {
+        guard let settings = field.settings as? Form.StepperFieldSettings else { return }
+        guard let field = field as? Form.Field<Double> else { return }
+        let newValue = (field.content.value ?? 0) + settings.stepValue
+        guard newValue <= settings.maxValue else { return }
+        field.content.value = newValue
     }
     
 }
 
 extension StepperCell {
     
-    static var descriptor: CellDescriptor<Form.Field<Bool>, StepperCell> {
+    static var descriptor: CellDescriptor<Form.Field<Double>, StepperCell> {
         return CellDescriptor("StepperCell")
             .configure { (field, cell, _) in
                 cell.configure(field: field)
