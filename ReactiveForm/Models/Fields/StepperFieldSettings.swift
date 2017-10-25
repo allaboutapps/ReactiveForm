@@ -13,6 +13,8 @@ public extension Form {
     // Value
     // min, max, step, formatter
     
+    public typealias FormatterClosure = ((_ value: Double) -> String?)
+    
     public class StepperFieldSettings: FieldSettings {
                 
         override public var isExportable: Bool { return true }
@@ -20,13 +22,13 @@ public extension Form {
         public var minValue: Double
         public var maxValue: Double
         public var stepValue: Double
-        public var formatter: NumberFormatter?
+        public var formatterClosure: FormatterClosure?
         
-        public init(minValue: Double = -Double.greatestFiniteMagnitude, maxValue: Double = Double.greatestFiniteMagnitude, stepValue: Double = 1.0, formatter: NumberFormatter? = nil) {
+        public init(minValue: Double = -Double.greatestFiniteMagnitude, maxValue: Double = Double.greatestFiniteMagnitude, stepValue: Double = 1.0, formatterClosure: FormatterClosure? = nil) {
             self.minValue = minValue
             self.maxValue = maxValue
             self.stepValue = stepValue
-            self.formatter = formatter
+            self.formatterClosure = formatterClosure
         }
         
     }

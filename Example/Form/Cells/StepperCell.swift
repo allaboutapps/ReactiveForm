@@ -31,8 +31,8 @@ class StepperCell: ReactiveFormFieldCell {
         disposable += valueLabel.reactive.text <~ field.content.map { value -> String in
             let displayValue = value ?? 0
             guard let settings = field.settings as? Form.StepperFieldSettings,
-                let formatter = settings.formatter else { return String(displayValue) }
-            return formatter.string(from: displayValue as NSNumber) ?? "\(displayValue)"
+                let formatter = settings.formatterClosure else { return String(displayValue) }
+            return formatter(displayValue) ?? String(displayValue)
         }
         
         // Enable stepper buttons only if we don't hit min/max values

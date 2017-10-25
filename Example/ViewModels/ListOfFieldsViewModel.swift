@@ -75,7 +75,8 @@ class ListOfFieldsViewModel: CardViewModel {
                     let formatter = NumberFormatter()
                     formatter.allowsFloats = true
                     formatter.maximumFractionDigits = 2
-                    let settings = Form.StepperFieldSettings(minValue: -1.0, maxValue: 3.0, stepValue: 0.5, formatter: nil)
+                    
+                    let settings = Form.StepperFieldSettings(minValue: -1.0, maxValue: 3.0, stepValue: 0.5, formatterClosure: nil)
                     return settings
             },
 
