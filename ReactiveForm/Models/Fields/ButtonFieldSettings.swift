@@ -18,6 +18,7 @@ public extension Form {
     public class ButtonFieldSettings: FieldSettings {
         
         public var appearance: ButtonAppearance? = nil
+        public var backgroundColor: UIColor? = nil
         public var tintColor: UIColor? = nil
         public var alignment: UIControlContentHorizontalAlignment = .center
         public var action: ((FormFieldProtocol) -> Void)?
