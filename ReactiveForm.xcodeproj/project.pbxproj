@@ -99,6 +99,8 @@
 		BCB1AEAC1F8F56A6007DC284 /* GenericPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765201F8CFF3600C49D7E /* GenericPickerViewModel.swift */; };
 		BCB1AEAD1F8F56A6007DC284 /* GenericPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765021F8CFF3600C49D7E /* GenericPickerViewController.swift */; };
 		BCB1AEAE1F8F56A6007DC284 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765031F8CFF3600C49D7E /* ModalViewController.swift */; };
+		BCD4B0ED1FBF20640028F0E1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD4B0EC1FBF20640028F0E1 /* Item.swift */; };
+		BCD4B0EF1FBF226D0028F0E1 /* FormItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD4B0EE1FBF226D0028F0E1 /* FormItemProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +222,8 @@
 		BC8A28CA1FAB826000B5C30A /* CustomTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTextCell.xib; sourceTree = "<group>"; };
 		BC8D38071F90939500043D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Form.storyboard; sourceTree = "<group>"; };
 		BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		BCD4B0EC1FBF20640028F0E1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		BCD4B0EE1FBF226D0028F0E1 /* FormItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormItemProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,12 +367,8 @@
 				BC7764FB1F8CFF3600C49D7E /* BodyTextFieldSettings.swift */,
 				BC7764FD1F8CFF3600C49D7E /* ButtonFieldSettings.swift */,
 				BC7764F71F8CFF3600C49D7E /* ImageFieldSettings.swift */,
-				BC7764F51F8CFF3600C49D7E /* PickerFieldSettings.swift */,
-				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
 				BC7764FA1F8CFF3600C49D7E /* TitleFieldSettings.swift */,
-				BC7764FC1F8CFF3600C49D7E /* ToggleFieldSettings.swift */,
-				BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */,
-				BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */,
+				BCD4B0EB1FBF20070028F0E1 /* Inputs */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -403,9 +403,11 @@
 			isa = PBXGroup;
 			children = (
 				BC7764F81F8CFF3600C49D7E /* Field.swift */,
+				BCD4B0EC1FBF20640028F0E1 /* Item.swift */,
 				BC7764F61F8CFF3600C49D7E /* FieldSettings.swift */,
 				BC7764F31F8CFF3600C49D7E /* FormFieldContent.swift */,
 				BC7764FE1F8CFF3600C49D7E /* FormFieldProtocol.swift */,
+				BCD4B0EE1FBF226D0028F0E1 /* FormItemProtocol.swift */,
 				BC4568231FBD798A004ECEC2 /* Settings */,
 			);
 			path = Fields;
@@ -516,6 +518,18 @@
 				BC8D38061F90939500043D06 /* Form.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BCD4B0EB1FBF20070028F0E1 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				BC7764F51F8CFF3600C49D7E /* PickerFieldSettings.swift */,
+				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
+				BC7764FC1F8CFF3600C49D7E /* ToggleFieldSettings.swift */,
+				BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */,
+				BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */,
+			);
+			path = Inputs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -719,9 +733,11 @@
 				BC6792BE1F8D02EC007BE23F /* FieldSettings.swift in Sources */,
 				BC6792BB1F8D02EC007BE23F /* BodyTextFieldSettings.swift in Sources */,
 				BC6792C11F8D02EC007BE23F /* ImageFieldSettings.swift in Sources */,
+				BCD4B0ED1FBF20640028F0E1 /* Item.swift in Sources */,
 				BC6792BF1F8D02EC007BE23F /* FormFieldContent.swift in Sources */,
 				BC6792BA1F8D02EC007BE23F /* ActivityIndicatorFieldSettings.swift in Sources */,
 				BC6792C21F8D02EC007BE23F /* PickerFieldSettings.swift in Sources */,
+				BCD4B0EF1FBF226D0028F0E1 /* FormItemProtocol.swift in Sources */,
 				BC6792C51F8D02EC007BE23F /* ToggleFieldSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

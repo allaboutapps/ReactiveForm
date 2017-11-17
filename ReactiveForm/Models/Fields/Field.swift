@@ -86,7 +86,7 @@ public extension Form {
     }
     
 
-    public class Field<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable {
+    public class Field<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable, RowType {
 
         public let identifier: String
         
@@ -245,6 +245,16 @@ public extension Form {
             }
             
             return validationField
+        }
+        
+        // MARK: RowType
+        
+        public var item: Any {
+            return self
+        }
+        
+        public var diffableItem: Diffable? {
+            return self as Diffable
         }
 
     }
