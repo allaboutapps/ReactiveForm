@@ -12,28 +12,80 @@ import DataSource
 
 public extension Form {
     
-    public enum FieldType: String, Decodable {
+    public enum FieldType: Decodable, Equatable {
+
+        // Input
+        case textField
+        case picker
+        case stepper
+        case toggle
+
+        // Custom
+        case custom(String)
+
+        // Validation
+        case validation
+
+        // Decoration
         case title
         case bodyText
         case image
-        case textField
-        case picker
         case button
-        case toggle
-        case stepper
-        
         case activityIndicator
-        
         case spacer
-        case validation
+        
+        public var rawValue: String {
+            switch self {
+            case let .custom(identifier):
+                return identifier
+            default:
+                return String(describing: self)
+            }
+        }
+        
+        public init?(rawValue: String) {
+            switch rawValue {
+            case "textField": self = .textField
+            case "picker": self = .picker
+            case "stepper": self = .stepper
+            case "toggle": self = .toggle
+            case "validation": self = .validation
+                
+            case "title": self = .title
+            case "bodyText": self = .bodyText
+            case "image": self = .image
+            case "button": self = .button
+            case "activityIndicator": self = .activityIndicator
+            case "spacer": self = .spacer
+
+            default: return nil
+            }
+        }
+                
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            let rawValue = try container.decode(String.self)
+            guard let value = FieldType(rawValue: rawValue) else {
+                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Value not found in enum cases.")
+            }
+            self = value
+        }
         
         public var cellIdentifier: String {
             guard let first = rawValue.first else { return "" }
             let upperFirst = String(first).localizedUppercase + rawValue.dropFirst()
             return "\(String(upperFirst))Cell"
         }
+        
+        // MARK: Equatable
+
+        public static func ==(lhs: FieldType, rhs: FieldType) -> Bool {
+            return lhs.rawValue == rhs.rawValue
+        }
+
     }
     
+
     public class Field<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable {
 
         public let identifier: String
@@ -49,17 +101,18 @@ public extension Form {
         public let isEnabled = MutableProperty(true)
 
         public let type: FieldType
+        public var customCellIdentifier: String?
         public var cellIdentifier: String {
-            let result = { () -> String in
-                switch type {
-                case .textField:
-                    return "\(T.self)" + type.cellIdentifier
-                default:
-                    return type.cellIdentifier
-                }
-            }()
-//            print(result)
-            return result
+            if let customCellIdentifier = customCellIdentifier {
+                return customCellIdentifier
+            }
+            
+            switch type {
+            case .textField:
+                return "\(T.self)" + type.cellIdentifier
+            default:
+                return type.cellIdentifier
+            }
         }
         
         public let title = MutableProperty("")
@@ -86,9 +139,10 @@ public extension Form {
         }()
         public var validationRule: String?
         
-        public init(identifier: String = UUID().uuidString, type: FieldType, title: String, descriptionText: String? = nil, content: T? = nil, settings: FieldSettings? = nil, isRequired: Bool = false, validationRule: String? = nil, validationErrorText: String? = nil) {
+        public init(identifier: String = UUID().uuidString, type: FieldType, customCellIdentifier: String? = nil, title: String, descriptionText: String? = nil, content: T? = nil, settings: FieldSettings? = nil, isRequired: Bool = false, validationRule: String? = nil, validationErrorText: String? = nil) {
             self.identifier = identifier
             self.type = type
+            self.customCellIdentifier = customCellIdentifier
             self.title.value = title
             self.descriptionText.value = descriptionText
             self.content.value = content

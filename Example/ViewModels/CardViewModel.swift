@@ -55,6 +55,16 @@ class CardViewModel {
     }
     
     lazy var dataSource: DataSource = {
+        var customTextCellDescriptor: CellDescriptor<Form.Field<Empty>, BodyTextCell> {
+            return CellDescriptor("CustomTextCell", cellIdentifier: "CustomTextCell")
+                .configure { (field, cell, _) in
+                    cell.configure(field: field)
+                }
+                .isHidden { (field, indexPath) in
+                    return field.isHidden.value
+            }
+        }
+        
         let  cellDescriptors: [CellDescriptorType] = [
             TitleCell.descriptor,
             BodyTextCell.descriptor,
@@ -73,7 +83,9 @@ class CardViewModel {
             ToggleCell.descriptor,
             ActivityIndicatorCell.descriptor,
             SpacerCell.descriptor,
-            ValidationCell.descriptor
+            ValidationCell.descriptor,
+            
+            customTextCellDescriptor
         ]
             + TextFieldCell.descriptors
         

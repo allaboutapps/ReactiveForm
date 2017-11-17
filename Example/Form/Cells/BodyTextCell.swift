@@ -22,14 +22,18 @@ class BodyTextCell: ReactiveFormFieldCell {
     @IBOutlet weak var padRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet weak var descriptionLabel: UILabel?
+
     @IBOutlet weak var backgroundColorView: UIView!
     
     override func configure<T>(field: Form.Field<T>) {
         super.configure(field: field)
         guard field.type == .bodyText else { return }
         disposable += titleLabel.reactive.text <~ field.title
-        
+        if let descriptionLabel = descriptionLabel {
+            disposable += descriptionLabel.reactive.text <~ field.descriptionText
+        }
+
         iconView.isHidden = true
         
         if let settings = field.settings as? Form.BodyTextFieldSettings {

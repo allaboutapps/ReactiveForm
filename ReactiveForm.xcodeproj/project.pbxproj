@@ -90,6 +90,7 @@
 		BC7FEC0C1F8D09E50011C443 /* SimpleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */; };
 		BC7FEC0E1F8D0A380011C443 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */; };
 		BC7FEC101F8E014F0011C443 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC0F1F8E014E0011C443 /* UIView+Extension.swift */; };
+		BC8A28CB1FAB826000B5C30A /* CustomTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8A28CA1FAB826000B5C30A /* CustomTextCell.xib */; };
 		BCB1AEA21F8F53AC007DC284 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */; };
 		BCB1AEA51F8F548A007DC284 /* ReactiveForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCB1AEA91F8F56A6007DC284 /* ModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77651C1F8CFF3600C49D7E /* ModalTransitioningDelegate.swift */; };
@@ -216,6 +217,7 @@
 		BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleButton.framework; path = Carthage/Build/iOS/SimpleButton.framework; sourceTree = "<group>"; };
 		BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		BC7FEC0F1F8E014E0011C443 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		BC8A28CA1FAB826000B5C30A /* CustomTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTextCell.xib; sourceTree = "<group>"; };
 		BC8D38071F90939500043D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Form.storyboard; sourceTree = "<group>"; };
 		BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -273,6 +275,7 @@
 				4C5C206F1F1372EE00D52B41 /* Example */,
 				4C5C20901F13738200D52B41 /* Carthage */,
 				4C5C20011F136F9800D52B41 /* Products */,
+				BC7765131F8CFF3600C49D7E /* SpacerCell.xib */,
 				BCB1AEA31F8F5425007DC284 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -312,8 +315,8 @@
 				4C5C20731F1372EE00D52B41 /* Info.plist */,
 				4C5C20701F1372EE00D52B41 /* AppDelegate.swift */,
 				BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */,
-				BCB1AEA71F8F565F007DC284 /* Form */,
 				4C5C20711F1372EE00D52B41 /* Assets */,
+				BCB1AEA71F8F565F007DC284 /* Form */,
 				4C5C20741F1372EE00D52B41 /* Storyboards */,
 				BC7765241F8D00BE00C49D7E /* ViewControllers */,
 				BC7765211F8D00B400C49D7E /* ViewModels */,
@@ -353,6 +356,23 @@
 			name = Carthage;
 			sourceTree = "<group>";
 		};
+		BC4568231FBD798A004ECEC2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BC7764F41F8CFF3600C49D7E /* ActivityIndicatorFieldSettings.swift */,
+				BC7764FB1F8CFF3600C49D7E /* BodyTextFieldSettings.swift */,
+				BC7764FD1F8CFF3600C49D7E /* ButtonFieldSettings.swift */,
+				BC7764F71F8CFF3600C49D7E /* ImageFieldSettings.swift */,
+				BC7764F51F8CFF3600C49D7E /* PickerFieldSettings.swift */,
+				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
+				BC7764FA1F8CFF3600C49D7E /* TitleFieldSettings.swift */,
+				BC7764FC1F8CFF3600C49D7E /* ToggleFieldSettings.swift */,
+				BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */,
+				BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		BC6792D21F8D05EA007BE23F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,10 +391,10 @@
 			isa = PBXGroup;
 			children = (
 				BC7764EF1F8CFF3600C49D7E /* Focusable.swift */,
-				BC7764F01F8CFF3600C49D7E /* Validation.swift */,
 				BC7764F11F8CFF3600C49D7E /* Form.swift */,
-				BC7764F21F8CFF3600C49D7E /* Fields */,
 				BC7765001F8CFF3600C49D7E /* FormJSON.swift */,
+				BC7764F01F8CFF3600C49D7E /* Validation.swift */,
+				BC7764F21F8CFF3600C49D7E /* Fields */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,20 +402,11 @@
 		BC7764F21F8CFF3600C49D7E /* Fields */ = {
 			isa = PBXGroup;
 			children = (
-				BC7764F41F8CFF3600C49D7E /* ActivityIndicatorFieldSettings.swift */,
-				BC7764FB1F8CFF3600C49D7E /* BodyTextFieldSettings.swift */,
-				BC7764FD1F8CFF3600C49D7E /* ButtonFieldSettings.swift */,
 				BC7764F81F8CFF3600C49D7E /* Field.swift */,
 				BC7764F61F8CFF3600C49D7E /* FieldSettings.swift */,
 				BC7764F31F8CFF3600C49D7E /* FormFieldContent.swift */,
 				BC7764FE1F8CFF3600C49D7E /* FormFieldProtocol.swift */,
-				BC7764F71F8CFF3600C49D7E /* ImageFieldSettings.swift */,
-				BC7764F51F8CFF3600C49D7E /* PickerFieldSettings.swift */,
-				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
-				BC7764FA1F8CFF3600C49D7E /* TitleFieldSettings.swift */,
-				BC7764FC1F8CFF3600C49D7E /* ToggleFieldSettings.swift */,
-				BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */,
-				BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */,
+				BC4568231FBD798A004ECEC2 /* Settings */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -416,6 +427,7 @@
 				BC7765091F8CFF3600C49D7E /* ActivityIndicatorCell.xib */,
 				BC7765121F8CFF3600C49D7E /* BodyTextCell.swift */,
 				BC77650F1F8CFF3600C49D7E /* BodyTextCell.xib */,
+				BC8A28CA1FAB826000B5C30A /* CustomTextCell.xib */,
 				BC7765141F8CFF3600C49D7E /* ButtonCell.swift */,
 				BC7765051F8CFF3600C49D7E /* ButtonCell.xib */,
 				BC7765101F8CFF3600C49D7E /* FormFieldCell.swift */,
@@ -425,7 +437,6 @@
 				BC7765181F8CFF3600C49D7E /* PickerCell.xib */,
 				BC7765161F8CFF3600C49D7E /* ReactiveFormFieldCell.swift */,
 				BC77650E1F8CFF3600C49D7E /* SpacerCell.swift */,
-				BC7765131F8CFF3600C49D7E /* SpacerCell.xib */,
 				BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */,
 				BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */,
 				BC77650A1F8CFF3600C49D7E /* TextFieldCell.swift */,
@@ -648,6 +659,7 @@
 				BC6792E21F8D0653007BE23F /* BodyTextCell.xib in Resources */,
 				BC6792F21F8D0653007BE23F /* ToggleCell.xib in Resources */,
 				BC6792E71F8D0653007BE23F /* ImageCell.xib in Resources */,
+				BC8A28CB1FAB826000B5C30A /* CustomTextCell.xib in Resources */,
 				BC6792E01F8D0653007BE23F /* ActivityIndicatorCell.xib in Resources */,
 				4C5C20921F1373B900D52B41 /* Cartfile in Resources */,
 				4C5C20861F1372EE00D52B41 /* LaunchScreen.storyboard in Resources */,

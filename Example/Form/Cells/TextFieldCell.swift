@@ -52,6 +52,8 @@ class TextFieldCell: ReactiveFormFieldCell {
         disposable += contentBuffer.producer.startWithValues { value in
             if let value = value {
                 field.setContent(T.create(from: value))
+            } else {
+                field.setContent(nil)
             }
         }
         

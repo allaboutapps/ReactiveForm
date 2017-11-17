@@ -38,13 +38,18 @@ class ListOfFieldsViewModel: CardViewModel {
         let fields: [FormFieldProtocol] = [
             Form.Field<Empty>(type: .title, title: "Title"),
 
-            Form.Field<Empty>(type: .bodyText, title: "BodyText"),
-
-            Form.Field<Empty>(type: .bodyText, title: "BodyText with background")
+            Form.Field<Empty>(type: .bodyText, title: "BodyText")
                 .configure { (field) -> Form.FieldSettings? in
-                    let settings = Form.BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 0, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
+                    let settings = Form.BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 10)
                     return settings
             },
+            Form.Field<Empty>(type: .bodyText, title: "BodyText with background")
+                .configure { (field) -> Form.FieldSettings? in
+                    let settings = Form.BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 10, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
+                    return settings
+            },
+            Form.Field<Empty>(type: .bodyText, customCellIdentifier: "CustomTextCell", title: "BodyText", descriptionText: "with custom cell and description text"),
+
             Form.Field<Double>(identifier: "textField", type: .textField, title: "TextField", isRequired: true, validationRule: "(value != undefined)")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
