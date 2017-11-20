@@ -31,7 +31,7 @@ class SettingsViewModel: CardViewModel {
             Toast.shared.show("Einstellungen wurden gespeichert.")
         })
 
-        let waterTreatmentField = Form.Field<Bool>(identifier: "waterTreatment", type: .toggle, title: "Wasseraufbereitung vorhanden")
+        let waterTreatmentField = FormField<Bool>(identifier: "waterTreatment", type: .toggle, title: "Wasseraufbereitung vorhanden")
             .configure { [weak self] field in
                 guard let `self` = self else { return nil }
                 self.waterTreatment <~ field.content.map { $0 ?? false }
@@ -39,65 +39,65 @@ class SettingsViewModel: CardViewModel {
         }
         
         let fields: [FormFieldProtocol] = [
-            Form.Field<Empty>(type: .title, title: "Einstellungen"),
+            FormField<Empty>(type: .title, title: "Einstellungen"),
             
-            Form.Field<Empty>(type: .bodyText, title: "Wasserhärte")
-                .configure { (field) -> Form.FieldSettings? in
-                    let settings = Form.BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 0, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
+            FormField<Empty>(type: .bodyText, title: "Wasserhärte")
+                .configure { (field) -> FormFieldSettings? in
+                    let settings = BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 0, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
                     return settings
             },
-            Form.Field<Double>(identifier: "waterHardness", type: .textField, title: "Wasserhärte", isRequired: true, validationRule: "(value != undefined)")
+            FormField<Double>(identifier: "waterHardness", type: .textField, title: "Wasserhärte", isRequired: true, validationRule: "(value != undefined)")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.waterHardness <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     settings.keyboardType = .decimalPad
                     return settings
             },
             
             
-            Form.Field<Empty>(type: .bodyText, title: "Wasseraufbereitung")
-                .configure { (field) -> Form.FieldSettings? in
-                    let settings = Form.BodyTextFieldSettings(spacingAbove: 20, spacingBelow: 0, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
+            FormField<Empty>(type: .bodyText, title: "Wasseraufbereitung")
+                .configure { (field) -> FormFieldSettings? in
+                    let settings = BodyTextFieldSettings(spacingAbove: 20, spacingBelow: 0, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
                     return settings
             },
             waterTreatmentField,
-            Form.Field<Double>(identifier: "waterTreatmentValue", type: .textField, title: "{Durchflussmenge (Liter/Sekunde)}")
+            FormField<Double>(identifier: "waterTreatmentValue", type: .textField, title: "{Durchflussmenge (Liter/Sekunde)}")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     field.isHidden <~ self.waterTreatment.map { !$0 }
                     self.waterTreatmentValue <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     settings.keyboardType = .decimalPad
                     return settings
             },
             
-            Form.Field<Empty>(type: .bodyText, title: "Spülgut (Mehrfachauswahl möglich)")
-                .configure { (field) -> Form.FieldSettings? in
-                    let settings = Form.BodyTextFieldSettings(spacingAbove: 20, spacingBelow: 0, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
+            FormField<Empty>(type: .bodyText, title: "Spülgut (Mehrfachauswahl möglich)")
+                .configure { (field) -> FormFieldSettings? in
+                    let settings = BodyTextFieldSettings(spacingAbove: 20, spacingBelow: 0, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
                     return settings
             },
-            Form.Field<Bool>(identifier: "machineGlassware", type: .toggle, title: "Gläser")
+            FormField<Bool>(identifier: "machineGlassware", type: .toggle, title: "Gläser")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.machineGlassware <~ field.content.map { $0 ?? false }
                     return nil
             },
-            Form.Field<Bool>(identifier: "machinePottery", type: .toggle, title: "Keramik")
+            FormField<Bool>(identifier: "machinePottery", type: .toggle, title: "Keramik")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.machinePottery <~ field.content.map { $0 ?? false }
                     return nil
             },
-            Form.Field<Bool>(identifier: "machinePlastic", type: .toggle, title: "Plastik")
+            FormField<Bool>(identifier: "machinePlastic", type: .toggle, title: "Plastik")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.machinePlastic <~ field.content.map { $0 ?? false }
                     return nil
             },
-            Form.Field<Bool>(identifier: "machineMetal", type: .toggle, title: "Metall")
+            FormField<Bool>(identifier: "machineMetal", type: .toggle, title: "Metall")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.machineMetal <~ field.content.map { $0 ?? false }

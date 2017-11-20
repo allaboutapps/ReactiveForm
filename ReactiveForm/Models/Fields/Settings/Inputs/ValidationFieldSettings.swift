@@ -12,19 +12,15 @@ import Result
 import ReactiveSwift
 import ReactiveCocoa
 
-public extension Form {
-    
-    public enum ValidationState {
-        case success
-        case info(text: String?)
-        case warning(text: String?)
-        case error(text: String?)
-    }
-    
-    
-    public class ValidationFieldSettings: FieldSettings {
-        public let displayedState = MutableProperty<ValidationState>(.success)
-        public var isInitial = true
-    }
-    
+public enum ValidationState {
+    case success
+    case info(text: String?)
+    case warning(text: String?)
+    case error(text: String?)
+}
+
+
+public class ValidationFieldSettings: FormFieldSettings {
+    public let displayedState = MutableProperty<ValidationState>(.success)
+    public var isInitial = true
 }

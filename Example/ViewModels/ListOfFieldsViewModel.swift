@@ -36,43 +36,43 @@ class ListOfFieldsViewModel: CardViewModel {
         let backgroundColor: UIColor = #colorLiteral(red: 0.8690528274, green: 0.8690528274, blue: 0.8690528274, alpha: 1)
         
         let fields: [FormFieldProtocol] = [
-            Form.Field<Empty>(type: .title, title: "Title"),
+            FormField<Empty>(type: .title, title: "Title"),
 
-            Form.Field<Empty>(type: .bodyText, title: "BodyText")
-                .configure { (field) -> Form.FieldSettings? in
-                    let settings = Form.BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 10)
+            FormField<Empty>(type: .bodyText, title: "BodyText")
+                .configure { (field) -> FormFieldSettings? in
+                    let settings = BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 10)
                     return settings
             },
-            Form.Field<Empty>(type: .bodyText, title: "BodyText with background")
-                .configure { (field) -> Form.FieldSettings? in
-                    let settings = Form.BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 10, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
+            FormField<Empty>(type: .bodyText, title: "BodyText with background")
+                .configure { (field) -> FormFieldSettings? in
+                    let settings = BodyTextFieldSettings(spacingAbove: 0, spacingBelow: 10, padding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), backgroundColor: backgroundColor)
                     return settings
             },
-            Form.Field<Empty>(type: .bodyText, customCellIdentifier: "CustomTextCell", title: "BodyText", descriptionText: "with custom cell and description text"),
+            FormField<Empty>(type: .bodyText, customCellIdentifier: "CustomTextCell", title: "BodyText", descriptionText: "with custom cell and description text"),
 
-            Form.Field<Double>(identifier: "textField", type: .textField, title: "TextField", isRequired: true, validationRule: "(value != undefined)")
+            FormField<Double>(identifier: "textField", type: .textField, title: "TextField", isRequired: true, validationRule: "(value != undefined)")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.textFieldValue <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     settings.keyboardType = .decimalPad
                     return settings
             },
-            Form.Field<Bool>(identifier: "toggleField", type: .toggle, title: "ToggleField")
+            FormField<Bool>(identifier: "toggleField", type: .toggle, title: "ToggleField")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.toggleFieldValue <~ field.content.map { $0 ?? false }
                     return nil
             },
-            Form.Field<String>(identifier: "pickerField", type: .picker, title: "PickerField")
+            FormField<String>(identifier: "pickerField", type: .picker, title: "PickerField")
                 .configure { field in
                     let items: [PickerFieldOption] = [.one, .two, .three]
                     let viewModel = GenericPickerViewModel(title: "PickerField", items: items, selectedItem: pickerFieldValue)
-                    let settings = Form.PickerFieldSettings(viewModel: viewModel)
+                    let settings = PickerFieldSettings(viewModel: viewModel)
                     return settings
             },
-            Form.Field<Double>(identifier: "stepperField", type: .stepper, title: "StepperField", descriptionText: "Use stepper buttons.")
+            FormField<Double>(identifier: "stepperField", type: .stepper, title: "StepperField", descriptionText: "Use stepper buttons.")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.stepperFieldValue <~ field.content
@@ -81,7 +81,7 @@ class ListOfFieldsViewModel: CardViewModel {
                     formatter.allowsFloats = true
                     formatter.maximumFractionDigits = 2
                     
-                    let settings = Form.StepperFieldSettings(minimumValue: -1.0, maximumValue: 3.0, stepValue: 0.5, formatterClosure: nil)
+                    let settings = StepperFieldSettings(minimumValue: -1.0, maximumValue: 3.0, stepValue: 0.5, formatterClosure: nil)
                     return settings
             },
 

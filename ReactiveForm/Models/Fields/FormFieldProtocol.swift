@@ -12,12 +12,12 @@ import ReactiveSwift
 public protocol FormFieldProtocol: Focusable {
     
     var title: MutableProperty<String> { get }
-    var type: Form.FieldType  { get }
+    var type: FormFieldType  { get }
     var cellIdentifier: String { get }
     var form: Form! { get set }
     var isHidden: MutableProperty<Bool> { get }
     var isEnabled: MutableProperty<Bool> { get }
-    var settings: Form.FieldSettings? { get set }
+    var settings: FormFieldSettings? { get set }
     
     // Import/Export
     var isExportable: Bool { get }
@@ -26,7 +26,7 @@ public protocol FormFieldProtocol: Focusable {
     
     // Validation
     var isRequired: Bool { get }
-    var validationState: MutableProperty<Form.ValidationState> { get }
+    var validationState: MutableProperty<ValidationState> { get }
     var isValid: Property<Bool> { get }
 
     /// Validation rules are defined in `JavaScript`. The value of the field is exposed to `JavaScript` as variable named `value`. You could use a rule like `value > 0` to validate the value of your field.
@@ -34,11 +34,10 @@ public protocol FormFieldProtocol: Focusable {
 }
 
 extension FormFieldProtocol {
-    
-    
+        
     // MARK: - Validation
     
-    public func validate(value: Any?) -> Form.ValidationState {
+    public func validate(value: Any?) -> ValidationState {
         guard let rule = validationRule else { return .success }
         let isValid = Validation.shared.validate(value: value, withRule: rule)
         return isValid ? .success : .error(text: nil)

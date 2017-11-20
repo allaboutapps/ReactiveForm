@@ -10,7 +10,6 @@ import UIKit
 import DataSource
 import ReactiveSwift
 import ReactiveCocoa
-import ReactiveForm
 
 class TextFieldCell: ReactiveFormFieldCell {
     
@@ -18,7 +17,7 @@ class TextFieldCell: ReactiveFormFieldCell {
     
     let contentBuffer = MutableProperty<String?>(nil)
 
-    override func configure<T>(field: Form.Field<T>) {
+    override func configure<T>(field: FormField<T>) {
         super.configure(field: field)
         guard field.type == .textField else { return }
         
@@ -38,7 +37,7 @@ class TextFieldCell: ReactiveFormFieldCell {
         }
         
         // Bind field data to UI and vise versa
-        if let settings = field.settings as? Form.TextFieldSettings {
+        if let settings = field.settings as? TextFieldSettings {
             textField.assignTraits(settings)
             if settings.shouldTrim {
                 disposable += contentBuffer <~ textField.reactive.continuousTextValues.map { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -57,7 +56,7 @@ class TextFieldCell: ReactiveFormFieldCell {
             }
         }
         
-        disposable += field.validationState <~ textField.reactive.continuousTextValues.map { value -> Form.ValidationState in
+        disposable += field.validationState <~ textField.reactive.continuousTextValues.map { value -> ValidationState in
             return field.validate(value: value)
         }
 //        disposable += field.validationState.producer.startWithValues { [weak self] (state) in
@@ -102,14 +101,14 @@ extension TextFieldCell {
     
     static var descriptors: [CellDescriptorType] {
         return [
-            CellDescriptor<Form.Field<Double>, TextFieldCell>("DoubleTextFieldCell", cellIdentifier: "TextFieldCell")
+            CellDescriptor<FormField<Double>, TextFieldCell>("DoubleTextFieldCell", cellIdentifier: "TextFieldCell")
                 .configure { (field, cell, _) in
                     cell.configure(field: field)
             }
                 .isHidden { (field, indexPath) in
                     return field.isHidden.value
             },
-            CellDescriptor<Form.Field<String>, TextFieldCell>("StringTextFieldCell", cellIdentifier: "TextFieldCell")
+            CellDescriptor<FormField<String>, TextFieldCell>("StringTextFieldCell", cellIdentifier: "TextFieldCell")
                 .configure { (field, cell, _) in
                     cell.configure(field: field)
             }

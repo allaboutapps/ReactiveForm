@@ -8,29 +8,23 @@
 
 import Foundation
 
-public extension Form {
+public typealias FormatterClosure = ((_ value: Double) -> String?)
+
+public class StepperFieldSettings: FormFieldSettings {
     
-    // Value
-    // min, max, step, formatter
+    override public var isExportable: Bool { return true }
     
-    public typealias FormatterClosure = ((_ value: Double) -> String?)
+    public var minimumValue: Double
+    public var maximumValue: Double
+    public var stepValue: Double
+    public var formatterClosure: FormatterClosure?
     
-    public class StepperFieldSettings: FieldSettings {
-                
-        override public var isExportable: Bool { return true }
-        
-        public var minimumValue: Double
-        public var maximumValue: Double
-        public var stepValue: Double
-        public var formatterClosure: FormatterClosure?
-        
-        public init(minimumValue: Double = -Double.greatestFiniteMagnitude, maximumValue: Double = Double.greatestFiniteMagnitude, stepValue: Double = 1.0, formatterClosure: FormatterClosure? = nil) {
-            self.minimumValue = minimumValue
-            self.maximumValue = maximumValue
-            self.stepValue = stepValue
-            self.formatterClosure = formatterClosure
-        }
-        
+    public init(minimumValue: Double = -Double.greatestFiniteMagnitude, maximumValue: Double = Double.greatestFiniteMagnitude, stepValue: Double = 1.0, formatterClosure: FormatterClosure? = nil) {
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
+        self.stepValue = stepValue
+        self.formatterClosure = formatterClosure
     }
     
 }
+

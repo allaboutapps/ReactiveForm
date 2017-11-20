@@ -8,13 +8,12 @@
 
 import UIKit
 import DataSource
-import ReactiveForm
 
 class SpacerCell: FormFieldCell {
     
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
-    func configure(field: Form.Field<CGFloat>) {
+    func configure(field: FormField<CGFloat>) {
         super.configure(field: field)
         guard field.type == .spacer else { return }
         heightConstraint.constant = field.content.value ?? 0
@@ -24,7 +23,7 @@ class SpacerCell: FormFieldCell {
 
 extension SpacerCell {
     
-    static var descriptor: CellDescriptor<Form.Field<CGFloat>, SpacerCell> {
+    static var descriptor: CellDescriptor<FormField<CGFloat>, SpacerCell> {
         return CellDescriptor("SpacerCell")
             .configure { (field, cell, _) in
                 cell.configure(field: field)

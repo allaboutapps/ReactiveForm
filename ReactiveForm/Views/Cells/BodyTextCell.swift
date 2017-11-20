@@ -10,7 +10,6 @@ import UIKit
 import DataSource
 import ReactiveCocoa
 import ReactiveSwift
-import ReactiveForm
 
 class BodyTextCell: ReactiveFormFieldCell {
     
@@ -26,7 +25,7 @@ class BodyTextCell: ReactiveFormFieldCell {
 
     @IBOutlet weak var backgroundColorView: UIView!
     
-    override func configure<T>(field: Form.Field<T>) {
+    override func configure<T>(field: FormField<T>) {
         super.configure(field: field)
         guard field.type == .bodyText else { return }
         disposable += titleLabel.reactive.text <~ field.title
@@ -36,7 +35,7 @@ class BodyTextCell: ReactiveFormFieldCell {
 
         iconView.isHidden = true
         
-        if let settings = field.settings as? Form.BodyTextFieldSettings {
+        if let settings = field.settings as? BodyTextFieldSettings {
             spacingAboveConstraint.constant = settings.spacingAbove
             spacingBelowConstraint.constant = settings.spacingBelow
             
@@ -57,7 +56,7 @@ class BodyTextCell: ReactiveFormFieldCell {
 
 extension BodyTextCell {
     
-    static var descriptor: CellDescriptor<Form.Field<Empty>, BodyTextCell> {
+    static var descriptor: CellDescriptor<FormField<Empty>, BodyTextCell> {
         return CellDescriptor("BodyTextCell")
             .configure { (field, cell, _) in
                 cell.configure(field: field)

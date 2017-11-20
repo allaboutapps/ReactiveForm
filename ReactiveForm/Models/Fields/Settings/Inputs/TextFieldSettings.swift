@@ -8,25 +8,23 @@
 
 import UIKit
 
-public extension Form {
+
+public class TextFieldSettings: FormFieldSettings, UITextInputTraits {
     
-    public class TextFieldSettings: FieldSettings, UITextInputTraits {
-        
-        override public var isFocusable: Bool { return true }
-        override public var isExportable: Bool { return true }
-        
-        /// Trims whitespace at start and end of string.
-        public var shouldTrim: Bool = true
-        
-        public var keyboardType: UIKeyboardType = .default
-        public var returnKeyType: UIReturnKeyType = .default
-        public var textContentType: UITextContentType? = nil
-        public var isSecureTextEntry: Bool = false
-        public var enablesReturnKeyAutomatically: Bool = false
-        public var autocapitalizationType: UITextAutocapitalizationType = .none
-        public var autocorrectionType: UITextAutocorrectionType = .default
-        public var spellCheckingType: UITextSpellCheckingType = .default
-    }
+    override public var isFocusable: Bool { return true }
+    override public var isExportable: Bool { return true }
+    
+    /// Trims whitespace at start and end of string.
+    public var shouldTrim: Bool = true
+    
+    public var keyboardType: UIKeyboardType = .default
+    public var returnKeyType: UIReturnKeyType = .default
+    public var textContentType: UITextContentType? = nil
+    public var isSecureTextEntry: Bool = false
+    public var enablesReturnKeyAutomatically: Bool = false
+    public var autocapitalizationType: UITextAutocapitalizationType = .none
+    public var autocorrectionType: UITextAutocorrectionType = .default
+    public var spellCheckingType: UITextSpellCheckingType = .default
 }
 
 public extension UITextField {

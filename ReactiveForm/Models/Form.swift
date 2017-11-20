@@ -14,13 +14,41 @@ import ReactiveCocoa
 
 public class Form {
     
-    public init() {}
+    public var dataSource: DataSource
+    
+    public init(cellDescriptors: [CellDescriptorType], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true) {
+        let  cellDescriptors: [CellDescriptorType] =
+            [
+                TitleCell.descriptor,
+                BodyTextCell.descriptor,
+                ImageCell.descriptor,
+                PickerCell.descriptor
+                    .didSelect { (item, _) in
+                        if let settings = item.settings as? PickerFieldSettings {
+                            let picker: GenericPickerViewController = UIStoryboard(.form).instantiateViewController()
+                            picker.viewModel = settings.pickerViewModel
+                            self.viewController?.present(picker, animated: true)
+                        }
+                        return .deselect
+                },
+                StepperCell.descriptor,
+                ButtonCell.descriptor,
+                ToggleCell.descriptor,
+                ActivityIndicatorCell.descriptor,
+                SpacerCell.descriptor,
+                ValidationCell.descriptor
+                ]
+                + TextFieldCell.descriptors
+
+        self.dataSource = DataSource(cellDescriptors: cellDescriptors)
+    }
     
     // MARK: - Validation
+    
     public let validationState = MutableProperty<ValidationState>(.success)
     public lazy var isValid: Property<Bool> = {
         let producer = validationState.producer.map { state -> Bool in
-            if case Form.ValidationState.success = state {
+            if case ValidationState.success = state {
                 return true
             } else {
                 return false
@@ -64,8 +92,6 @@ public class Form {
     
     // MARK: - Change
     
-    public var sections = [SectionType]()
-    
     public var didChange: (() -> Void)? = nil
     
     private var changeDisposable: Disposable?
@@ -74,7 +100,8 @@ public class Form {
 
     internal var fields = [FormFieldProtocol]()
     
-    public func setup() {
+    public func setSections(sections: [SectionType]) {
+        dataSource.sections = sections
         updateFields()
         setFormOnFields()
         updateChange()
@@ -83,12 +110,9 @@ public class Form {
     }
     
     private func updateFields() {
-        fields.removeAll()
-        for section in sections {
-            if let dataSourceSection = section as? Section {
-                let fieldsFromSection = dataSourceSection.fields()
-                fields.append(contentsOf: fieldsFromSection)
-            }
+        guard let sections = dataSource.sections as? [Section] else { return }
+        fields = sections.reduce(into: []) { (result: inout [FormFieldProtocol], section) in
+            result += section.fields()
         }
     }
     
@@ -153,8 +177,6 @@ public class Form {
     
     // MARK: - Return key
     
-    public var shouldAdaptedReturnKey = true
-    
     public var returnKey: UIReturnKeyType = .send
     public var nextKey: UIReturnKeyType = .next
     public var defaultKey: UIReturnKeyType = .default
@@ -167,13 +189,12 @@ public class Form {
 
 public extension Section {
     public func fields() -> [FormFieldProtocol] {
-        var fieldsFromSection: [FormFieldProtocol] = []
-        for row in self.rows {
-            if let field = row.item as? FormFieldProtocol {
-                fieldsFromSection += [field]
+        let result = rows.reduce(into: []) { (result: inout [FormFieldProtocol], row) in
+            if let field = row as? FormFieldProtocol {
+                result.append(field)
             }
         }
-        return fieldsFromSection
+        return result
     }
 }
 

@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import ReactiveForm
 
 class FormFieldCell: UITableViewCell {
     var field: FormFieldProtocol!
     
-    func configure<T>(field: Form.Field<T>) {
+    func configure<T>(field: FormField<T>) {
         self.field = field
     }
 

@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import ReactiveForm
 
 public class GenericPickerViewModel<T: PickerItem>: GenericPickerViewModelProtocol {
 

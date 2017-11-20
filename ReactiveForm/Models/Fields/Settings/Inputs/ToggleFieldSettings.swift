@@ -8,18 +8,15 @@
 
 import Foundation
 
-public extension Form {
+public class ToggleFieldSettings: FormFieldSettings {
     
-    public class ToggleFieldSettings: FieldSettings {
-        
-        override public var isExportable: Bool { return true }
-        
-        public var link: (() -> Void)?
-        
-        public init(link: (() -> Void)? = nil) {
-            self.link = link
-        }
-
+    override public var isExportable: Bool { return true }
+    
+    public var link: (() -> Void)?
+    
+    public init(link: (() -> Void)? = nil) {
+        self.link = link
     }
     
 }
+

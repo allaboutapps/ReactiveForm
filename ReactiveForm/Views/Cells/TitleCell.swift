@@ -1,8 +1,8 @@
 //
-//  ActivityIndicatorCell.swift
+//  TitleCell.swift
 //  
 //
-//  Created by Gunter Hager on 06/10/2017.
+//  Created by Gunter Hager on 05/09/2017.
 //  Copyright © 2017 Hagleitner. All rights reserved.
 //
 
@@ -10,35 +10,34 @@ import UIKit
 import DataSource
 import ReactiveCocoa
 import ReactiveSwift
-import ReactiveForm
 
-
-class ActivityIndicatorCell: ReactiveFormFieldCell {
+class TitleCell: ReactiveFormFieldCell {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var spacingAboveConstraint: NSLayoutConstraint!
     @IBOutlet weak var spacingBelowConstraint: NSLayoutConstraint!
-
-    override func configure<T>(field: Form.Field<T>) {
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    override func configure<T>(field: FormField<T>) {
         super.configure(field: field)
-        guard field.type == .activityIndicator else { return }
+        guard field.type == .title else { return }
+        disposable += titleLabel.reactive.text <~ field.title
         
-        if let settings = field.settings as? Form.ActivityIndicatorFieldSettings {
+        if let settings = field.settings as? TitleFieldSettings {
             spacingAboveConstraint.constant = settings.spacingAbove
             spacingBelowConstraint.constant = settings.spacingBelow
-            disposable += activityIndicator.reactive.isAnimating <~ settings.isAnimating
+            titleLabel.font = settings.font
         }
     }
     
 }
 
-extension ActivityIndicatorCell {
+extension TitleCell {
     
-    static var descriptor: CellDescriptor<Form.Field<Empty>, ActivityIndicatorCell> {
-        return CellDescriptor("ActivityIndicatorCell")
+    static var descriptor: CellDescriptor<FormField<Empty>, TitleCell> {
+        return CellDescriptor("TitleCell")
             .configure { (field, cell, _) in
                 cell.configure(field: field)
-            }
+        }
             .isHidden { (field, indexPath) in
                 return field.isHidden.value
         }

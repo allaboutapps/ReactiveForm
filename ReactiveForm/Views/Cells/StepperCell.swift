@@ -10,7 +10,6 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import DataSource
-import ReactiveForm
 
 class StepperCell: ReactiveFormFieldCell {
     
@@ -19,7 +18,7 @@ class StepperCell: ReactiveFormFieldCell {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
 
-    func configure(field: Form.Field<Double>) {
+    func configure(field: FormField<Double>) {
         super.configure(field: field)
         guard field.type == .stepper else { return }
 
@@ -29,20 +28,20 @@ class StepperCell: ReactiveFormFieldCell {
 
         disposable += valueLabel.reactive.text <~ field.content.map { value -> String in
             let displayValue = value ?? 0
-            guard let settings = field.settings as? Form.StepperFieldSettings,
+            guard let settings = field.settings as? StepperFieldSettings,
                 let formatter = settings.formatterClosure else { return String(displayValue) }
             return formatter(displayValue) ?? String(displayValue)
         }
         
         stepper.value = field.content.value ?? 0
         disposable += field.content <~ stepper.reactive.values
-        if let settings = field.settings as? Form.StepperFieldSettings {
+        if let settings = field.settings as? StepperFieldSettings {
             stepper.stepValue = settings.stepValue
             stepper.minimumValue = settings.minimumValue
             stepper.maximumValue = settings.maximumValue
         }
         
-        disposable += field.validationState <~ field.content.map { value -> Form.ValidationState in
+        disposable += field.validationState <~ field.content.map { value -> ValidationState in
             return field.validate(value: value)
         }
     }
@@ -51,7 +50,7 @@ class StepperCell: ReactiveFormFieldCell {
 
 extension StepperCell {
     
-    static var descriptor: CellDescriptor<Form.Field<Double>, StepperCell> {
+    static var descriptor: CellDescriptor<FormField<Double>, StepperCell> {
         return CellDescriptor("StepperCell")
             .configure { (field, cell, _) in
                 cell.configure(field: field)

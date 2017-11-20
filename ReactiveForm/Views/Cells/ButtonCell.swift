@@ -10,18 +10,17 @@ import UIKit
 import DataSource
 import ReactiveCocoa
 import ReactiveSwift
-import ReactiveForm
 
 class ButtonCell: ReactiveFormFieldCell {
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var roundedButton: DesignableButton!
 
-    override func configure<T>(field: Form.Field<T>) {
+    override func configure<T>(field: FormField<T>) {
         super.configure(field: field)
         guard field.type == .button else { return }
         
-        if let settings = field.settings as? Form.ButtonFieldSettings {
+        if let settings = field.settings as? ButtonFieldSettings {
             let appearance = settings.appearance ?? .text
             switch appearance {
             case .rounded:
@@ -43,14 +42,14 @@ class ButtonCell: ReactiveFormFieldCell {
     }
     
     @IBAction func execute(_ sender: Any) {
-        guard let settings = field.settings as? Form.ButtonFieldSettings else { return }
+        guard let settings = field.settings as? ButtonFieldSettings else { return }
         settings.action?(field)
     }
 }
 
 extension ButtonCell {
     
-    static var descriptor: CellDescriptor<Form.Field<Empty>, ButtonCell> {
+    static var descriptor: CellDescriptor<FormField<Empty>, ButtonCell> {
         return CellDescriptor("ButtonCell")
             .configure { (field, cell, _) in
                 cell.configure(field: field)

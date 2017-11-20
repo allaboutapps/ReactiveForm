@@ -19,19 +19,16 @@ public protocol PickerItem: FormFieldContent {
     var title: String { get }
 }
 
-public extension Form {
+public class PickerFieldSettings: FormFieldSettings {
     
-    public class PickerFieldSettings: FieldSettings {
-        
-        override public var isExportable: Bool { return true }
-
-        public var pickerViewModel: GenericPickerViewModelProtocol
-        
-        public init(viewModel: GenericPickerViewModelProtocol) {
-            self.pickerViewModel = viewModel
-            super.init()
-        }
-        
+    override public var isExportable: Bool { return true }
+    
+    public var pickerViewModel: GenericPickerViewModelProtocol
+    
+    public init(viewModel: GenericPickerViewModelProtocol) {
+        self.pickerViewModel = viewModel
+        super.init()
     }
     
 }
+

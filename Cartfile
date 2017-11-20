@@ -1,3 +1,4 @@
 github "ReactiveCocoa/ReactiveCocoa" ~> 7.0
-github "mbuchetics/DataSource" ~> 5.0
+# github "mbuchetics/DataSource" ~> 5.0
+github "gunterhager/DataSource" "bundle-support-for-cells"
 github "aloco/SimpleButton" ~> 3.0

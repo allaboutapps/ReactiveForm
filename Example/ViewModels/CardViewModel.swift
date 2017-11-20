@@ -55,7 +55,7 @@ class CardViewModel {
     }
     
     lazy var dataSource: DataSource = {
-        var customTextCellDescriptor: CellDescriptor<Form.Field<Empty>, BodyTextCell> {
+        var customTextCellDescriptor: CellDescriptor<FormField<Empty>, BodyTextCell> {
             return CellDescriptor("CustomTextCell", cellIdentifier: "CustomTextCell")
                 .configure { (field, cell, _) in
                     cell.configure(field: field)
@@ -64,31 +64,7 @@ class CardViewModel {
                     return field.isHidden.value
             }
         }
-        
-        let  cellDescriptors: [CellDescriptorType] = [
-            TitleCell.descriptor,
-            BodyTextCell.descriptor,
-            ImageCell.descriptor,
-            PickerCell.descriptor
-                .didSelect { (item, _) in
-                    if let settings = item.settings as? Form.PickerFieldSettings {
-                        let picker: GenericPickerViewController = UIStoryboard(.form).instantiateViewController()
-                        picker.viewModel = settings.pickerViewModel
-                        self.viewController?.present(picker, animated: true)
-                    }
-                    return .deselect
-                },
-            StepperCell.descriptor,
-            ButtonCell.descriptor,
-            ToggleCell.descriptor,
-            ActivityIndicatorCell.descriptor,
-            SpacerCell.descriptor,
-            ValidationCell.descriptor,
-            
-            customTextCellDescriptor
-        ]
-            + TextFieldCell.descriptors
-        
+                
         return DataSource(
             cellDescriptors: cellDescriptors,
             sectionDescriptors: [

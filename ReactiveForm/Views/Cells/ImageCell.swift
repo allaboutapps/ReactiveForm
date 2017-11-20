@@ -10,7 +10,6 @@ import UIKit
 import DataSource
 import ReactiveCocoa
 import ReactiveSwift
-import ReactiveForm
 
 class ImageCell: ReactiveFormFieldCell {
     
@@ -21,11 +20,11 @@ class ImageCell: ReactiveFormFieldCell {
     @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
     var imageAspectConstraint: NSLayoutConstraint?
     
-    override func configure<T>(field: Form.Field<T>) {
+    override func configure<T>(field: FormField<T>) {
         super.configure(field: field)
         guard field.type == .image else { return }
                 
-        if let settings = field.settings as? Form.ImageFieldSettings {
+        if let settings = field.settings as? ImageFieldSettings {
             spacingAboveConstraint.constant = settings.spacingAbove
             spacingBelowConstraint.constant = settings.spacingBelow
             
@@ -49,7 +48,7 @@ class ImageCell: ReactiveFormFieldCell {
 
 extension ImageCell {
     
-    static var descriptor: CellDescriptor<Form.Field<Empty>, ImageCell> {
+    static var descriptor: CellDescriptor<FormField<Empty>, ImageCell> {
         return CellDescriptor("ImageCell")
             .configure { (field, cell, _) in
                 cell.configure(field: field)

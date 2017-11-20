@@ -72,35 +72,35 @@ class RegisterViewModel: CardViewModel {
             Toast.shared.show("Erfolgreich registriert.")
         })
         
-        let emailField = Form.Field<String>(identifier: "email", type: .textField, title: "Email", isRequired: true, validationRule: "(value.length >= 3) && value.includes('@')", validationErrorText: "Invalid email")
+        let emailField = FormField<String>(identifier: "email", type: .textField, title: "Email", isRequired: true, validationRule: "(value.length >= 3) && value.includes('@')", validationErrorText: "Invalid email")
         
-        let passwordField = Form.Field<String>(identifier: "password", type: .textField, title: "Password", isRequired: true, validationRule: "value.length >= 6", validationErrorText: "Invalid password")
+        let passwordField = FormField<String>(identifier: "password", type: .textField, title: "Password", isRequired: true, validationRule: "value.length >= 6", validationErrorText: "Invalid password")
         
-        let customerNumberField = Form.Field<String>(identifier: "customerNumber", type: .textField, title: "Customer number", isRequired: true, validationRule: "value.length >= 2", validationErrorText: "Invalid customer number")
+        let customerNumberField = FormField<String>(identifier: "customerNumber", type: .textField, title: "Customer number", isRequired: true, validationRule: "value.length >= 2", validationErrorText: "Invalid customer number")
         
         setFields([
-            Form.Field<Empty>(type: .title, title: "Register"),
-            Form.Field<String>(identifier: "namePrefix", type: .picker, title: "Name prefix")
+            FormField<Empty>(type: .title, title: "Register"),
+            FormField<String>(identifier: "namePrefix", type: .picker, title: "Name prefix")
                 .configure { field in
                     let viewModel = GenericPickerViewModel(title: "Name prefix", items: [NamePrefix.female, NamePrefix.male, NamePrefix.other], selectedItem: namePrefix)
-                    let settings = Form.PickerFieldSettings(viewModel: viewModel)                    
+                    let settings = PickerFieldSettings(viewModel: viewModel)                    
                     return settings
             },
-            Form.Field<String>(identifier: "givenName", type: .textField, title: "Given name")
+            FormField<String>(identifier: "givenName", type: .textField, title: "Given name")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.givenName <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     settings.textContentType = .givenName
                     return settings
             },
-            Form.Field<String>(identifier: "familyName", type: .textField, title: "Family name")
+            FormField<String>(identifier: "familyName", type: .textField, title: "Family name")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.familyName <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     settings.textContentType = .familyName
                     return settings
             },
@@ -109,7 +109,7 @@ class RegisterViewModel: CardViewModel {
                     guard let `self` = self else { return nil }
                     self.email <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     settings.textContentType = .emailAddress
                     settings.keyboardType = .emailAddress
                     settings.autocorrectionType = .no
@@ -121,7 +121,7 @@ class RegisterViewModel: CardViewModel {
                     guard let `self` = self else { return nil }
                     self.password <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     settings.isSecureTextEntry = true
                     return settings
             },
@@ -131,33 +131,33 @@ class RegisterViewModel: CardViewModel {
                     guard let `self` = self else { return nil }
                     self.customerNumber <~ field.content
                     
-                    let settings = Form.TextFieldSettings()
+                    let settings = TextFieldSettings()
                     return settings
             },
             customerNumberField.validationField(),
-            Form.Field<String>(identifier: "country", type: .picker, title: "Country", isRequired: true)
+            FormField<String>(identifier: "country", type: .picker, title: "Country", isRequired: true)
                 .configure { field in
                     let viewModel = GenericPickerViewModel(title: "Country", items: Country.allCountries, selectedItem: country)
-                    let settings = Form.PickerFieldSettings(viewModel: viewModel)
+                    let settings = PickerFieldSettings(viewModel: viewModel)
                     return settings
             },
-            Form.Field<CGFloat>(type: .spacer, title: "Spacer", content: 8),
-            Form.Field<Bool>(identifier: "privacyAccepted", type: .toggle, title: "Privacy")
+            FormField<CGFloat>(type: .spacer, title: "Spacer", content: 8),
+            FormField<Bool>(identifier: "privacyAccepted", type: .toggle, title: "Privacy")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.privacyAccepted <~ field.content.map { $0 ?? false }
-                    let settings = Form.ToggleFieldSettings()
+                    let settings = ToggleFieldSettings()
                     settings.link = {
                         let controller: EmptyViewController = UIStoryboard(.main).instantiateViewController()
                         self.viewController?.show(controller, sender: self)
                     }
                     return settings
             },
-            Form.Field<Bool>(identifier: "tosAccepted", type: .toggle, title: "Terms of service")
+            FormField<Bool>(identifier: "tosAccepted", type: .toggle, title: "Terms of service")
                 .configure { [weak self] field in
                     guard let `self` = self else { return nil }
                     self.tosAccepted <~ field.content.map { $0 ?? false }
-                    let settings = Form.ToggleFieldSettings()
+                    let settings = ToggleFieldSettings()
                     settings.link = {
                         let controller: EmptyViewController = UIStoryboard(.main).instantiateViewController()
                         self.viewController?.show(controller, sender: self)

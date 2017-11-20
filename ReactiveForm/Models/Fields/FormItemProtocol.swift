@@ -12,10 +12,10 @@ import ReactiveSwift
 public protocol FormItemProtocol {
     
     var title: MutableProperty<String> { get }
-    var type: Form.ItemType  { get }
+    var type: FormItemType  { get }
     var cellIdentifier: String { get }
     var form: Form! { get set }
     var isHidden: MutableProperty<Bool> { get }
-    var settings: Form.FieldSettings? { get set }
+    var settings: FormFieldSettings? { get set }
     
 }

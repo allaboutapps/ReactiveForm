@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveSwift
-import ReactiveForm
 
 public class GenericPickerViewController: ModalViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     

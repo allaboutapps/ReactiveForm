@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveSwift
-import ReactiveForm
 
 class ReactiveFormFieldCell: FormFieldCell {
     
