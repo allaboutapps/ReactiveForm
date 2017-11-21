@@ -20,9 +20,7 @@ public protocol PickerItem: FormFieldContent {
 }
 
 public class PickerFieldSettings: FormFieldSettings {
-    
-    override public var isExportable: Bool { return true }
-    
+        
     public var pickerViewModel: GenericPickerViewModelProtocol
     
     public init(viewModel: GenericPickerViewModelProtocol) {

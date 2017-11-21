@@ -12,7 +12,6 @@ import UIKit
 public class TextFieldSettings: FormFieldSettings, UITextInputTraits {
     
     override public var isFocusable: Bool { return true }
-    override public var isExportable: Bool { return true }
     
     /// Trims whitespace at start and end of string.
     public var shouldTrim: Bool = true

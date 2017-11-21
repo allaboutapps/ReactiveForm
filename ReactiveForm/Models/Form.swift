@@ -15,32 +15,34 @@ import ReactiveCocoa
 public class Form {
     
     public var dataSource: DataSource
+    public var viewController: UIViewController?
     
-    public init(cellDescriptors: [CellDescriptorType], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true) {
-        let  cellDescriptors: [CellDescriptorType] =
+    public init(cellDescriptors: [CellDescriptorType] = [], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true, viewController: UIViewController? = nil) {
+        let pickerCellDescriptor = PickerCell.descriptor
+        let defaultCellDescriptors: [CellDescriptorType] =
             [
-                TitleCell.descriptor,
-                BodyTextCell.descriptor,
-                ImageCell.descriptor,
-                PickerCell.descriptor
-                    .didSelect { (item, _) in
-                        if let settings = item.settings as? PickerFieldSettings {
-                            let picker: GenericPickerViewController = UIStoryboard(.form).instantiateViewController()
-                            picker.viewModel = settings.pickerViewModel
-                            self.viewController?.present(picker, animated: true)
-                        }
-                        return .deselect
-                },
+                pickerCellDescriptor,
                 StepperCell.descriptor,
-                ButtonCell.descriptor,
                 ToggleCell.descriptor,
-                ActivityIndicatorCell.descriptor,
-                SpacerCell.descriptor,
                 ValidationCell.descriptor
                 ]
                 + TextFieldCell.descriptors
 
-        self.dataSource = DataSource(cellDescriptors: cellDescriptors)
+        self.dataSource = DataSource(cellDescriptors: defaultCellDescriptors + cellDescriptors, sectionDescriptors: sectionDescriptors, registerNibs: registerNibs)
+        self.viewController = viewController
+        
+        _ = pickerCellDescriptor.didSelect { [weak self] (item, _) in
+                if let settings = item.settings as? PickerFieldSettings {
+                    let bundle = Bundle(for: GenericPickerViewController.self)
+                    let storyboard = UIStoryboard(name: "Form", bundle: bundle)
+                    if let picker = storyboard.instantiateInitialViewController() as? GenericPickerViewController {
+                        picker.viewModel = settings.pickerViewModel
+                        self?.viewController?.present(picker, animated: true)
+                    }
+                }
+                return .deselect
+        }
+
     }
     
     // MARK: - Validation
@@ -190,7 +192,7 @@ public class Form {
 public extension Section {
     public func fields() -> [FormFieldProtocol] {
         let result = rows.reduce(into: []) { (result: inout [FormFieldProtocol], row) in
-            if let field = row as? FormFieldProtocol {
+            if let field = row.item as? FormFieldProtocol {
                 result.append(field)
             }
         }

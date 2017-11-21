@@ -11,16 +11,17 @@ import ReactiveSwift
 import ReactiveCocoa
 import DataSource
 
-class ToggleCell: ReactiveFormFieldCell {
+class ToggleCell: FormFieldCell {
     
-    @IBOutlet weak var linkButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var toggle: UISwitch!
     
     func configure(field: FormField<Bool>) {
         super.configure(field: field)
         guard field.type == .toggle else { return }
-        disposable += linkButton.reactive.title(for: .normal) <~ field.title
         
+        disposable += titleLabel.reactive.text <~ field.title
+
         disposable += toggle.reactive.isOn <~ field.content.map { $0 ?? false }
         disposable += field.content <~ toggle.reactive.isOnValues
         
@@ -28,23 +29,14 @@ class ToggleCell: ReactiveFormFieldCell {
             return field.validate(value: value)
         }
         
-        if let settings = field.settings as? ToggleFieldSettings {
-            linkButton.isEnabled = (settings.link != nil)
-        }
-
     }
-    
-    @IBAction func link(_ sender: Any?) {
-        guard let settings = field.settings as? ToggleFieldSettings else { return }
-        settings.link?()
-    }
-    
+        
 }
 
 extension ToggleCell {
     
     static var descriptor: CellDescriptor<FormField<Bool>, ToggleCell> {
-        return CellDescriptor("ToggleCell")
+        return CellDescriptor("ToggleCell", bundle: Bundle(for: ToggleCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)
         }

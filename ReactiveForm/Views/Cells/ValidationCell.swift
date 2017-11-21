@@ -10,7 +10,7 @@ import UIKit
 import DataSource
 import ReactiveSwift
 
-class ValidationCell: ReactiveFormFieldCell {
+class ValidationCell: FormFieldCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -41,7 +41,7 @@ class ValidationCell: ReactiveFormFieldCell {
 extension ValidationCell {
     
     static var descriptor: CellDescriptor<FormField<Empty>, ValidationCell> {
-        return CellDescriptor("ValidationCell")
+        return CellDescriptor("ValidationCell", bundle: Bundle(for: ValidationCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)
         }

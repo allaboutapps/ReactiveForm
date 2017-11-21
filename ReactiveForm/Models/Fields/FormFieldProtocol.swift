@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import DataSource
 
 public protocol FormFieldProtocol: Focusable {
     
@@ -18,6 +19,7 @@ public protocol FormFieldProtocol: Focusable {
     var isHidden: MutableProperty<Bool> { get }
     var isEnabled: MutableProperty<Bool> { get }
     var settings: FormFieldSettings? { get set }
+    var row: RowType { get }
     
     // Import/Export
     var isExportable: Bool { get }

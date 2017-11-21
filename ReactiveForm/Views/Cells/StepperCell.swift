@@ -11,7 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import DataSource
 
-class StepperCell: ReactiveFormFieldCell {
+class StepperCell: FormFieldCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -51,7 +51,7 @@ class StepperCell: ReactiveFormFieldCell {
 extension StepperCell {
     
     static var descriptor: CellDescriptor<FormField<Double>, StepperCell> {
-        return CellDescriptor("StepperCell")
+        return CellDescriptor("StepperCell", bundle: Bundle(for: StepperCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)
             }

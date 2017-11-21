@@ -11,9 +11,7 @@ import Foundation
 public typealias FormatterClosure = ((_ value: Double) -> String?)
 
 public class StepperFieldSettings: FormFieldSettings {
-    
-    override public var isExportable: Bool { return true }
-    
+        
     public var minimumValue: Double
     public var maximumValue: Double
     public var stepValue: Double

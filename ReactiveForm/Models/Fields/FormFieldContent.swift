@@ -36,6 +36,14 @@ extension Bool: FormFieldContent {
     
 }
 
+extension Int: FormFieldContent {
+    
+    public static func create(from content: String) -> FormFieldContent? {
+        return Int(content)
+    }
+    
+}
+
 extension Float: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {

@@ -13,7 +13,7 @@ import Foundation
 public class FormFieldSettings: NSObject {
     
     public var isFocusable: Bool { return false }
-    public var isExportable: Bool { return false }
+    public var isExportable: Bool { return true }
     
 }
 

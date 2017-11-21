@@ -11,9 +11,10 @@ import DataSource
 import ReactiveSwift
 import ReactiveCocoa
 
-class TextFieldCell: ReactiveFormFieldCell {
+class TextFieldCell: FormFieldCell {
     
-    @IBOutlet weak var textField: DesignableTextField!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textField: UITextField!
     
     let contentBuffer = MutableProperty<String?>(nil)
 
@@ -21,12 +22,8 @@ class TextFieldCell: ReactiveFormFieldCell {
         super.configure(field: field)
         guard field.type == .textField else { return }
         
-        disposable += field.title.producer.startWithValues { [weak self] title in
-            guard let `self` = self else { return }
-            let placeholder = title + (field.isRequired ? "*" : "")
-            self.textField.placeholder = placeholder
-            self.textField.setPlaceholderText(placeholder)
-        }
+        disposable += titleLabel.reactive.text <~ field.title.map { $0 + (field.isRequired ? "*" : "") }
+        disposable += textField.reactive.placeholder <~ field.title
         textField.reactive.isEnabled <~ field.isEnabled
         textField.delegate = self
 
@@ -59,19 +56,6 @@ class TextFieldCell: ReactiveFormFieldCell {
         disposable += field.validationState <~ textField.reactive.continuousTextValues.map { value -> ValidationState in
             return field.validate(value: value)
         }
-//        disposable += field.validationState.producer.startWithValues { [weak self] (state) in
-//            guard let `self` = self else { return }
-//            var lineColor = #colorLiteral(red: 0.7233663201, green: 0.7233663201, blue: 0.7233663201, alpha: 1)
-//            switch state {
-//            case .error:
-//                lineColor = #colorLiteral(red: 0.9292213917, green: 0.1336172819, blue: 0, alpha: 1)
-//            default:
-//                break
-//            }
-//            print(lineColor)
-//            self.textField.activeLineColor = lineColor
-//            self.textField.setNeedsDisplay()
-//        }
         
         // Set Focus
         field.focus = {
@@ -101,14 +85,21 @@ extension TextFieldCell {
     
     static var descriptors: [CellDescriptorType] {
         return [
-            CellDescriptor<FormField<Double>, TextFieldCell>("DoubleTextFieldCell", cellIdentifier: "TextFieldCell")
+            CellDescriptor<FormField<Int>, TextFieldCell>("IntTextFieldCell", cellIdentifier: "TextFieldCell", bundle: Bundle(for: TextFieldCell.self))
+                .configure { (field, cell, _) in
+                    cell.configure(field: field)
+                }
+                .isHidden { (field, indexPath) in
+                    return field.isHidden.value
+            },
+            CellDescriptor<FormField<Double>, TextFieldCell>("DoubleTextFieldCell", cellIdentifier: "TextFieldCell", bundle: Bundle(for: TextFieldCell.self))
                 .configure { (field, cell, _) in
                     cell.configure(field: field)
             }
                 .isHidden { (field, indexPath) in
                     return field.isHidden.value
             },
-            CellDescriptor<FormField<String>, TextFieldCell>("StringTextFieldCell", cellIdentifier: "TextFieldCell")
+            CellDescriptor<FormField<String>, TextFieldCell>("StringTextFieldCell", cellIdentifier: "TextFieldCell", bundle: Bundle(for: TextFieldCell.self))
                 .configure { (field, cell, _) in
                     cell.configure(field: field)
             }

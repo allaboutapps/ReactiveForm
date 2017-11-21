@@ -49,12 +49,13 @@ public extension Focusable where Self: FormFieldProtocol {
 
 public extension Form {
     public var focusableFields: [Focusable] {
-        return fields
+        let result = fields
             .filter {
                 return ($0.isHidden.value == false)
                     && $0.isEnabled.value
                     && $0.isFocusable
         }
+        return result
     }
 }
 

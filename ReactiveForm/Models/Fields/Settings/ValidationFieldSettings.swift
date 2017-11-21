@@ -21,6 +21,8 @@ public enum ValidationState {
 
 
 public class ValidationFieldSettings: FormFieldSettings {
+    override public var isExportable: Bool { return true }
+
     public let displayedState = MutableProperty<ValidationState>(.success)
     public var isInitial = true
 }

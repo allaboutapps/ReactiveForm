@@ -24,14 +24,6 @@ public enum FormFieldType: Decodable, Equatable {
     // Validation
     case validation
     
-    // Decoration
-    case title
-    case bodyText
-    case image
-    case button
-    case activityIndicator
-    case spacer
-    
     public var rawValue: String {
         switch self {
         case let .custom(identifier):
@@ -48,13 +40,6 @@ public enum FormFieldType: Decodable, Equatable {
         case "stepper": self = .stepper
         case "toggle": self = .toggle
         case "validation": self = .validation
-            
-        case "title": self = .title
-        case "bodyText": self = .bodyText
-        case "image": self = .image
-        case "button": self = .button
-        case "activityIndicator": self = .activityIndicator
-        case "spacer": self = .spacer
             
         default: return nil
         }
@@ -84,12 +69,19 @@ public enum FormFieldType: Decodable, Equatable {
 }
 
 
-public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable, RowType {
+public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable {
     
     public let identifier: String
     
     public var isFocusable: Bool {
-        return settings?.isFocusable ?? false
+        return settings?.isFocusable ?? isTypeFocusable
+    }
+    
+    private var isTypeFocusable: Bool {
+        switch type {
+        case .textField: return true
+        default: return false
+        }
     }
     
     public weak var form: Form!
@@ -112,6 +104,9 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
             return type.cellIdentifier
         }
     }
+    public lazy var row: RowType = {
+        return Row(self, identifier: cellIdentifier)
+    }()
     
     public let title = MutableProperty("")
     public let descriptionText = MutableProperty<String?>(nil)
@@ -190,17 +185,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
         settings = configureClosure(self)
         return self
     }
-    
-    public func buttonAction(_ action: @escaping (FormFieldProtocol) -> Void) -> FormField<T> {
-        //        settings = configureClosure(self)
-        if type == .button {
-            let buttonSettings = (settings as? ButtonFieldSettings) ?? ButtonFieldSettings()
-            buttonSettings.action = action
-            settings = buttonSettings
-        }
-        return self
-    }
-    
+        
     // MARK: Equatable
     
     public static func ==(lhs: FormField<T>, rhs: FormField<T>) -> Bool {
@@ -243,16 +228,6 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
         }
         
         return validationField
-    }
-    
-    // MARK: RowType
-    
-    public var item: Any {
-        return self
-    }
-    
-    public var diffableItem: Diffable? {
-        return self as Diffable
     }
     
 }

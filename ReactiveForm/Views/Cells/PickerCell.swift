@@ -11,21 +11,20 @@ import DataSource
 import ReactiveSwift
 import ReactiveCocoa
 
-class PickerCell: ReactiveFormFieldCell {
+class PickerCell: FormFieldCell {
     
-    @IBOutlet weak var textField: DesignableTextField!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
     
     func configure(field: FormField<String>) {
         super.configure(field: field)
         guard field.type == .picker else { return }
         
-        textField.placeholder = field.title.value
-        textField.setPlaceholderText(field.title.value)
-        textField.isUserInteractionEnabled = false
-        
+        disposable += titleLabel.reactive.text <~ field.title
+
         if let settings = field.settings as? PickerFieldSettings {
             disposable += field.content <~ settings.pickerViewModel.selectedItem.map { $0?.title }
-            disposable += textField.reactive.text <~ field.content.map { $0 }
+            disposable += valueLabel.reactive.text <~ field.content.map { $0 }
         }
     }
     
@@ -34,7 +33,7 @@ class PickerCell: ReactiveFormFieldCell {
 extension PickerCell {
     
     static var descriptor: CellDescriptor<FormField<String>, PickerCell> {
-        return CellDescriptor("PickerCell")
+        return CellDescriptor("PickerCell", bundle: Bundle(for: PickerCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)
         }
