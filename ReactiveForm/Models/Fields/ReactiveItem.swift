@@ -10,7 +10,10 @@ import Foundation
 import ReactiveSwift
 import DataSource
 
-public class ReactiveItem<T>: Hideable, Diffable, Equatable {
+public protocol ReactiveItemProtocol: Hideable {
+}
+
+public class ReactiveItem<T>: ReactiveItemProtocol, Diffable, Equatable {
     
     public let diffIdentifier = UUID().uuidString
     
