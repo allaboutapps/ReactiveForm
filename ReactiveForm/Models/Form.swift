@@ -15,9 +15,9 @@ import ReactiveCocoa
 public class Form {
     
     public var dataSource: DataSource
-    public var viewController: UIViewController?
+    public var viewController: (UIViewController & FormViewController)?
     
-    public init(cellDescriptors: [CellDescriptorType] = [], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true, viewController: UIViewController? = nil) {
+    public init(cellDescriptors: [CellDescriptorType] = [], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true, viewController: (UIViewController & FormViewController)? = nil) {
         let pickerCellDescriptor = PickerCell.descriptor
         let defaultCellDescriptors: [CellDescriptorType] =
             [
@@ -101,20 +101,24 @@ public class Form {
     private var isValidDisposable: Disposable?
 
     internal var fields = [FormFieldProtocol]()
-    
+    internal var hideables = [Hideable]()
+
     public func setSections(sections: [SectionType]) {
         dataSource.sections = sections
-        updateFields()
+        updateFieldsAndHideables()
         setFormOnFields()
         updateChange()
         updateEnabled()
         updateIsValid()
     }
     
-    private func updateFields() {
+    private func updateFieldsAndHideables() {
         guard let sections = dataSource.sections as? [Section] else { return }
         fields = sections.reduce(into: []) { (result: inout [FormFieldProtocol], section) in
             result += section.fields()
+        }
+        hideables = sections.reduce(into: []) { (result: inout [Hideable], section) in
+            result += section.hideables()
         }
     }
     
@@ -128,16 +132,25 @@ public class Form {
     private func updateChange() {
         changeDisposable?.dispose()
         changeDisposable =  SignalProducer
-            .combineLatest(fields.map { $0.isHidden.producer })
+            .combineLatest(hideables.map { $0.isHidden.producer })
             .throttle(0, on: QueueScheduler.main)
-            .combinePrevious(fields.map { $0.isHidden.value })
+            .combinePrevious(hideables.map { $0.isHidden.value })
             .startWithValues { [unowned self] (isHiddenFlags, previousHiddenFlags) in
                 if isHiddenFlags != previousHiddenFlags {
+                    // Reload table view
+                    guard let tableView = self.viewController?.tableView else { return }
+                    self.dataSource.reloadDataAnimated(tableView,
+                                                       rowDeletionAnimation: .automatic,
+                                                       rowInsertionAnimation: .automatic,
+                                                       rowReloadAnimation: .none)
+
+                    
+                    self.didChange?()
+
                     // Fix: Reload of input views cause tableview reload animation to bug
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01, execute: {
                         self.updateReturnKeys()
                     })
-                    self.didChange?()
                 }
         }
     }
@@ -194,6 +207,15 @@ public extension Section {
         let result = rows.reduce(into: []) { (result: inout [FormFieldProtocol], row) in
             if let field = row.item as? FormFieldProtocol {
                 result.append(field)
+            }
+        }
+        return result
+    }
+    
+    public func hideables() -> [Hideable] {
+        let result = rows.reduce(into: []) { (result: inout [Hideable], row) in
+            if let item = row.item as? Hideable {
+                result.append(item)
             }
         }
         return result

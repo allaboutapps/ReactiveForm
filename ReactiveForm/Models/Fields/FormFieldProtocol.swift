@@ -10,7 +10,7 @@ import Foundation
 import ReactiveSwift
 import DataSource
 
-public protocol FormFieldProtocol: Focusable {
+public protocol FormFieldProtocol: Focusable, Hideable {
     
     var title: MutableProperty<String> { get }
     var type: FormFieldType  { get }

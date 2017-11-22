@@ -17,7 +17,7 @@ class TextFieldCell: FormFieldCell {
     @IBOutlet weak var textField: UITextField!
     
     let contentBuffer = MutableProperty<String?>(nil)
-
+    
     override func configure<T>(field: FormField<T>) {
         super.configure(field: field)
         guard field.type == .textField else { return }
@@ -26,7 +26,7 @@ class TextFieldCell: FormFieldCell {
         disposable += textField.reactive.placeholder <~ field.title
         textField.reactive.isEnabled <~ field.isEnabled
         textField.delegate = self
-
+        
         if let value = field.content.value {
             contentBuffer.value = "\(value)"
         } else {
@@ -78,7 +78,7 @@ class TextFieldCell: FormFieldCell {
             textField.reloadInputViews()
         }
     }
-
+    
 }
 
 extension TextFieldCell {
@@ -95,14 +95,14 @@ extension TextFieldCell {
             CellDescriptor<FormField<Double>, TextFieldCell>("DoubleTextFieldCell", cellIdentifier: "TextFieldCell", bundle: Bundle(for: TextFieldCell.self))
                 .configure { (field, cell, _) in
                     cell.configure(field: field)
-            }
+                }
                 .isHidden { (field, indexPath) in
                     return field.isHidden.value
             },
             CellDescriptor<FormField<String>, TextFieldCell>("StringTextFieldCell", cellIdentifier: "TextFieldCell", bundle: Bundle(for: TextFieldCell.self))
                 .configure { (field, cell, _) in
                     cell.configure(field: field)
-            }
+                }
                 .isHidden { (field, indexPath) in
                     return field.isHidden.value
             }
