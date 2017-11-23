@@ -11,14 +11,14 @@ import DataSource
 import ReactiveSwift
 import ReactiveCocoa
 
-class TextFieldCell: FormFieldCell {
+public class TextFieldCell: FormFieldCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var textField: UITextField!
     
     let contentBuffer = MutableProperty<String?>(nil)
     
-    override func configure<T>(field: FormField<T>) {
+    override public func configure<T>(field: FormField<T>) {
         super.configure(field: field)
         guard field.type == .textField else { return }
         
@@ -72,7 +72,7 @@ class TextFieldCell: FormFieldCell {
         return T(value)
     }
     
-    func configureReturnKey() {
+    public func configureReturnKey() {
         if (!field.isHidden.value && field.isEnabled.value) {
             textField.returnKeyType = (field.nextFocusableField == nil) ? field.form.returnKey : .next
             textField.reloadInputViews()
@@ -81,9 +81,9 @@ class TextFieldCell: FormFieldCell {
     
 }
 
-extension TextFieldCell {
+public extension TextFieldCell {
     
-    static var descriptors: [CellDescriptorType] {
+    public static var descriptors: [CellDescriptorType] {
         return [
             CellDescriptor<FormField<Int>, TextFieldCell>("IntTextFieldCell", cellIdentifier: "TextFieldCell", bundle: Bundle(for: TextFieldCell.self))
                 .configure { (field, cell, _) in
@@ -113,7 +113,7 @@ extension TextFieldCell {
 
 extension TextFieldCell: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if field.isLastFocuFocusableField {
             field.form.submit(sender: field)
             return true

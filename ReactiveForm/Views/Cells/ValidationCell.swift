@@ -10,11 +10,11 @@ import UIKit
 import DataSource
 import ReactiveSwift
 
-class ValidationCell: FormFieldCell {
+public class ValidationCell: FormFieldCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet public weak var titleLabel: UILabel!
     
-    override func configure<T>(field: FormField<T>) {
+    override public func configure<T>(field: FormField<T>) {
         super.configure(field: field)
         guard field.type == .validation else { return }
         guard let settings = field.settings as? ValidationFieldSettings else { return }
@@ -38,9 +38,9 @@ class ValidationCell: FormFieldCell {
     
 }
 
-extension ValidationCell {
+public extension ValidationCell {
     
-    static var descriptor: CellDescriptor<FormField<Empty>, ValidationCell> {
+    public static var descriptor: CellDescriptor<FormField<Empty>, ValidationCell> {
         return CellDescriptor("ValidationCell", bundle: Bundle(for: ValidationCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

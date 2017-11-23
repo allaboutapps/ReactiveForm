@@ -11,12 +11,12 @@ import ReactiveSwift
 import ReactiveCocoa
 import DataSource
 
-class ToggleCell: FormFieldCell {
+public class ToggleCell: FormFieldCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var toggle: UISwitch!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var toggle: UISwitch!
     
-    func configure(field: FormField<Bool>) {
+    public func configure(field: FormField<Bool>) {
         super.configure(field: field)
         guard field.type == .toggle else { return }
         
@@ -33,9 +33,9 @@ class ToggleCell: FormFieldCell {
         
 }
 
-extension ToggleCell {
+public extension ToggleCell {
     
-    static var descriptor: CellDescriptor<FormField<Bool>, ToggleCell> {
+    public static var descriptor: CellDescriptor<FormField<Bool>, ToggleCell> {
         return CellDescriptor("ToggleCell", bundle: Bundle(for: ToggleCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

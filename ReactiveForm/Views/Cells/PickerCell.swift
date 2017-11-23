@@ -11,12 +11,12 @@ import DataSource
 import ReactiveSwift
 import ReactiveCocoa
 
-class PickerCell: FormFieldCell {
+public class PickerCell: FormFieldCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var valueLabel: UILabel!
     
-    func configure(field: FormField<String>) {
+    public func configure(field: FormField<String>) {
         super.configure(field: field)
         guard field.type == .picker else { return }
         
@@ -30,9 +30,9 @@ class PickerCell: FormFieldCell {
     
 }
 
-extension PickerCell {
+public extension PickerCell {
     
-    static var descriptor: CellDescriptor<FormField<String>, PickerCell> {
+    public static var descriptor: CellDescriptor<FormField<String>, PickerCell> {
         return CellDescriptor("PickerCell", bundle: Bundle(for: PickerCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

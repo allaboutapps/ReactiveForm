@@ -9,11 +9,11 @@
 import UIKit
 import ReactiveSwift
 
-class FormFieldCell: UITableViewCell {
-    var field: FormFieldProtocol!
-    var disposable = CompositeDisposable()
+open class FormFieldCell: UITableViewCell {
+    public var field: FormFieldProtocol!
+    public var disposable = CompositeDisposable()
     
-    override func prepareForReuse() {
+    override open func prepareForReuse() {
         super.prepareForReuse()
         
         // Need to reset bindings on configure (cell reuse)
@@ -21,10 +21,8 @@ class FormFieldCell: UITableViewCell {
         disposable = CompositeDisposable()
     }
 
-    func configure<T>(field: FormField<T>) {
+    open func configure<T>(field: FormField<T>) {
         self.field = field
     }
 
 }
-
-

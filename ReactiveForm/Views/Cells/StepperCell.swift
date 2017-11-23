@@ -11,14 +11,14 @@ import ReactiveSwift
 import ReactiveCocoa
 import DataSource
 
-class StepperCell: FormFieldCell {
+public class StepperCell: FormFieldCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var subtitleLabel: UILabel!
+    @IBOutlet public weak var valueLabel: UILabel!
+    @IBOutlet public weak var stepper: UIStepper!
 
-    func configure(field: FormField<Double>) {
+    public func configure(field: FormField<Double>) {
         super.configure(field: field)
         guard field.type == .stepper else { return }
 
@@ -48,9 +48,9 @@ class StepperCell: FormFieldCell {
     
 }
 
-extension StepperCell {
+public extension StepperCell {
     
-    static var descriptor: CellDescriptor<FormField<Double>, StepperCell> {
+    public static var descriptor: CellDescriptor<FormField<Double>, StepperCell> {
         return CellDescriptor("StepperCell", bundle: Bundle(for: StepperCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)
