@@ -10,6 +10,22 @@ import Foundation
 
 public struct FormJSON {
     
+    public enum FieldType: String, Decodable {
+        // Input
+        case textField
+        case picker
+        case stepper
+        case toggle
+        
+        // Decoration
+        case title
+        case bodyText
+        case image
+        case button
+        case activityIndicator
+        case spacer
+    }
+    
     public struct Form: Decodable {
         public let identifier: String
         public let fields: [FormJSON.Field]
@@ -32,7 +48,7 @@ public struct FormJSON {
     }
     
     public struct Field: Decodable {
-        public let type: FormFieldType
+        public let type: FormJSON.FieldType
         public let title: String
         public let image: String?
     }
