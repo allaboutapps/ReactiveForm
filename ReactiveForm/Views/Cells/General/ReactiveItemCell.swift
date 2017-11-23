@@ -10,8 +10,8 @@ import UIKit
 import ReactiveSwift
 
 open class ReactiveItemCell: UITableViewCell {
-    public var item: ReactiveItemProtocol!
-    public var disposable = CompositeDisposable()
+    open var item: ReactiveItemProtocol!
+    open var disposable = CompositeDisposable()
     
     override open func prepareForReuse() {
         super.prepareForReuse()

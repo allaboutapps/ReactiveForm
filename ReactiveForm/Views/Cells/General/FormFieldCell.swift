@@ -10,8 +10,8 @@ import UIKit
 import ReactiveSwift
 
 open class FormFieldCell: UITableViewCell {
-    public var field: FormFieldProtocol!
-    public var disposable = CompositeDisposable()
+    open var field: FormFieldProtocol!
+    open var disposable = CompositeDisposable()
     
     override open func prepareForReuse() {
         super.prepareForReuse()

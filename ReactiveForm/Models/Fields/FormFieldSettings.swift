@@ -11,7 +11,7 @@ import Foundation
 /// Settings that define various aspects of a content field, like e.g. the input traits of a text field.
 open class FormFieldSettings: NSObject {
     
-    public var isFocusable: Bool { return false }
-    public var isExportable: Bool { return true }
+    open var isFocusable: Bool { return false }
+    open var isExportable: Bool { return true }
     
 }
