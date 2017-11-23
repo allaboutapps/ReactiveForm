@@ -73,7 +73,7 @@ public class TextFieldCell: FormFieldCell {
     }
     
     public func configureReturnKey() {
-        if (!field.isHidden.value && field.isEnabled.value) {
+        if !field.isHidden.value && field.isEnabled.value {
             textField.returnKeyType = (field.nextFocusableField == nil) ? field.form.returnKey : .next
             textField.reloadInputViews()
         }
@@ -123,4 +123,3 @@ extension TextFieldCell: UITextFieldDelegate {
         }
     }
 }
-

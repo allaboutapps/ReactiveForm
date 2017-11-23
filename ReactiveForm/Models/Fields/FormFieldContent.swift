@@ -27,7 +27,6 @@ public extension FormFieldContent {
 public struct Empty: FormFieldContent {
 }
 
-
 extension Bool: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
@@ -75,4 +74,3 @@ extension String: FormFieldContent {
     }
     
 }
-

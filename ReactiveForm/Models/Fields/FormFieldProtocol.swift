@@ -13,7 +13,7 @@ import DataSource
 public protocol FormFieldProtocol: Focusable, Hideable {
     
     var title: MutableProperty<String> { get }
-    var type: FormFieldType  { get }
+    var type: FormFieldType { get }
     var cellIdentifier: String { get }
     var form: Form! { get set }
     var isHidden: MutableProperty<Bool> { get }
@@ -45,5 +45,4 @@ extension FormFieldProtocol {
         return isValid ? .success : .error(text: nil)
     }
     
-
 }

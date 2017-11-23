@@ -59,15 +59,14 @@ public class Form {
         return Property<Bool>(initial: false, then: producer)
     }()
 
-    
     /// Validation rules are defined in `JavaScript`. The form is exposed to `JavaScript` as variable named `form`. You could use a rule like `form.age > 18` to validate the value of a field in your form.
     public var validationRule: String?
     
     // MARK: - Import & Export
     
-    public func importFieldData(from keyedValues: [String : Any?]) {
+    public func importFieldData(from keyedValues: [String: Any?]) {
         let keyedFields = fields
-            .reduce(into: [:]) { (result: inout [String : FormFieldProtocol], field) in
+            .reduce(into: [:]) { (result: inout [String: FormFieldProtocol], field) in
                 result[field.identifier] = field
         }
         keyedValues.forEach { (key, value) in
@@ -77,16 +76,16 @@ public class Form {
         }
     }
 
-    public func exportFieldData(with filter: ((FormFieldProtocol) -> Bool)? = nil) -> [String : Any?] {
+    public func exportFieldData(with filter: ((FormFieldProtocol) -> Bool)? = nil) -> [String: Any?] {
         return fields
-            .reduce(into: [:]) { (result: inout [String : Any?], field) in
+            .reduce(into: [:]) { (result: inout [String: Any?], field) in
                 guard field.isExportable else { return }
                 guard filter?(field) ?? true else { return }
                 result[field.identifier] = field.exportContent()
         }
     }
     
-    public var onSubmit: ((_ data: [String : Any?], _ sender: FormFieldProtocol?) -> Void)? = nil
+    public var onSubmit: ((_ data: [String: Any?], _ sender: FormFieldProtocol?) -> Void)? = nil
     
     public func submit(sender: FormFieldProtocol? = nil) {
         onSubmit?(exportFieldData(), sender)
@@ -143,7 +142,6 @@ public class Form {
                                                        rowDeletionAnimation: .automatic,
                                                        rowInsertionAnimation: .automatic,
                                                        rowReloadAnimation: .none)
-
                     
                     self.didChange?()
 
@@ -221,5 +219,3 @@ public extension Section {
         return result
     }
 }
-
-

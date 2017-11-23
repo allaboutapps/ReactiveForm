@@ -62,12 +62,12 @@ public enum FormFieldType: Decodable, Equatable {
     
     // MARK: Equatable
     
+    //swiftlint:disable operator_whitespace
     public static func ==(lhs: FormFieldType, rhs: FormFieldType) -> Bool {
         return lhs.rawValue == rhs.rawValue
     }
     
 }
-
 
 public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable {
     
@@ -132,6 +132,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
     }()
     public var validationRule: String?
     
+    //swiftlint:disable line_length
     public init(identifier: String = UUID().uuidString, type: FormFieldType, customCellIdentifier: String? = nil, title: String, descriptionText: String? = nil, content: T? = nil, settings: FormFieldSettings? = nil, isRequired: Bool = false, validationRule: String? = nil, validationErrorText: String? = nil) {
         self.identifier = identifier
         self.type = type
@@ -188,6 +189,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
         
     // MARK: Equatable
     
+    //swiftlint:disable operator_whitespace
     public static func ==(lhs: FormField<T>, rhs: FormField<T>) -> Bool {
         return lhs.identifier == rhs.identifier
     }
@@ -231,5 +233,3 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
     }
     
 }
-
-

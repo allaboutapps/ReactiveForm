@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public class TextFieldSettings: FormFieldSettings, UITextInputTraits {
     
     override public var isFocusable: Bool { return true }
@@ -59,4 +58,3 @@ public extension UITextView {
         }
     }
 }
-

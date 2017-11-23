@@ -10,6 +10,7 @@ import UIKit
 
 public class ModalViewController: UIViewController {
 
+    //swiftlint:disable weak_delegate
     public let modalTransitioningDelegate = ModalTransitioningDelegate(dimBackground: true)
 
     override public func awakeFromNib() {

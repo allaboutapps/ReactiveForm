@@ -11,8 +11,8 @@ import UIKit
 public class ModalTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
     public let dimBackground: Bool
-    public var onPresentation: ((UIViewControllerTransitionCoordinator) -> ())? = nil
-    public var onDismissal: ((UIViewControllerTransitionCoordinator) -> ())? = nil
+    public var onPresentation: ((UIViewControllerTransitionCoordinator) -> Void)? = nil
+    public var onDismissal: ((UIViewControllerTransitionCoordinator) -> Void)? = nil
 
     public init(dimBackground: Bool) {
         self.dimBackground = dimBackground

@@ -11,8 +11,8 @@ import UIKit
 public class ModalPresentationController: UIPresentationController {
 
     public var dimBackground: Bool = true
-    public var onPresentation: ((UIViewControllerTransitionCoordinator) -> ())? = nil
-    public var onDismissal: ((UIViewControllerTransitionCoordinator) -> ())? = nil
+    public var onPresentation: ((UIViewControllerTransitionCoordinator) -> Void)? = nil
+    public var onDismissal: ((UIViewControllerTransitionCoordinator) -> Void)? = nil
 
     public lazy var dimmingView: UIView = {
         let view = UIView(frame: self.containerView!.bounds)
@@ -40,7 +40,7 @@ public class ModalPresentationController: UIPresentationController {
         if let transitionCoordinator = presentingViewController.transitionCoordinator {
             transitionCoordinator.animate(alongsideTransition: { _ in
                 self.dimmingView.alpha = 1.0
-            }, completion:nil)
+            }, completion: nil)
 
             onPresentation?(transitionCoordinator)
         }
@@ -56,7 +56,7 @@ public class ModalPresentationController: UIPresentationController {
         if let transitionCoordinator = self.presentingViewController.transitionCoordinator {
             transitionCoordinator.animate(alongsideTransition: { _ in
                 self.dimmingView.alpha  = 0.0
-            }, completion:nil)
+            }, completion: nil)
 
             onDismissal?(transitionCoordinator)
         }
@@ -70,7 +70,7 @@ public class ModalPresentationController: UIPresentationController {
 
     // MARK: Frame
 
-    override public var frameOfPresentedViewInContainerView : CGRect {
+    override public var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else {
             return CGRect.zero
         }

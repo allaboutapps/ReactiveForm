@@ -19,7 +19,6 @@ public enum ValidationState {
     case error(text: String?)
 }
 
-
 public class ValidationFieldSettings: FormFieldSettings {
     override public var isExportable: Bool { return true }
 

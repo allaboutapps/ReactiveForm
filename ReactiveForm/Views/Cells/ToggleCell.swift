@@ -46,5 +46,3 @@ public extension ToggleCell {
     }
     
 }
-
-

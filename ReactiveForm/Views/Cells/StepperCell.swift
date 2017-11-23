@@ -61,6 +61,3 @@ public extension StepperCell {
     }
     
 }
-
-
-

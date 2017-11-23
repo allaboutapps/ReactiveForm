@@ -63,6 +63,7 @@
 		BCAF23F21FC571AF009403B1 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF23F11FC571AF009403B1 /* FormViewController.swift */; };
 		BCAF23F71FC5851A009403B1 /* Hideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF23F61FC5851A009403B1 /* Hideable.swift */; };
 		BCAF23F81FC58561009403B1 /* ReactiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF23F31FC57F75009403B1 /* ReactiveItem.swift */; };
+		BCAF24461FC6C9CD009403B1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */; };
 		BCB1AEA21F8F53AC007DC284 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */; };
 		BCB1AEA51F8F548A007DC284 /* ReactiveForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCFBC5FC1FC3080200A657D1 /* Form.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D38061F90939500043D06 /* Form.storyboard */; };
@@ -164,6 +165,7 @@
 		BCAF23F11FC571AF009403B1 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		BCAF23F31FC57F75009403B1 /* ReactiveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveItem.swift; sourceTree = "<group>"; };
 		BCAF23F61FC5851A009403B1 /* Hideable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hideable.swift; sourceTree = "<group>"; };
+		BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5C20911F1373B900D52B41 /* Cartfile */,
+				BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */,
 				4C5C20931F1373C400D52B41 /* README.md */,
 				4C5C202A1F13713000D52B41 /* ReactiveForm */,
 				4C5C200D1F136F9800D52B41 /* ReactiveFormTests */,
@@ -454,6 +457,7 @@
 			buildConfigurationList = 4C5C20141F136F9800D52B41 /* Build configuration list for PBXNativeTarget "ReactiveForm" */;
 			buildPhases = (
 				4C5C1FFB1F136F9800D52B41 /* Sources */,
+				BCAF24471FC6C9F5009403B1 /* Run Script - SwiftLint */,
 				4C5C1FFC1F136F9800D52B41 /* Frameworks */,
 				4C5C1FFD1F136F9800D52B41 /* Headers */,
 				4C5C1FFE1F136F9800D52B41 /* Resources */,
@@ -562,6 +566,7 @@
 				BCFBC5FC1FC3080200A657D1 /* Form.storyboard in Resources */,
 				BC8A16E11FC2C941006D9173 /* StepperCell.xib in Resources */,
 				BC8A16E91FC2C941006D9173 /* ValidationCell.xib in Resources */,
+				BCAF24461FC6C9CD009403B1 /* .swiftlint.yml in Resources */,
 				BC8A16E71FC2C941006D9173 /* ToggleCell.xib in Resources */,
 				BC8A16DD1FC2C941006D9173 /* PickerCell.xib in Resources */,
 				BC8A16E31FC2C941006D9173 /* TextFieldCell.xib in Resources */,
@@ -609,6 +614,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		BCAF24471FC6C9F5009403B1 /* Run Script - SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

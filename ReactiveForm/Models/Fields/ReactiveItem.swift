@@ -21,6 +21,7 @@ public class ReactiveItem<T>: ReactiveItemProtocol, Diffable, Equatable {
         return self.diffIdentifier == other?.diffIdentifier
     }
     
+    //swiftlint:disable operator_whitespace
     public static func ==(lhs: ReactiveItem<T>, rhs: ReactiveItem<T>) -> Bool {
         return lhs.diffIdentifier == rhs.diffIdentifier
     }

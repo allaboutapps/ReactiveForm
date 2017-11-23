@@ -31,7 +31,7 @@ public struct FormJSON {
         public let fields: [FormJSON.Field]
         public let actions: [FormJSON.Action]
         
-        public enum CodingKeys : String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case identifier = "id"
             case fields
             case actions
@@ -72,4 +72,3 @@ public struct FormJSON {
         public let card: String?
     }
 }
-

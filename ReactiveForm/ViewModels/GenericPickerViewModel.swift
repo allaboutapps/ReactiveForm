@@ -28,4 +28,3 @@ public class GenericPickerViewModel<T: PickerItem>: GenericPickerViewModelProtoc
     }
 
 }
-
