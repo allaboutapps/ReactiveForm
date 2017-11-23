@@ -14,13 +14,13 @@ public class ValidationCell: FormFieldCell {
     
     @IBOutlet public weak var titleLabel: UILabel!
     
-    override public func configure<T>(field: FormField<T>) {
+    public func configure(field: FormField<ValidationState>) {
         super.configure(field: field)
         guard field.type == .validation else { return }
-        guard let settings = field.settings as? ValidationFieldSettings else { return }
         
-        disposable += settings.displayedState.producer.startWithValues { [weak self] state in
-            guard let `self` = self else { return }
+        disposable += field.content.producer.startWithValues { [weak self] state in
+            guard let `self` = self,
+                let state = state else { return }
             var text = field.validationErrorText
             switch state {
             case let .info(message):
@@ -40,7 +40,7 @@ public class ValidationCell: FormFieldCell {
 
 public extension ValidationCell {
     
-    public static var descriptor: CellDescriptor<FormField<Empty>, ValidationCell> {
+    public static var descriptor: CellDescriptor<FormField<ValidationState>, ValidationCell> {
         return CellDescriptor("ValidationCell", bundle: Bundle(for: ValidationCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

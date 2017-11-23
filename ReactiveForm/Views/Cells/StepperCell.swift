@@ -1,6 +1,6 @@
 //
 //  StepperCell.swift
-//  Example
+//  
 //
 //  Created by Gunter Hager on 24.10.17.
 //  Copyright © 2017 aaa - all about apps GmbH. All rights reserved.

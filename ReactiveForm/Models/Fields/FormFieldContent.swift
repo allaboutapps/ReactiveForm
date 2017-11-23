@@ -24,9 +24,6 @@ public extension FormFieldContent {
 
 // MARK: - Support for standard types
 
-public struct Empty: FormFieldContent {
-}
-
 extension Bool: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {

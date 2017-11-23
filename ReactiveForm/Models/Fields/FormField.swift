@@ -208,11 +208,11 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
     
     public func validationField() -> FormFieldProtocol {
         let settings = ValidationFieldSettings()
-        let validationField = FormField<Empty>(identifier: self.identifier + ".validation", type: .validation, title: "Validation", settings: settings, validationErrorText: validationErrorText)
+        let validationField = FormField<ValidationState>(identifier: self.identifier + ".validation", type: .validation, title: "Validation", settings: settings, validationErrorText: validationErrorText)
         SignalProducer.combineLatest(validationState.producer, isHidden.producer)
             .startWithValues { (validationState, isHidden) in
                 
-                settings.displayedState.value = validationState
+                validationField.content.value = validationState
                 
                 if isHidden || settings.isInitial {
                     // Hide validation field if dependent field is hidden

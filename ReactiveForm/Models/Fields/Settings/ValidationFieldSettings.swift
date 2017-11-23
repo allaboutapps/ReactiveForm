@@ -12,7 +12,7 @@ import Result
 import ReactiveSwift
 import ReactiveCocoa
 
-public enum ValidationState {
+public enum ValidationState: FormFieldContent {
     case success
     case info(text: String?)
     case warning(text: String?)
@@ -22,6 +22,5 @@ public enum ValidationState {
 public class ValidationFieldSettings: FormFieldSettings {
     override public var isExportable: Bool { return true }
 
-    public let displayedState = MutableProperty<ValidationState>(.success)
     public var isInitial = true
 }

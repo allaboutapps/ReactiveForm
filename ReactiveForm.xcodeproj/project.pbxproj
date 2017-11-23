@@ -64,6 +64,7 @@
 		BCAF23F71FC5851A009403B1 /* Hideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF23F61FC5851A009403B1 /* Hideable.swift */; };
 		BCAF23F81FC58561009403B1 /* ReactiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF23F31FC57F75009403B1 /* ReactiveItem.swift */; };
 		BCAF24461FC6C9CD009403B1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */; };
+		BCAF24491FC6CDF7009403B1 /* ReactiveItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */; };
 		BCB1AEA21F8F53AC007DC284 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */; };
 		BCB1AEA51F8F548A007DC284 /* ReactiveForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCFBC5FC1FC3080200A657D1 /* Form.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D38061F90939500043D06 /* Form.storyboard */; };
@@ -166,6 +167,7 @@
 		BCAF23F31FC57F75009403B1 /* ReactiveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveItem.swift; sourceTree = "<group>"; };
 		BCAF23F61FC5851A009403B1 /* Hideable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hideable.swift; sourceTree = "<group>"; };
 		BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveItemCell.swift; sourceTree = "<group>"; };
 		BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -365,7 +367,7 @@
 		BC7765041F8CFF3600C49D7E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BC7765101F8CFF3600C49D7E /* FormFieldCell.swift */,
+				BCAF244A1FC6CE05009403B1 /* General */,
 				BC7765061F8CFF3600C49D7E /* PickerCell.swift */,
 				BC7765181F8CFF3600C49D7E /* PickerCell.xib */,
 				BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */,
@@ -421,6 +423,15 @@
 				BCAF23EE1FC563AD009403B1 /* TextCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		BCAF244A1FC6CE05009403B1 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				BC7765101F8CFF3600C49D7E /* FormFieldCell.swift */,
+				BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		BCB1AEA31F8F5425007DC284 /* Frameworks */ = {
@@ -647,6 +658,7 @@
 				BC6792B81F8D02E8007BE23F /* Validation.swift in Sources */,
 				BCFBC6021FC3080C00A657D1 /* GenericPickerViewModel.swift in Sources */,
 				BC6792C61F8D02EC007BE23F /* ValidationFieldSettings.swift in Sources */,
+				BCAF24491FC6CDF7009403B1 /* ReactiveItemCell.swift in Sources */,
 				BC6792B71F8D02E8007BE23F /* Focusable.swift in Sources */,
 				BC8A16E61FC2C941006D9173 /* ToggleCell.swift in Sources */,
 				BC6792BD1F8D02EC007BE23F /* FormField.swift in Sources */,
