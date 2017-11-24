@@ -15,7 +15,7 @@ import ReactiveCocoa
 public class Form {
     
     public var dataSource: DataSource
-    public var viewController: (UIViewController & FormViewController)?
+    public weak var viewController: (UIViewController & FormViewController)?
     
     public init(cellDescriptors: [CellDescriptorType] = [], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true, viewController: (UIViewController & FormViewController)? = nil) {
         let pickerCellDescriptor = PickerCell.descriptor
@@ -30,18 +30,6 @@ public class Form {
 
         self.dataSource = DataSource(cellDescriptors: defaultCellDescriptors + cellDescriptors, sectionDescriptors: sectionDescriptors, registerNibs: registerNibs)
         self.viewController = viewController
-        
-        _ = pickerCellDescriptor.didSelect { [weak self] (item, _) in
-                if let settings = item.settings as? PickerFieldSettings {
-                    let bundle = Bundle(for: GenericPickerViewController.self)
-                    let storyboard = UIStoryboard(name: "Form", bundle: bundle)
-                    if let picker = storyboard.instantiateInitialViewController() as? GenericPickerViewController {
-                        picker.viewModel = settings.pickerViewModel
-                        self?.viewController?.present(picker, animated: true)
-                    }
-                }
-                return .deselect
-        }
 
     }
     

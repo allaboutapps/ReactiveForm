@@ -40,6 +40,17 @@ public extension PickerCell {
             .isHidden { (field, indexPath) in
                 return field.isHidden.value
         }
+            .didSelect { (item, _) in
+                if let settings = item.settings as? PickerFieldSettings {
+                    let bundle = Bundle(for: GenericPickerViewController.self)
+                    let storyboard = UIStoryboard(name: "Form", bundle: bundle)
+                    if let picker = storyboard.instantiateInitialViewController() as? GenericPickerViewController {
+                        picker.viewModel = settings.pickerViewModel
+                        item.form.viewController?.present(picker, animated: true)
+                    }
+                }
+                return .deselect
+        }
     }
     
 }
