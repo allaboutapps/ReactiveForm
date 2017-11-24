@@ -15,10 +15,22 @@ public protocol ReactiveItemProtocol: Hideable {
 
 public class ReactiveItem<T>: ReactiveItemProtocol, Diffable, Equatable {
     
-    public let diffIdentifier = UUID().uuidString
+    private let internalIdentifier = UUID().uuidString
+    
+    public var diffIdentifier: String {
+        if let diffable = property as? Diffable {
+            return diffable.diffIdentifier
+        } else {
+            return internalIdentifier
+        }
+    }
     
     public func isEqualToDiffable(_ other: Diffable?) -> Bool {
-        return self.diffIdentifier == other?.diffIdentifier
+        if let diffable = property as? Diffable {
+            return diffable.isEqualToDiffable(other)
+        } else {
+            return self.diffIdentifier == other?.diffIdentifier
+        }
     }
     
     //swiftlint:disable operator_whitespace
