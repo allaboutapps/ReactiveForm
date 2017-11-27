@@ -11,8 +11,23 @@ import DataSource
 import ReactiveForm
 import ReactiveSwift
 
+enum NamedNumber: PickerItem {
+    case one
+    case two
+    case three
+    
+    var title: String {
+        switch self {
+        case .one: return "One"
+        case .two: return "Two"
+        case .three: return "Three"
+        }
+    }
+}
+
 class AllFieldsViewController: UIViewController, FormViewController {    
     
+    let namedNumber = MutableProperty<NamedNumber?>(nil)
     let email = MutableProperty<String?>(nil)
     let tellMeMore = MutableProperty<Bool>(false)
     
@@ -77,6 +92,13 @@ class AllFieldsViewController: UIViewController, FormViewController {
                 FormField<String>(type: .textField, title: "Text Field")
                     .row,
                 FormField<Bool>(type: .toggle, title: "Toggle Field")
+                    .row,
+                FormField<String>(identifier: "namedNumber", type: .picker, title: "Choose number")
+                    .configure { field in
+                        let viewModel = GenericPickerViewModel(title: "Choose number", items: [NamedNumber.one, NamedNumber.two, NamedNumber.three], selectedItem: namedNumber)
+                        let settings = PickerFieldSettings(viewModel: viewModel)
+                        return settings
+                    }
                     .row
                 ]).with(identifier: "inputFields"),
             Section(rows: [
