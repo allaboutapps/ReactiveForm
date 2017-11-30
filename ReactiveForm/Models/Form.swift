@@ -18,10 +18,10 @@ public class Form {
     public weak var viewController: (UIViewController & FormViewController)?
     
     public init(cellDescriptors: [CellDescriptorType] = [], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true, viewController: (UIViewController & FormViewController)? = nil) {
-        let pickerCellDescriptor = PickerCell.descriptor
         let defaultCellDescriptors: [CellDescriptorType] =
             [
-                pickerCellDescriptor,
+                PickerCell.descriptor,
+                SegmentedCell.descriptor,
                 StepperCell.descriptor,
                 ToggleCell.descriptor,
                 ValidationCell.descriptor
@@ -127,8 +127,8 @@ public class Form {
                     // Reload table view
                     guard let tableView = self.viewController?.tableView else { return }
                     self.dataSource.reloadDataAnimated(tableView,
-                                                       rowDeletionAnimation: .automatic,
-                                                       rowInsertionAnimation: .automatic,
+                                                       rowDeletionAnimation: .fade,
+                                                       rowInsertionAnimation: .fade,
                                                        rowReloadAnimation: .none)
                     
                     self.didChange?()

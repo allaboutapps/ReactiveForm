@@ -67,6 +67,9 @@
 		BCAF24491FC6CDF7009403B1 /* ReactiveItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */; };
 		BCB1AEA21F8F53AC007DC284 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */; };
 		BCB1AEA51F8F548A007DC284 /* ReactiveForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BCF3B2B01FD004F800E20A0B /* SegmentedFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B2AF1FD004F800E20A0B /* SegmentedFieldSettings.swift */; };
+		BCF3B2B31FD0053500E20A0B /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B2B11FD0053400E20A0B /* SegmentedCell.swift */; };
+		BCF3B2B41FD0053500E20A0B /* SegmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF3B2B21FD0053400E20A0B /* SegmentedCell.xib */; };
 		BCFBC5FC1FC3080200A657D1 /* Form.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D38061F90939500043D06 /* Form.storyboard */; };
 		BCFBC5FD1FC3080C00A657D1 /* ModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77651C1F8CFF3600C49D7E /* ModalTransitioningDelegate.swift */; };
 		BCFBC5FE1FC3080C00A657D1 /* ModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77651D1F8CFF3600C49D7E /* ModalPresentationController.swift */; };
@@ -169,6 +172,9 @@
 		BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveItemCell.swift; sourceTree = "<group>"; };
 		BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		BCF3B2AF1FD004F800E20A0B /* SegmentedFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedFieldSettings.swift; sourceTree = "<group>"; };
+		BCF3B2B11FD0053400E20A0B /* SegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
+		BCF3B2B21FD0053400E20A0B /* SegmentedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentedCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +319,7 @@
 			children = (
 				BC7764F51F8CFF3600C49D7E /* PickerFieldSettings.swift */,
 				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
+				BCF3B2AF1FD004F800E20A0B /* SegmentedFieldSettings.swift */,
 				BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */,
 				BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */,
 			);
@@ -370,6 +377,8 @@
 				BCAF244A1FC6CE05009403B1 /* General */,
 				BC7765061F8CFF3600C49D7E /* PickerCell.swift */,
 				BC7765181F8CFF3600C49D7E /* PickerCell.xib */,
+				BCF3B2B11FD0053400E20A0B /* SegmentedCell.swift */,
+				BCF3B2B21FD0053400E20A0B /* SegmentedCell.xib */,
 				BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */,
 				BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */,
 				BC77650A1F8CFF3600C49D7E /* TextFieldCell.swift */,
@@ -580,6 +589,7 @@
 				BCAF24461FC6C9CD009403B1 /* .swiftlint.yml in Resources */,
 				BC8A16E71FC2C941006D9173 /* ToggleCell.xib in Resources */,
 				BC8A16DD1FC2C941006D9173 /* PickerCell.xib in Resources */,
+				BCF3B2B41FD0053500E20A0B /* SegmentedCell.xib in Resources */,
 				BC8A16E31FC2C941006D9173 /* TextFieldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +671,7 @@
 				BCAF24491FC6CDF7009403B1 /* ReactiveItemCell.swift in Sources */,
 				BC6792B71F8D02E8007BE23F /* Focusable.swift in Sources */,
 				BC8A16E61FC2C941006D9173 /* ToggleCell.swift in Sources */,
+				BCF3B2B31FD0053500E20A0B /* SegmentedCell.swift in Sources */,
 				BC6792BD1F8D02EC007BE23F /* FormField.swift in Sources */,
 				BCFBC5FF1FC3080C00A657D1 /* ModalAnimationController.swift in Sources */,
 				BC6792BE1F8D02EC007BE23F /* FormFieldSettings.swift in Sources */,
@@ -669,6 +680,7 @@
 				BCFBC6001FC3080C00A657D1 /* GenericPickerViewController.swift in Sources */,
 				BCFBC6011FC3080C00A657D1 /* ModalViewController.swift in Sources */,
 				BC6792BF1F8D02EC007BE23F /* FormFieldContent.swift in Sources */,
+				BCF3B2B01FD004F800E20A0B /* SegmentedFieldSettings.swift in Sources */,
 				BC8A16E01FC2C941006D9173 /* StepperCell.swift in Sources */,
 				BCAF23F71FC5851A009403B1 /* Hideable.swift in Sources */,
 				BC8A16E81FC2C941006D9173 /* ValidationCell.swift in Sources */,

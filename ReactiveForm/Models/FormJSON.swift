@@ -14,6 +14,7 @@ public struct FormJSON {
         // Input
         case textField
         case picker
+        case segmented
         case stepper
         case toggle
         

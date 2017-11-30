@@ -28,6 +28,7 @@ enum NamedNumber: PickerItem {
 class AllFieldsViewController: UIViewController, FormViewController {    
     
     let namedNumber = MutableProperty<NamedNumber?>(nil)
+    let segmentedIndex = MutableProperty<Int>(0)
     let email = MutableProperty<String?>(nil)
     let tellMeMore = MutableProperty<Bool>(false)
     
@@ -73,13 +74,28 @@ class AllFieldsViewController: UIViewController, FormViewController {
     }
     
     private func setupForm() {
+        let text1Item = ReactiveItem<String>("First segment selected.")
+            .configure { [weak self] (item) in
+                guard let `self` = self else { return }
+                item.isHidden <~ self.segmentedIndex.map { $0 != 0 }
+        }
+        let text2Item = ReactiveItem<String>("Second segment selected.")
+            .configure { [weak self] (item) in
+                guard let `self` = self else { return }
+                item.isHidden <~ self.segmentedIndex.map { $0 != 1 }
+        }
+        let text3Item = ReactiveItem<String>("Third segment selected.")
+            .configure { [weak self] (item) in
+                guard let `self` = self else { return }
+                item.isHidden <~ self.segmentedIndex.map { $0 != 2 }
+        }
+
         let emailField = FormField<String>(identifier: "email",
                                            type: .textField,
                                            title: "Email",
                                            isRequired: true,
                                            validationRule: "(value != undefined) && (value.length >= 3) && value.includes('@')",
                                            validationErrorText: "Invalid email address!")
-        let tellMeMoreField = FormField<Bool>(type: .toggle, title: "Tell me more")
         let tellMeMoreItem = ReactiveItem<String>("Here is where we get more information about life, the universe and everything.")
             .configure { [weak self] (item) in
                 guard let `self` = self else { return }
@@ -87,6 +103,7 @@ class AllFieldsViewController: UIViewController, FormViewController {
         }
         
         form.setSections(sections: [
+            
             Section(rows: [
                 Row(ReactiveItem<String>("Hello world!"), identifier: "TextCell"),
                 FormField<String>(type: .textField, title: "Text Field")
@@ -101,12 +118,26 @@ class AllFieldsViewController: UIViewController, FormViewController {
                     }
                     .row
                 ]).with(identifier: "inputFields"),
+            
             Section(rows: [
+                FormField<Int>(type: .segmented, title: "segmented")
+                    .configure { [weak self] field in
+                        guard let `self` = self else { return nil }
+                        self.segmentedIndex <~ field.content.map { $0 ?? 0 }
+                        let settings = SegmentedFieldSettings(segments: ["One", "Two", "Three"])
+                        return settings
+                    }
+                    .row,
+                Row(text1Item, identifier: "TextCell"),
+                Row(text2Item, identifier: "TextCell"),
+                Row(text3Item, identifier: "TextCell"),
+
                 emailField
                     .configure { [weak self] field in
                         guard let `self` = self else { return nil }
                         self.email <~ field.content
-                        
+                        field.isHidden <~ self.segmentedIndex.map { $0 != 0 }
+
                         let settings = TextFieldSettings()
                         settings.textContentType = .emailAddress
                         settings.keyboardType = .emailAddress
@@ -116,7 +147,7 @@ class AllFieldsViewController: UIViewController, FormViewController {
                     .row,
                 emailField.validationField()
                     .row,
-                tellMeMoreField
+                FormField<Bool>(type: .toggle, title: "Tell me more")
                     .configure { [weak self] field in
                         guard let `self` = self else { return nil }
                         self.tellMeMore <~ field.content.map { $0 ?? false }

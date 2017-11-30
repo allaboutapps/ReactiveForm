@@ -2,18 +2,8 @@
 
 ---
 
-⚡️ Swift: 3.1 📱 iOS 10.3 🌎 [API Docs](http://linktoswaggerdocs)
+⚡️ Swift: 4.0 📱 iOS 10.3 🌎 [API Docs](http://linktoswaggerdocs)
 
 ---
 
-
-
-## Structure
-
-TODO
-
-## Documentation
-
-Where do I find API docs, wireframes, etc.?
-
-## Tests
+Note: This framework doesn't work correctly in simulator!
