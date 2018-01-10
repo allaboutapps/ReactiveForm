@@ -24,6 +24,12 @@ public extension FormFieldContent {
 
 // MARK: - Support for standard types
 
+private let numberFormatter: NumberFormatter = {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    return formatter
+}()
+
 extension Bool: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
@@ -43,7 +49,7 @@ extension Int: FormFieldContent {
 extension Float: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
-        return Float(content)
+        return numberFormatter.number(from: content)?.floatValue ?? 0
     }
     
 }
@@ -51,7 +57,7 @@ extension Float: FormFieldContent {
 extension Double: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
-        return Double(content)
+        return numberFormatter.number(from: content)?.doubleValue ?? 0
     }
     
 }
@@ -59,7 +65,8 @@ extension Double: FormFieldContent {
 extension CGFloat: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
-        return Double(content)
+        let value = numberFormatter.number(from: content)?.doubleValue ?? 0
+        return CGFloat(value)
     }
     
 }

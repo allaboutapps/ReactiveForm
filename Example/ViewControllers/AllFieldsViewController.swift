@@ -108,6 +108,17 @@ class AllFieldsViewController: UIViewController, FormViewController {
                 Row(ReactiveItem<String>("Hello world!"), identifier: "TextCell"),
                 FormField<String>(type: .textField, title: "Text Field")
                     .row,
+                FormField<Double>(type: .textField, title: "Number Field")
+                    .configure({ (field) -> FormFieldSettings? in
+                        field.content.producer.startWithValues { (value) in
+                            print("Double value: \(String(describing: value))")
+                        }
+                        
+                        let settings = TextFieldSettings()
+                        settings.keyboardType = .decimalPad
+                        return settings
+                    })
+                    .row,
                 FormField<Bool>(type: .toggle, title: "Toggle Field")
                     .row,
                 FormField<String>(identifier: "namedNumber", type: .picker, title: "Choose number")
