@@ -89,7 +89,13 @@ class AllFieldsViewController: UIViewController, FormViewController {
                 guard let `self` = self else { return }
                 item.isHidden <~ self.segmentedIndex.map { $0 != 2 }
         }
-
+        
+        let numberField = FormField<Double>(type: .textField,
+                                            title: "Number Field",
+                                            isRequired: true,
+                                            validationRule: "(value != undefined) && (value > 0)",
+                                            validationErrorText: "Value must be > 0")
+        
         let emailField = FormField<String>(identifier: "email",
                                            type: .textField,
                                            title: "Email",
@@ -108,8 +114,9 @@ class AllFieldsViewController: UIViewController, FormViewController {
                 Row(ReactiveItem<String>("Hello world!"), identifier: "TextCell"),
                 FormField<String>(type: .textField, title: "Text Field")
                     .row,
-                FormField<Double>(type: .textField, title: "Number Field")
-                    .configure({ (field) -> FormFieldSettings? in
+                
+                numberField
+                    .configure { (field) -> FormFieldSettings? in
                         field.content.producer.startWithValues { (value) in
                             print("Double value: \(String(describing: value))")
                         }
@@ -117,8 +124,11 @@ class AllFieldsViewController: UIViewController, FormViewController {
                         let settings = TextFieldSettings()
                         settings.keyboardType = .decimalPad
                         return settings
-                    })
+                    }
                     .row,
+                numberField.validationField()
+                    .row,
+
                 FormField<Bool>(type: .toggle, title: "Toggle Field")
                     .row,
                 FormField<String>(identifier: "namedNumber", type: .picker, title: "Choose number")
@@ -158,6 +168,7 @@ class AllFieldsViewController: UIViewController, FormViewController {
                     .row,
                 emailField.validationField()
                     .row,
+                
                 FormField<Bool>(type: .toggle, title: "Tell me more")
                     .configure { [weak self] field in
                         guard let `self` = self else { return nil }

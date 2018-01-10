@@ -51,10 +51,7 @@ public class TextFieldCell: FormFieldCell {
             } else {
                 field.setContent(nil)
             }
-        }
-        
-        disposable += field.validationState <~ textField.reactive.continuousTextValues.map { value -> ValidationState in
-            return field.validate(value: value)
+            field.validationState.value = field.validate(value: field.content.value)
         }
         
         // Set Focus
