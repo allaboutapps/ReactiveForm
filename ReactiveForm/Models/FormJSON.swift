@@ -64,6 +64,7 @@ public struct FormJSON {
         case show
         case cancel
         case success
+        case exit
     }
     
     public struct Action: Decodable {
@@ -71,5 +72,6 @@ public struct FormJSON {
         public let title: String?
         public let execute: ActionExecute
         public let card: String?
+        public let screen: String?
     }
 }
