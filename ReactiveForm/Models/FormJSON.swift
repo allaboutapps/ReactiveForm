@@ -46,6 +46,10 @@ public struct FormJSON {
             return actions.filter { $0.type == .secondary }.first
         }
         
+        public var tertiaryAction: Action? {
+            return actions.filter { $0.type == .tertiary }.first
+        }
+        
     }
     
     public struct Field: Decodable {
@@ -57,6 +61,7 @@ public struct FormJSON {
     public enum ActionType: String, Decodable {
         case primary
         case secondary
+        case tertiary
         case back
     }
     
