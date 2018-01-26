@@ -514,6 +514,7 @@
 			buildConfigurationList = 4C5C20661F1371D400D52B41 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				4C5C203D1F1371D400D52B41 /* Sources */,
+				BCC67BA1201B2AD2009FBF0A /* Run Script - SwiftLint */,
 				4C5C203E1F1371D400D52B41 /* Frameworks */,
 				4C5C203F1F1371D400D52B41 /* Resources */,
 				4C5C20AA1F1375DC00D52B41 /* Carthage */,
@@ -637,6 +638,20 @@
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		BCAF24471FC6C9F5009403B1 /* Run Script - SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		BCC67BA1201B2AD2009FBF0A /* Run Script - SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

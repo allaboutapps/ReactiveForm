@@ -73,6 +73,7 @@ class AllFieldsViewController: UIViewController, FormViewController {
         }
     }
     
+    //swiftlint:disable function_body_length
     private func setupForm() {
         let text1Item = ReactiveItem<String>("First segment selected.")
             .configure { [weak self] (item) in
