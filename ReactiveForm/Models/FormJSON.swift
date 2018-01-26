@@ -69,6 +69,7 @@ public struct FormJSON {
         case show
         case cancel
         case success
+        case tertiary
         case exit
     }
     
