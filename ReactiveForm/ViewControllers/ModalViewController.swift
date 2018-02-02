@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class ModalViewController: UIViewController {
+open class ModalViewController: UIViewController {
 
     //swiftlint:disable weak_delegate
     public let modalTransitioningDelegate = ModalTransitioningDelegate(dimBackground: true)
 
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
 
         modalPresentationStyle = .custom
         transitioningDelegate = modalTransitioningDelegate
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         let size = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
