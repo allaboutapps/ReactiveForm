@@ -11,6 +11,7 @@ import UIKit
 public protocol FormFieldContent {
     
     static func create(from string: String) -> FormFieldContent?
+    var stringValue: String { get }
     
 }
 
@@ -18,6 +19,10 @@ public extension FormFieldContent {
     
     public static func create(from string: String) -> FormFieldContent? {
         return nil
+    }
+    
+    public var stringValue: String {
+        return ""
     }
 
 }
@@ -44,6 +49,10 @@ extension Int: FormFieldContent {
         return Int(content)
     }
     
+    public var stringValue: String {
+        return "\(self)"
+    }
+    
 }
 
 extension Float: FormFieldContent {
@@ -52,12 +61,20 @@ extension Float: FormFieldContent {
         return numberFormatter.number(from: content)?.floatValue ?? 0
     }
     
+    public var stringValue: String {
+        return numberFormatter.string(from: NSNumber(value: self)) ?? "\(self)"
+    }
+    
 }
 
 extension Double: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
         return numberFormatter.number(from: content)?.doubleValue ?? 0
+    }
+    
+    public var stringValue: String {
+        return numberFormatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
     
 }
@@ -69,6 +86,10 @@ extension CGFloat: FormFieldContent {
         return CGFloat(value)
     }
     
+    public var stringValue: String {
+        return numberFormatter.string(from: NSNumber(value: Double(self))) ?? "\(self)"
+    }
+    
 }
 
 extension String: FormFieldContent {
@@ -76,5 +97,9 @@ extension String: FormFieldContent {
     public static func create(from content: String) -> FormFieldContent? {
         return String(content)
     }
-    
+
+    public var stringValue: String {
+        return self
+    }
+
 }

@@ -28,7 +28,7 @@ public class TextFieldCell: FormFieldCell {
         textField.delegate = self
         
         if let value = field.content.value {
-            contentBuffer.value = "\(value)"
+            contentBuffer.value = value.stringValue
         } else {
             contentBuffer.value = nil
         }
