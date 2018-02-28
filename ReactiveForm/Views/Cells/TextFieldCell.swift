@@ -41,6 +41,8 @@ public class TextFieldCell: FormFieldCell {
             } else {
                 disposable += contentBuffer <~ textField.reactive.continuousTextValues
             }
+        } else {
+            textField.assignTraits(nil)
         }
         
         disposable += textField.reactive.text <~ contentBuffer

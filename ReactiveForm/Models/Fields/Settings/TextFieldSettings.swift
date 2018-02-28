@@ -27,34 +27,38 @@ public class TextFieldSettings: FormFieldSettings, UITextInputTraits {
 
 public extension UITextField {
     
-    public func assignTraits(_ traits: UITextInputTraits) {
-        self.autocapitalizationType = traits.autocapitalizationType ?? .none
-        self.autocorrectionType = traits.autocorrectionType ?? .default
-        self.spellCheckingType = traits.spellCheckingType ?? .default
-        self.keyboardType = traits.keyboardType ?? .default
-        self.keyboardAppearance = traits.keyboardAppearance ?? .default
-        self.returnKeyType = traits.returnKeyType ?? .default
-        self.enablesReturnKeyAutomatically = traits.enablesReturnKeyAutomatically ?? false
-        self.isSecureTextEntry = traits.isSecureTextEntry ?? false
-        if let textContentType = traits.textContentType {
+    public func assignTraits(_ traits: UITextInputTraits?) {
+        self.autocapitalizationType = traits?.autocapitalizationType ?? .none
+        self.autocorrectionType = traits?.autocorrectionType ?? .default
+        self.spellCheckingType = traits?.spellCheckingType ?? .default
+        self.keyboardType = traits?.keyboardType ?? .default
+        self.keyboardAppearance = traits?.keyboardAppearance ?? .default
+        self.returnKeyType = traits?.returnKeyType ?? .default
+        self.enablesReturnKeyAutomatically = traits?.enablesReturnKeyAutomatically ?? false
+        self.isSecureTextEntry = traits?.isSecureTextEntry ?? false
+        if let textContentType = traits?.textContentType {
             self.textContentType = textContentType
+        } else {
+            self.textContentType = nil
         }
     }
 }
 
 public extension UITextView {
     
-    public func assignTraits(_ traits: UITextInputTraits) {
-        self.autocapitalizationType = traits.autocapitalizationType ?? .none
-        self.autocorrectionType = traits.autocorrectionType ?? .default
-        self.spellCheckingType = traits.spellCheckingType ?? .default
-        self.keyboardType = traits.keyboardType ?? .default
-        self.keyboardAppearance = traits.keyboardAppearance ?? .default
-        self.returnKeyType = traits.returnKeyType ?? .default
-        self.enablesReturnKeyAutomatically = traits.enablesReturnKeyAutomatically ?? false
-        self.isSecureTextEntry = traits.isSecureTextEntry ?? false
-        if let textContentType = traits.textContentType {
+    public func assignTraits(_ traits: UITextInputTraits?) {
+        self.autocapitalizationType = traits?.autocapitalizationType ?? .none
+        self.autocorrectionType = traits?.autocorrectionType ?? .default
+        self.spellCheckingType = traits?.spellCheckingType ?? .default
+        self.keyboardType = traits?.keyboardType ?? .default
+        self.keyboardAppearance = traits?.keyboardAppearance ?? .default
+        self.returnKeyType = traits?.returnKeyType ?? .default
+        self.enablesReturnKeyAutomatically = traits?.enablesReturnKeyAutomatically ?? false
+        self.isSecureTextEntry = traits?.isSecureTextEntry ?? false
+        if let textContentType = traits?.textContentType {
             self.textContentType = textContentType
+        } else {
+            self.textContentType = nil
         }
     }
 }
