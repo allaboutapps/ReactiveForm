@@ -13,7 +13,7 @@ public class TextFieldSettings: FormFieldSettings, UITextInputTraits {
     override public var isFocusable: Bool { return true }
     
     /// Trims whitespace at start and end of string.
-    public var shouldTrim: Bool = true
+    public var shouldTrim: Bool = false
     
     public var keyboardType: UIKeyboardType = .default
     public var returnKeyType: UIReturnKeyType = .default
