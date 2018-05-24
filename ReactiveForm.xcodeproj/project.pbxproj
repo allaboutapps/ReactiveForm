@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C5C200A1F136F9800D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
-		4C5C200F1F136F9800D52B41 /* ReactiveFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C200E1F136F9800D52B41 /* ReactiveFormTests.swift */; };
 		4C5C203B1F13713000D52B41 /* ReactiveForm.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C5C202D1F13713000D52B41 /* ReactiveForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C5C20831F1372EE00D52B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C20701F1372EE00D52B41 /* AppDelegate.swift */; };
 		4C5C20841F1372EE00D52B41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C20721F1372EE00D52B41 /* Assets.xcassets */; };
@@ -17,19 +15,14 @@
 		4C5C20881F1372EE00D52B41 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C20791F1372EE00D52B41 /* Storyboard.swift */; };
 		4C5C20921F1373B900D52B41 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C20911F1373B900D52B41 /* Cartfile */; };
 		4C5C209A1F13750000D52B41 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20951F13750000D52B41 /* DataSource.framework */; };
-		4C5C209B1F13750000D52B41 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20951F13750000D52B41 /* DataSource.framework */; };
 		4C5C209C1F13750000D52B41 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20951F13750000D52B41 /* DataSource.framework */; };
 		4C5C209D1F13750000D52B41 /* Diff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20961F13750000D52B41 /* Diff.framework */; };
-		4C5C209E1F13750000D52B41 /* Diff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20961F13750000D52B41 /* Diff.framework */; };
 		4C5C209F1F13750000D52B41 /* Diff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20961F13750000D52B41 /* Diff.framework */; };
 		4C5C20A01F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */; };
-		4C5C20A11F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */; };
 		4C5C20A21F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */; };
 		4C5C20A31F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
-		4C5C20A41F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
 		4C5C20A51F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
 		4C5C20A61F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
-		4C5C20A71F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
 		BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */; };
@@ -80,13 +73,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4C5C200B1F136F9800D52B41 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C5C1FF71F136F9800D52B41 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4C5C1FFF1F136F9800D52B41;
-			remoteInfo = ReactiveForm;
-		};
 		4C8150491F1385FA001EC6CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C5C1FF71F136F9800D52B41 /* Project object */;
@@ -112,9 +98,6 @@
 
 /* Begin PBXFileReference section */
 		4C5C20001F136F9800D52B41 /* ReactiveForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C5C20091F136F9800D52B41 /* ReactiveFormTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveFormTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C5C200E1F136F9800D52B41 /* ReactiveFormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveFormTests.swift; sourceTree = "<group>"; };
-		4C5C20101F136F9800D52B41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5C202C1F13713000D52B41 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5C202D1F13713000D52B41 /* ReactiveForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactiveForm.h; sourceTree = "<group>"; };
 		4C5C20411F1371D400D52B41 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,19 +173,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C5C20061F136F9800D52B41 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C5C200A1F136F9800D52B41 /* ReactiveForm.framework in Frameworks */,
-				4C5C209E1F13750000D52B41 /* Diff.framework in Frameworks */,
-				4C5C20A41F13750000D52B41 /* ReactiveSwift.framework in Frameworks */,
-				4C5C20A71F13750000D52B41 /* Result.framework in Frameworks */,
-				4C5C209B1F13750000D52B41 /* DataSource.framework in Frameworks */,
-				4C5C20A11F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4C5C203E1F1371D400D52B41 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,7 +197,6 @@
 				BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */,
 				4C5C20931F1373C400D52B41 /* README.md */,
 				4C5C202A1F13713000D52B41 /* ReactiveForm */,
-				4C5C200D1F136F9800D52B41 /* ReactiveFormTests */,
 				4C5C206F1F1372EE00D52B41 /* Example */,
 				4C5C20901F13738200D52B41 /* Carthage */,
 				4C5C20011F136F9800D52B41 /* Products */,
@@ -239,19 +208,9 @@
 			isa = PBXGroup;
 			children = (
 				4C5C20001F136F9800D52B41 /* ReactiveForm.framework */,
-				4C5C20091F136F9800D52B41 /* ReactiveFormTests.xctest */,
 				4C5C20411F1371D400D52B41 /* Example.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4C5C200D1F136F9800D52B41 /* ReactiveFormTests */ = {
-			isa = PBXGroup;
-			children = (
-				4C5C200E1F136F9800D52B41 /* ReactiveFormTests.swift */,
-				4C5C20101F136F9800D52B41 /* Info.plist */,
-			);
-			path = ReactiveFormTests;
 			sourceTree = "<group>";
 		};
 		4C5C202A1F13713000D52B41 /* ReactiveForm */ = {
@@ -491,24 +450,6 @@
 			productReference = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4C5C20081F136F9800D52B41 /* ReactiveFormTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4C5C20171F136F9800D52B41 /* Build configuration list for PBXNativeTarget "ReactiveFormTests" */;
-			buildPhases = (
-				4C5C20051F136F9800D52B41 /* Sources */,
-				4C5C20061F136F9800D52B41 /* Frameworks */,
-				4C5C20071F136F9800D52B41 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4C5C200C1F136F9800D52B41 /* PBXTargetDependency */,
-			);
-			name = ReactiveFormTests;
-			productName = ReactiveFormTests;
-			productReference = 4C5C20091F136F9800D52B41 /* ReactiveFormTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		4C5C20401F1371D400D52B41 /* Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C5C20661F1371D400D52B41 /* Build configuration list for PBXNativeTarget "Example" */;
@@ -537,16 +478,10 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "aaa - all about apps GmbH";
 				TargetAttributes = {
 					4C5C1FFF1F136F9800D52B41 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = M8F9QH57A6;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-					};
-					4C5C20081F136F9800D52B41 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = M8F9QH57A6;
 						LastSwiftMigration = 0900;
@@ -573,7 +508,6 @@
 			projectRoot = "";
 			targets = (
 				4C5C1FFF1F136F9800D52B41 /* ReactiveForm */,
-				4C5C20081F136F9800D52B41 /* ReactiveFormTests */,
 				4C5C20401F1371D400D52B41 /* Example */,
 			);
 		};
@@ -592,13 +526,6 @@
 				BC8A16DD1FC2C941006D9173 /* PickerCell.xib in Resources */,
 				BCF3B2B41FD0053500E20A0B /* SegmentedCell.xib in Resources */,
 				BC8A16E31FC2C941006D9173 /* TextFieldCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4C5C20071F136F9800D52B41 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,14 +632,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C5C20051F136F9800D52B41 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C5C200F1F136F9800D52B41 /* ReactiveFormTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4C5C203D1F1371D400D52B41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,11 +648,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4C5C200C1F136F9800D52B41 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4C5C1FFF1F136F9800D52B41 /* ReactiveForm */;
-			targetProxy = 4C5C200B1F136F9800D52B41 /* PBXContainerItemProxy */;
-		};
 		4C81504A1F1385FA001EC6CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4C5C1FFF1F136F9800D52B41 /* ReactiveForm */;
@@ -783,6 +697,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -790,6 +705,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -843,6 +759,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -850,6 +767,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -928,40 +846,6 @@
 			};
 			name = Release;
 		};
-		4C5C20181F136F9800D52B41 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = M8F9QH57A6;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = ReactiveFormTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = at.allaboutapps.ReactiveFormTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		4C5C20191F136F9800D52B41 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = M8F9QH57A6;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = ReactiveFormTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = at.allaboutapps.ReactiveFormTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
 		4C5C20671F1371D400D52B41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1017,15 +901,6 @@
 			buildConfigurations = (
 				4C5C20151F136F9800D52B41 /* Debug */,
 				4C5C20161F136F9800D52B41 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4C5C20171F136F9800D52B41 /* Build configuration list for PBXNativeTarget "ReactiveFormTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4C5C20181F136F9800D52B41 /* Debug */,
-				4C5C20191F136F9800D52B41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

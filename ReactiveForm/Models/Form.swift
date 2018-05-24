@@ -110,9 +110,9 @@ public class Form {
     }
     
     private func setFormOnFields() {
-        fields.forEach { (field) in
-            var f = field
-            f.form = self
+        fields.forEach { (item) in
+            var field = item
+            field.form = self
         }
     }
     

@@ -10,6 +10,6 @@ import UIKit
 
 public protocol FormViewController where Self: UIViewController {
     
-    weak var tableView: UITableView! { get }
+    var tableView: UITableView! { get }
     
 }
