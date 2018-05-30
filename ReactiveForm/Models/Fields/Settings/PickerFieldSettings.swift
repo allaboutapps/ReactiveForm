@@ -13,6 +13,8 @@ public protocol GenericPickerViewModelProtocol {
     var items: [PickerItem] { get set }
     var selectedItem: MutableProperty<PickerItem?> { get }
     var title: String { get }
+    var cancelButtonTitle: String { get }
+    var submitButtonTitle: String { get }
 }
 
 public protocol PickerItem: FormFieldContent {

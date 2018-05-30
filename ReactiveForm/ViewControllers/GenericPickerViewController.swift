@@ -44,8 +44,8 @@ public class GenericPickerViewController: ModalViewController, UIPickerViewDataS
     
     private func setupUI() {
         titleLabel.text = viewModel.title
-        cancelButton.setTitle("Cancel", for: .normal)
-        submitButton.setTitle("Done", for: .normal)
+        cancelButton.setTitle(viewModel.cancelButtonTitle, for: .normal)
+        submitButton.setTitle(viewModel.submitButtonTitle, for: .normal)
     }
     
     // MARK: DataSource
