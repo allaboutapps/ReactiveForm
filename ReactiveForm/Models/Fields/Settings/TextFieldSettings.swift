@@ -36,11 +36,11 @@ public extension UITextField {
         self.returnKeyType = traits?.returnKeyType ?? .default
         self.enablesReturnKeyAutomatically = traits?.enablesReturnKeyAutomatically ?? false
         self.isSecureTextEntry = traits?.isSecureTextEntry ?? false
-//        if let textContentType = traits?.textContentType {
-//            self.textContentType = textContentType
-//        } else {
-//            self.textContentType = nil
-//        }
+        if let textContentType = traits?.textContentType {
+            self.textContentType = textContentType
+        } else {
+            self.textContentType = nil
+        }
     }
 }
 
@@ -55,10 +55,10 @@ public extension UITextView {
         self.returnKeyType = traits?.returnKeyType ?? .default
         self.enablesReturnKeyAutomatically = traits?.enablesReturnKeyAutomatically ?? false
         self.isSecureTextEntry = traits?.isSecureTextEntry ?? false
-//        if let textContentType = traits?.textContentType {
-//            self.textContentType = textContentType
-//        } else {
-//            self.textContentType = nil
-//        }
+        if let textContentType = traits?.textContentType {
+            self.textContentType = textContentType
+        } else {
+            self.textContentType = nil
+        }
     }
 }
