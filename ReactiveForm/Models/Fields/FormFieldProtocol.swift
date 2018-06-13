@@ -32,7 +32,7 @@ public protocol FormFieldProtocol: Focusable, Hideable {
     var isValid: Property<Bool> { get }
 
     /// Validation rules are defined in `JavaScript`. The value of the field is exposed to `JavaScript` as variable named `value`. You could use a rule like `value > 0` to validate the value of your field.
-    var validationRule: MutableProperty<String?> { get set }
+    var validationRule: MutableProperty<String?> { get }
 }
 
 extension FormFieldProtocol {
