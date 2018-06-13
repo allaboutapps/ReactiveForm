@@ -24,6 +24,10 @@ class SegmentedCell: FormFieldCell {
         disposable += field.validationState <~ segmentedControl.reactive.selectedSegmentIndexes.map { value -> ValidationState in
             return field.validate(value: value)
         }
+        disposable += field.validationState <~ field.validationRule.map { [weak self] (rule) -> ValidationState in
+            guard let `self` = self else { return ValidationState.error(text: nil) }
+            return field.validate(value: self.segmentedControl.selectedSegmentIndex)
+        }
         
         if let settings = field.settings as? SegmentedFieldSettings {
             segmentedControl.removeAllSegments()

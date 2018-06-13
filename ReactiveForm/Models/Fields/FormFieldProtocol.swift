@@ -32,7 +32,7 @@ public protocol FormFieldProtocol: Focusable, Hideable {
     var isValid: Property<Bool> { get }
 
     /// Validation rules are defined in `JavaScript`. The value of the field is exposed to `JavaScript` as variable named `value`. You could use a rule like `value > 0` to validate the value of your field.
-    var validationRule: String? { get set }
+    var validationRule: MutableProperty<String?> { get set }
 }
 
 extension FormFieldProtocol {
@@ -40,7 +40,7 @@ extension FormFieldProtocol {
     // MARK: - Validation
     
     public func validate(value: Any?) -> ValidationState {
-        guard let rule = validationRule else { return .success }
+        guard let rule = validationRule.value else { return .success }
         let isValid = Validation.shared.validate(value: value, withRule: rule)
         return isValid ? .success : .error(text: nil)
     }

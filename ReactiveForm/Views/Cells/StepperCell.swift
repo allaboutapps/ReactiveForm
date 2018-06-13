@@ -44,6 +44,10 @@ public class StepperCell: FormFieldCell {
         disposable += field.validationState <~ field.content.map { value -> ValidationState in
             return field.validate(value: value)
         }
+        disposable += field.validationState <~ field.validationRule.map { (rule) -> ValidationState in
+            return field.validate(value: field.content.value)
+        }
+
     }
     
 }

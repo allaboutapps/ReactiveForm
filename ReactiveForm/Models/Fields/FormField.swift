@@ -132,7 +132,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
         }
         return Property<Bool>(initial: false, then: producer)
     }()
-    public var validationRule: String?
+    public var validationRule = MutableProperty<String?>(nil)
     
     //swiftlint:disable line_length
     public init(identifier: String = UUID().uuidString, type: FormFieldType, customCellIdentifier: String? = nil, title: String, descriptionText: String? = nil, content: T? = nil, settings: FormFieldSettings? = nil, isRequired: Bool = false, validationRule: String? = nil, validationErrorText: String? = nil) {
@@ -144,7 +144,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
         self.content.value = content
         self.settings = settings
         self.isRequired = isRequired
-        self.validationRule = validationRule
+        self.validationRule.value = validationRule
         self.validationErrorText = validationErrorText
         
         if validationRule != nil {

@@ -55,6 +55,9 @@ public class TextFieldCell: FormFieldCell {
             }
             field.validationState.value = field.validate(value: field.content.value)
         }
+        disposable += field.validationState <~ field.validationRule.map { (rule) -> ValidationState in
+            return field.validate(value: field.content.value)
+        }
         
         // Set Focus
         field.focus = {
