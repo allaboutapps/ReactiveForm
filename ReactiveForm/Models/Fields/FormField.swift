@@ -148,7 +148,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
         self.validationErrorText = validationErrorText
         
         if validationRule != nil {
-            validationState.value = validate(value: content)
+            validationState.value = validate(value: content, errorText: validationErrorText)
         }
     }
     
@@ -225,8 +225,18 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
                     switch validationState {
                     case .success:
                         validationField.isHidden.value = true
-                    default:
+                        
+                    case .info(let text):
                         validationField.isHidden.value = false
+                        validationField.title.value = text ?? ""
+                        
+                    case .warning(let text):
+                        validationField.isHidden.value = false
+                        validationField.title.value = text ?? ""
+                        
+                    case .error(let text):
+                        validationField.isHidden.value = false
+                        validationField.title.value = text ?? ""
                     }
                 }
         }

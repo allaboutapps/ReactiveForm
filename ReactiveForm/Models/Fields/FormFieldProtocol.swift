@@ -39,10 +39,10 @@ extension FormFieldProtocol {
         
     // MARK: - Validation
     
-    public func validate(value: Any?) -> ValidationState {
+    public func validate(value: Any?, errorText: String? = nil) -> ValidationState {
         guard let rule = validationRule.value else { return .success }
         let isValid = Validation.shared.validate(value: value, withRule: rule)
-        return isValid ? .success : .error(text: nil)
+        return isValid ? .success : .error(text: errorText)
     }
     
 }
