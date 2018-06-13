@@ -120,7 +120,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
     public var configureReturnKey: (() -> Void)?
     public var focus: (() -> Void)?
     
-    public let validationErrorText: String?
+    public var validationErrorText: String?
     public let validationState = MutableProperty<ValidationState>(.success)
     public lazy var isValid: Property<Bool> = {
         let producer = validationState.producer.map { state -> Bool in
@@ -132,7 +132,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
         }
         return Property<Bool>(initial: false, then: producer)
     }()
-    public var validationRule = MutableProperty<String?>(nil)
+    public let validationRule = MutableProperty<String?>(nil)
     
     //swiftlint:disable line_length
     public init(identifier: String = UUID().uuidString, type: FormFieldType, customCellIdentifier: String? = nil, title: String, descriptionText: String? = nil, content: T? = nil, settings: FormFieldSettings? = nil, isRequired: Bool = false, validationRule: String? = nil, validationErrorText: String? = nil) {
