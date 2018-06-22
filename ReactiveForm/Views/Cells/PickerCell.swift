@@ -125,7 +125,11 @@ extension PickerCell: UITextFieldDelegate {
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        field.nextFocusableField?.focus?()
+        if let nextFocus = field.nextFocusableField?.focus {
+            nextFocus()
+        } else {
+            textField.endEditing(true)
+        }
         return false
     }
 }
