@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class PickerTextField: UITextField {
+open class PickerTextField: UITextField {
 
     // Disable clipboard operations. This prevents pasting invalid values into the field.
-    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return false
     }
 

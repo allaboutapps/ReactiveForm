@@ -11,11 +11,11 @@ import ReactiveSwift
 import ReactiveCocoa
 import DataSource
 
-class SegmentedCell: FormFieldCell {
+public class SegmentedCell: FormFieldCell {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    func configure(field: FormField<Int>) {
+    public func configure(field: FormField<Int>) {
         super.configure(field: field)
         guard field.type == .segmented else { return }
         disposable += segmentedControl.reactive.selectedSegmentIndex <~ field.content.map { $0 ?? 0 }
@@ -43,7 +43,7 @@ class SegmentedCell: FormFieldCell {
 
 extension SegmentedCell {
     
-    static var descriptor: CellDescriptor<FormField<Int>, SegmentedCell> {
+    public static var descriptor: CellDescriptor<FormField<Int>, SegmentedCell> {
         return CellDescriptor("SegmentedCell", bundle: Bundle(for: SegmentedCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

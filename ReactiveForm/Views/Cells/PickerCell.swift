@@ -11,14 +11,14 @@ import DataSource
 import ReactiveSwift
 import ReactiveCocoa
 
-class PickerCell: FormFieldCell {
+public class PickerCell: FormFieldCell {
     
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var textField: PickerTextField!
     public var pickerView = UIPickerView()
     public var toolbar = UIToolbar()
     
-    func configure(field: FormField<String>) {
+    public func configure(field: FormField<String>) {
         super.configure(field: field)
         guard field.type == .picker else { return }
         
@@ -31,7 +31,6 @@ class PickerCell: FormFieldCell {
         field.focus = {
             self.textField.becomeFirstResponder()
         }
-
 
         if let settings = field.settings as? PickerFieldSettings {
             pickerView.dataSource = self
@@ -80,7 +79,7 @@ class PickerCell: FormFieldCell {
 
 extension PickerCell {
     
-    static var descriptor: CellDescriptor<FormField<String>, PickerCell> {
+    public static var descriptor: CellDescriptor<FormField<String>, PickerCell> {
         return CellDescriptor("PickerCell", bundle: Bundle(for: PickerCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)
@@ -94,29 +93,25 @@ extension PickerCell {
 
 extension PickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         guard let settings = field.settings as? PickerFieldSettings else { return 0 }
         return settings.pickerViewModel.items.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         guard let settings = field.settings as? PickerFieldSettings else { return nil }
         return settings.pickerViewModel.items[row].title
     }
     
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        guard let settings = field.settings as? PickerFieldSettings else { return }
-//        settings.pickerViewModel.selectedItem.value = settings.pickerViewModel.items[row]
-//    }
 }
 
 extension PickerCell: UITextFieldDelegate {
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard let settings = field.settings as? PickerFieldSettings else { return false }
         let selectedIndex = settings.pickerViewModel.items.index { (item) -> Bool in
             guard let propertyValue = settings.pickerViewModel.selectedItem.value else { return false }
