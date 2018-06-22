@@ -116,12 +116,7 @@ public extension TextFieldCell {
 extension TextFieldCell: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if field.isLastFocuFocusableField {
-            field.form.submit(sender: field)
-            return true
-        } else {
-            field.nextFocusableField?.focus?()
-            return false
-        }
+        field.nextFocusableField?.focus?()
+        return false
     }
 }

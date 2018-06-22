@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KnL-gh-24v" customClass="PickerCell" customModule="ReactiveForm" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PickerCell" rowHeight="46" id="vXo-Ow-YA6" customClass="PickerCell" customModule="ReactiveForm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KnL-gh-24v" id="o0N-N8-Fas">
-                <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vXo-Ow-YA6" id="Rqz-Dc-hMd">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fx6-ab-1NP">
-                        <rect key="frame" x="16" y="12" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKA-YE-Hwf">
+                        <rect key="frame" x="16" y="12" width="131.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQP-kh-hgL">
-                        <rect key="frame" x="283" y="12" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="{Textfield}" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vxq-l7-agK">
+                        <rect key="frame" x="155.5" y="3" width="171.5" height="36"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="yes"/>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="iQP-kh-hgL" secondAttribute="trailing" constant="16" id="7xF-Ny-qEG"/>
-                    <constraint firstAttribute="bottom" secondItem="Fx6-ab-1NP" secondAttribute="bottom" constant="10.5" id="BiA-wX-EFI"/>
-                    <constraint firstItem="Fx6-ab-1NP" firstAttribute="leading" secondItem="o0N-N8-Fas" secondAttribute="leading" constant="16" id="IIU-ad-Oos"/>
-                    <constraint firstItem="iQP-kh-hgL" firstAttribute="centerY" secondItem="o0N-N8-Fas" secondAttribute="centerY" id="fGH-Ks-ut9"/>
-                    <constraint firstItem="Fx6-ab-1NP" firstAttribute="top" secondItem="o0N-N8-Fas" secondAttribute="top" constant="12" id="hPY-n6-Cut"/>
+                    <constraint firstItem="vxq-l7-agK" firstAttribute="leading" secondItem="DKA-YE-Hwf" secondAttribute="trailing" constant="8" id="322-0U-jyK"/>
+                    <constraint firstAttribute="trailing" secondItem="vxq-l7-agK" secondAttribute="trailing" constant="16" id="42G-Tg-u1r"/>
+                    <constraint firstItem="vxq-l7-agK" firstAttribute="top" secondItem="Rqz-Dc-hMd" secondAttribute="top" constant="3" id="CbN-b8-9XC"/>
+                    <constraint firstAttribute="bottom" secondItem="vxq-l7-agK" secondAttribute="bottom" constant="4.5" id="biq-kx-ul5"/>
+                    <constraint firstItem="DKA-YE-Hwf" firstAttribute="top" secondItem="Rqz-Dc-hMd" secondAttribute="top" constant="12" id="fL0-lT-RH1"/>
+                    <constraint firstItem="DKA-YE-Hwf" firstAttribute="leading" secondItem="Rqz-Dc-hMd" secondAttribute="leading" constant="16" id="glU-uT-n8c"/>
+                    <constraint firstAttribute="bottom" secondItem="DKA-YE-Hwf" secondAttribute="bottom" constant="10.5" id="ob6-1P-rcE"/>
+                    <constraint firstItem="vxq-l7-agK" firstAttribute="width" secondItem="Rqz-Dc-hMd" secondAttribute="width" multiplier="1:2" id="tjh-Fj-QLU"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="titleLabel" destination="Fx6-ab-1NP" id="iUl-X7-wJQ"/>
-                <outlet property="valueLabel" destination="iQP-kh-hgL" id="zm1-CR-alc"/>
+                <outlet property="textField" destination="vxq-l7-agK" id="bb7-fs-IfR"/>
             </connections>
-            <point key="canvasLocation" x="-3" y="-54"/>
+            <point key="canvasLocation" x="-6" y="-77"/>
         </tableViewCell>
     </objects>
 </document>

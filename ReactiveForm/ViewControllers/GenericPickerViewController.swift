@@ -17,9 +17,9 @@ public class GenericPickerViewController: ModalViewController, UIPickerViewDataS
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet public weak var picker: UIPickerView!
     
-    public var viewModel: GenericPickerViewModelProtocol!
+    public var viewModel: PickerViewModelProtocol!
     
-    public var didPickValue: ((GenericPickerViewModelProtocol) -> Void)?
+    public var didPickValue: ((PickerViewModelProtocol) -> Void)?
     
     // MARK: UIViewController
     

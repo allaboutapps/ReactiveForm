@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveSwift
 
-public protocol GenericPickerViewModelProtocol {
+public protocol PickerViewModelProtocol {
     var items: [PickerItem] { get set }
     var selectedItem: MutableProperty<PickerItem?> { get }
     var title: String { get }
@@ -23,9 +23,9 @@ public protocol PickerItem: FormFieldContent {
 
 public class PickerFieldSettings: FormFieldSettings {
         
-    public var pickerViewModel: GenericPickerViewModelProtocol
+    public var pickerViewModel: PickerViewModelProtocol
     
-    public init(viewModel: GenericPickerViewModelProtocol) {
+    public init(viewModel: PickerViewModelProtocol) {
         self.pickerViewModel = viewModel
         super.init()
     }
