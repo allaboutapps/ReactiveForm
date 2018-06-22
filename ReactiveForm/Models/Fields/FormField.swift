@@ -82,6 +82,7 @@ public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffa
     private var isTypeFocusable: Bool {
         switch type {
         case .textField: return true
+        case .picker: return true
         default: return false
         }
     }

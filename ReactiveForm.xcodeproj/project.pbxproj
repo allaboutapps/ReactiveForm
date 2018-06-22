@@ -67,9 +67,7 @@
 		BCFBC5FD1FC3080C00A657D1 /* ModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77651C1F8CFF3600C49D7E /* ModalTransitioningDelegate.swift */; };
 		BCFBC5FE1FC3080C00A657D1 /* ModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77651D1F8CFF3600C49D7E /* ModalPresentationController.swift */; };
 		BCFBC5FF1FC3080C00A657D1 /* ModalAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77651E1F8CFF3600C49D7E /* ModalAnimationController.swift */; };
-		BCFBC6001FC3080C00A657D1 /* GenericPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765021F8CFF3600C49D7E /* GenericPickerViewController.swift */; };
-		BCFBC6011FC3080C00A657D1 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765031F8CFF3600C49D7E /* ModalViewController.swift */; };
-		BCFBC6021FC3080C00A657D1 /* GenericPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765201F8CFF3600C49D7E /* GenericPickerViewModel.swift */; };
+		BCFBC6021FC3080C00A657D1 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765201F8CFF3600C49D7E /* PickerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,8 +127,6 @@
 		BC7764FE1F8CFF3600C49D7E /* FormFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldProtocol.swift; sourceTree = "<group>"; };
 		BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationFieldSettings.swift; sourceTree = "<group>"; };
 		BC7765001F8CFF3600C49D7E /* FormJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormJSON.swift; sourceTree = "<group>"; };
-		BC7765021F8CFF3600C49D7E /* GenericPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPickerViewController.swift; sourceTree = "<group>"; };
-		BC7765031F8CFF3600C49D7E /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		BC7765061F8CFF3600C49D7E /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
 		BC7765081F8CFF3600C49D7E /* ValidationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationCell.swift; sourceTree = "<group>"; };
 		BC77650A1F8CFF3600C49D7E /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
@@ -143,7 +139,7 @@
 		BC77651C1F8CFF3600C49D7E /* ModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		BC77651D1F8CFF3600C49D7E /* ModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentationController.swift; sourceTree = "<group>"; };
 		BC77651E1F8CFF3600C49D7E /* ModalAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAnimationController.swift; sourceTree = "<group>"; };
-		BC7765201F8CFF3600C49D7E /* GenericPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPickerViewModel.swift; sourceTree = "<group>"; };
+		BC7765201F8CFF3600C49D7E /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
 		BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleButton.framework; path = Carthage/Build/iOS/SimpleButton.framework; sourceTree = "<group>"; };
 		BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		BC8D38071F90939500043D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Form.storyboard; sourceTree = "<group>"; };
@@ -221,7 +217,6 @@
 				4C5C202D1F13713000D52B41 /* ReactiveForm.h */,
 				BCB1AEA81F8F567B007DC284 /* Storyboards */,
 				BC77651B1F8CFF3600C49D7E /* Transitions */,
-				BC7765011F8CFF3600C49D7E /* ViewControllers */,
 				BC77651F1F8CFF3600C49D7E /* ViewModels */,
 				BC8A16D11FC2C8B7006D9173 /* Views */,
 			);
@@ -321,15 +316,6 @@
 			path = Fields;
 			sourceTree = "<group>";
 		};
-		BC7765011F8CFF3600C49D7E /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				BC7765021F8CFF3600C49D7E /* GenericPickerViewController.swift */,
-				BC7765031F8CFF3600C49D7E /* ModalViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		BC7765041F8CFF3600C49D7E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +349,7 @@
 		BC77651F1F8CFF3600C49D7E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BC7765201F8CFF3600C49D7E /* GenericPickerViewModel.swift */,
+				BC7765201F8CFF3600C49D7E /* PickerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -608,7 +594,7 @@
 				BC6792C31F8D02EC007BE23F /* TextFieldSettings.swift in Sources */,
 				BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */,
 				BC6792B81F8D02E8007BE23F /* Validation.swift in Sources */,
-				BCFBC6021FC3080C00A657D1 /* GenericPickerViewModel.swift in Sources */,
+				BCFBC6021FC3080C00A657D1 /* PickerViewModel.swift in Sources */,
 				BC6792C61F8D02EC007BE23F /* ValidationFieldSettings.swift in Sources */,
 				BCAF24491FC6CDF7009403B1 /* ReactiveItemCell.swift in Sources */,
 				BC6792B71F8D02E8007BE23F /* Focusable.swift in Sources */,
@@ -619,8 +605,6 @@
 				BC6792BE1F8D02EC007BE23F /* FormFieldSettings.swift in Sources */,
 				BC8A16D91FC2C941006D9173 /* FormFieldCell.swift in Sources */,
 				BC8A16DC1FC2C941006D9173 /* PickerCell.swift in Sources */,
-				BCFBC6001FC3080C00A657D1 /* GenericPickerViewController.swift in Sources */,
-				BCFBC6011FC3080C00A657D1 /* ModalViewController.swift in Sources */,
 				BC6792BF1F8D02EC007BE23F /* FormFieldContent.swift in Sources */,
 				BCF3B2B01FD004F800E20A0B /* SegmentedFieldSettings.swift in Sources */,
 				BC8A16E01FC2C941006D9173 /* StepperCell.swift in Sources */,

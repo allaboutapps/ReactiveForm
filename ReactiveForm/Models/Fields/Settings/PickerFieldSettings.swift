@@ -23,6 +23,8 @@ public protocol PickerItem: FormFieldContent {
 
 public class PickerFieldSettings: FormFieldSettings {
         
+    override public var isFocusable: Bool { return true }
+
     public var pickerViewModel: PickerViewModelProtocol
     
     public init(viewModel: PickerViewModelProtocol) {

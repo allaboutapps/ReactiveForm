@@ -1,5 +1,5 @@
 //
-//  GenericPickerViewModel.swift
+//  PickerViewModel.swift
 //
 //
 //  Created by Gunter Hager on 13/09/2017.
@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveSwift
 
-public class GenericPickerViewModel<T: PickerItem>: PickerViewModelProtocol {
+public class PickerViewModel<T: PickerItem>: PickerViewModelProtocol {
 
     public var title: String
     public var cancelButtonTitle: String

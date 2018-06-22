@@ -134,7 +134,7 @@ class AllFieldsViewController: UIViewController, FormViewController {
                     .row,
                 FormField<String>(identifier: "namedNumber", type: .picker, title: "Choose number")
                     .configure { field in
-                        let viewModel = GenericPickerViewModel(title: "Choose number", cancelButtonTitle: "Cancel", submitButtonTitle: "Done", items: [NamedNumber.one, NamedNumber.two, NamedNumber.three], selectedItem: namedNumber)
+                        let viewModel = PickerViewModel(title: "Choose number", cancelButtonTitle: "Cancel", submitButtonTitle: "Done", items: [NamedNumber.one, NamedNumber.two, NamedNumber.three], selectedItem: namedNumber)
                         let settings = PickerFieldSettings(viewModel: viewModel)
                         return settings
                     }

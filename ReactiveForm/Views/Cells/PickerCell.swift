@@ -13,6 +13,7 @@ import ReactiveCocoa
 
 class PickerCell: FormFieldCell {
     
+    @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var textField: UITextField!
     public var pickerView = UIPickerView()
     public var toolbar = UIToolbar()
@@ -21,9 +22,11 @@ class PickerCell: FormFieldCell {
         super.configure(field: field)
         guard field.type == .picker else { return }
         
-        let placeholder = field.title.value + (field.isRequired ? "*" : "")
-        textField.placeholder = placeholder
-        
+        disposable += titleLabel.reactive.text <~ field.title.map { $0 + (field.isRequired ? "*" : "") }
+        disposable += textField.reactive.placeholder <~ field.title
+        textField.reactive.isEnabled <~ field.isEnabled
+        textField.delegate = self
+
         // Set Focus
         field.focus = {
             self.textField.becomeFirstResponder()
@@ -63,13 +66,15 @@ class PickerCell: FormFieldCell {
     // MARK: Actions
     
     @objc public func cancel() {
-        textField.endEditing(true)
-        //        _ = textField.delegate?.textFieldShouldReturn?(textField)
+        _ = textField.delegate?.textFieldShouldReturn?(textField)
     }
     
     @objc public func submit() {
-        textField.endEditing(true)
-        //        _ = textField.delegate?.textFieldShouldReturn?(textField)
+        if let settings = field.settings as? PickerFieldSettings {
+            let row = pickerView.selectedRow(inComponent: 0)
+            settings.pickerViewModel.selectedItem.value = settings.pickerViewModel.items[row]
+        }
+        _ = textField.delegate?.textFieldShouldReturn?(textField)
     }
 
 }
@@ -104,13 +109,26 @@ extension PickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
         return settings.pickerViewModel.items[row].title
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let settings = field.settings as? PickerFieldSettings else { return }
-        settings.pickerViewModel.selectedItem.value = settings.pickerViewModel.items[row]
-    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        guard let settings = field.settings as? PickerFieldSettings else { return }
+//        settings.pickerViewModel.selectedItem.value = settings.pickerViewModel.items[row]
+//    }
 }
 
 extension PickerCell: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard let settings = field.settings as? PickerFieldSettings else { return false }
+        let selectedIndex = settings.pickerViewModel.items.index { (item) -> Bool in
+            guard let propertyValue = settings.pickerViewModel.selectedItem.value else { return false }
+            return item.title == propertyValue.title
+        }
+        
+        if let selectedIndex = selectedIndex {
+            pickerView.selectRow(selectedIndex, inComponent: 0, animated: false)
+        }
+        return true
+    }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         field.nextFocusableField?.focus?()
