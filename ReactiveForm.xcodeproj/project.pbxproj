@@ -60,6 +60,7 @@
 		BCAF24491FC6CDF7009403B1 /* ReactiveItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */; };
 		BCB1AEA21F8F53AC007DC284 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */; };
 		BCB1AEA51F8F548A007DC284 /* ReactiveForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BCC9084620DD092000529993 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC9084520DD092000529993 /* PickerTextField.swift */; };
 		BCF3B2B01FD004F800E20A0B /* SegmentedFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B2AF1FD004F800E20A0B /* SegmentedFieldSettings.swift */; };
 		BCF3B2B31FD0053500E20A0B /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF3B2B11FD0053400E20A0B /* SegmentedCell.swift */; };
 		BCF3B2B41FD0053500E20A0B /* SegmentedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF3B2B21FD0053400E20A0B /* SegmentedCell.xib */; };
@@ -151,6 +152,7 @@
 		BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveItemCell.swift; sourceTree = "<group>"; };
 		BCB1AEA11F8F53AC007DC284 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		BCC9084520DD092000529993 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		BCF3B2AF1FD004F800E20A0B /* SegmentedFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedFieldSettings.swift; sourceTree = "<group>"; };
 		BCF3B2B11FD0053400E20A0B /* SegmentedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
 		BCF3B2B21FD0053400E20A0B /* SegmentedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentedCell.xib; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			children = (
 				BC7765101F8CFF3600C49D7E /* FormFieldCell.swift */,
 				BCAF24481FC6CDF7009403B1 /* ReactiveItemCell.swift */,
+				BCC9084520DD092000529993 /* PickerTextField.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 			files = (
 				BCFBC5FD1FC3080C00A657D1 /* ModalTransitioningDelegate.swift in Sources */,
 				BC6792B91F8D02E8007BE23F /* Form.swift in Sources */,
+				BCC9084620DD092000529993 /* PickerTextField.swift in Sources */,
 				BC6792C01F8D02EC007BE23F /* FormFieldProtocol.swift in Sources */,
 				BCAF23F81FC58561009403B1 /* ReactiveItem.swift in Sources */,
 				BC6792C71F8D02F0007BE23F /* FormJSON.swift in Sources */,

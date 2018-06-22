@@ -24,7 +24,6 @@ public class TextFieldCell: FormFieldCell {
         
         disposable += titleLabel.reactive.text <~ field.title.map { $0 + (field.isRequired ? "*" : "") }
         disposable += textField.reactive.placeholder <~ field.title
-        textField.reactive.isEnabled <~ field.isEnabled
         textField.delegate = self
         
         if let value = field.content.value {

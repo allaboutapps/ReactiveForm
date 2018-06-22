@@ -14,7 +14,7 @@ import ReactiveCocoa
 class PickerCell: FormFieldCell {
     
     @IBOutlet public weak var titleLabel: UILabel!
-    @IBOutlet public weak var textField: UITextField!
+    @IBOutlet public weak var textField: PickerTextField!
     public var pickerView = UIPickerView()
     public var toolbar = UIToolbar()
     
@@ -24,7 +24,7 @@ class PickerCell: FormFieldCell {
         
         disposable += titleLabel.reactive.text <~ field.title.map { $0 + (field.isRequired ? "*" : "") }
         disposable += textField.reactive.placeholder <~ field.title
-        textField.reactive.isEnabled <~ field.isEnabled
+        disposable += textField.reactive.isEnabled <~ field.isEnabled
         textField.delegate = self
 
         // Set Focus
@@ -32,7 +32,6 @@ class PickerCell: FormFieldCell {
             self.textField.becomeFirstResponder()
         }
 
-        disposable += textField.reactive.isEnabled <~ field.isEnabled
 
         if let settings = field.settings as? PickerFieldSettings {
             pickerView.dataSource = self
