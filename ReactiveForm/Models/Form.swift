@@ -122,7 +122,8 @@ public class Form {
             .combineLatest(hideables.map { $0.isHidden.producer })
             .throttle(0, on: QueueScheduler.main)
             .combinePrevious(hideables.map { $0.isHidden.value })
-            .startWithValues { [unowned self] (isHiddenFlags, previousHiddenFlags) in
+            .startWithValues { [weak self] (isHiddenFlags, previousHiddenFlags) in
+                guard let `self` = self else { return }
                 if isHiddenFlags != previousHiddenFlags {
                     // Reload table view
                     guard let tableView = self.viewController?.tableView else { return }
@@ -145,7 +146,8 @@ public class Form {
         enableDisposable?.dispose()
         enableDisposable = SignalProducer
             .combineLatest(fields.map { $0.isEnabled.producer })
-            .startWithValues { [unowned self] (values) in
+            .startWithValues { [weak self] (values) in
+                guard let `self` = self else { return }
                 self.updateReturnKeys()
         }
     }
