@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		398E0263222D5FBC00739D4A /* Differ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398E0262222D5FBB00739D4A /* Differ.framework */; };
+		398E0264222D5FBC00739D4A /* Differ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398E0262222D5FBB00739D4A /* Differ.framework */; };
 		4C5C203B1F13713000D52B41 /* ReactiveForm.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C5C202D1F13713000D52B41 /* ReactiveForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C5C20831F1372EE00D52B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C20701F1372EE00D52B41 /* AppDelegate.swift */; };
 		4C5C20841F1372EE00D52B41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C20721F1372EE00D52B41 /* Assets.xcassets */; };
@@ -16,8 +18,6 @@
 		4C5C20921F1373B900D52B41 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C20911F1373B900D52B41 /* Cartfile */; };
 		4C5C209A1F13750000D52B41 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20951F13750000D52B41 /* DataSource.framework */; };
 		4C5C209C1F13750000D52B41 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20951F13750000D52B41 /* DataSource.framework */; };
-		4C5C209D1F13750000D52B41 /* Diff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20961F13750000D52B41 /* Diff.framework */; };
-		4C5C209F1F13750000D52B41 /* Diff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20961F13750000D52B41 /* Diff.framework */; };
 		4C5C20A01F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */; };
 		4C5C20A21F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */; };
 		4C5C20A31F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
@@ -96,6 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		398E0262222D5FBB00739D4A /* Differ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differ.framework; path = Carthage/Build/iOS/Differ.framework; sourceTree = "<group>"; };
 		4C5C20001F136F9800D52B41 /* ReactiveForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5C202C1F13713000D52B41 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5C202D1F13713000D52B41 /* ReactiveForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactiveForm.h; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		4C5C20911F1373B900D52B41 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		4C5C20931F1373C400D52B41 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4C5C20951F13750000D52B41 /* DataSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DataSource.framework; path = Carthage/Build/iOS/DataSource.framework; sourceTree = "<group>"; };
-		4C5C20961F13750000D52B41 /* Diff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Diff.framework; path = Carthage/Build/iOS/Diff.framework; sourceTree = "<group>"; };
 		4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		4C5C20981F13750000D52B41 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		4C5C20991F13750000D52B41 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -164,9 +164,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5C209A1F13750000D52B41 /* DataSource.framework in Frameworks */,
+				398E0263222D5FBC00739D4A /* Differ.framework in Frameworks */,
 				4C5C20A01F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */,
 				4C5C20A61F13750000D52B41 /* Result.framework in Frameworks */,
-				4C5C209D1F13750000D52B41 /* Diff.framework in Frameworks */,
 				4C5C20A31F13750000D52B41 /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,8 +178,8 @@
 				4C5C209C1F13750000D52B41 /* DataSource.framework in Frameworks */,
 				4C5C20A21F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */,
 				4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */,
-				4C5C209F1F13750000D52B41 /* Diff.framework in Frameworks */,
 				BC7FEC0C1F8D09E50011C443 /* SimpleButton.framework in Frameworks */,
+				398E0264222D5FBC00739D4A /* Differ.framework in Frameworks */,
 				4C5C20A51F13750000D52B41 /* ReactiveSwift.framework in Frameworks */,
 				4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */,
 			);
@@ -260,8 +260,8 @@
 		4C5C20901F13738200D52B41 /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
+				398E0262222D5FBB00739D4A /* Differ.framework */,
 				4C5C20951F13750000D52B41 /* DataSource.framework */,
-				4C5C20961F13750000D52B41 /* Diff.framework */,
 				4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */,
 				4C5C20981F13750000D52B41 /* ReactiveSwift.framework */,
 				4C5C20991F13750000D52B41 /* Result.framework */,
@@ -540,7 +540,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Diff.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differ.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DataSource.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
@@ -552,7 +552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		BCAF24471FC6C9F5009403B1 /* Run Script - SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
