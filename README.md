@@ -2,7 +2,7 @@
 
 ---
 
-⚡️ Swift: 4.0 📱 iOS 10.3 🌎 [API Docs](http://linktoswaggerdocs)
+⚡️ Swift: 4.2 📱 iOS 10.3 🌎 [API Docs](http://linktoswaggerdocs)
 
 ---
 
