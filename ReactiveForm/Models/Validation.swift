@@ -9,7 +9,7 @@
 import Foundation
 import JavaScriptCore
 
-public class Validation {
+open class Validation {
     
     private let context: JSContext? = {
         let result = JSContext()

@@ -35,7 +35,7 @@ public class ToggleCell: FormFieldCell {
 
 public extension ToggleCell {
     
-    public static var descriptor: CellDescriptor<FormField<Bool>, ToggleCell> {
+    static var descriptor: CellDescriptor<FormField<Bool>, ToggleCell> {
         return CellDescriptor("ToggleCell", bundle: Bundle(for: ToggleCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

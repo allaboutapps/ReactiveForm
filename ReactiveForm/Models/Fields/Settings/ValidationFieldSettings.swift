@@ -19,8 +19,8 @@ public enum ValidationState: FormFieldContent {
     case error(text: String?)
 }
 
-public class ValidationFieldSettings: FormFieldSettings {
-    override public var isExportable: Bool { return true }
+open class ValidationFieldSettings: FormFieldSettings {
+    override open var isExportable: Bool { return true }
 
     public var isInitial = true
 }

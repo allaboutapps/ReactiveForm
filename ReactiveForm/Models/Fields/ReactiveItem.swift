@@ -13,7 +13,7 @@ import DataSource
 public protocol ReactiveItemProtocol: Hideable {
 }
 
-public class ReactiveItem<T>: ReactiveItemProtocol, Diffable, Equatable {
+open class ReactiveItem<T>: ReactiveItemProtocol, Diffable, Equatable {
     
     private let internalIdentifier = UUID().uuidString
     

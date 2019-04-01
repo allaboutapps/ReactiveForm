@@ -17,11 +17,11 @@ public protocol FormFieldContent {
 
 public extension FormFieldContent {
     
-    public static func create(from string: String) -> FormFieldContent? {
+    static func create(from string: String) -> FormFieldContent? {
         return nil
     }
     
-    public var stringValue: String {
+    var stringValue: String {
         return ""
     }
 

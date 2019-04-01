@@ -71,7 +71,7 @@ public enum FormFieldType: Decodable, Equatable {
     
 }
 
-public class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable {
+open class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffable {
     
     public let identifier: String
     

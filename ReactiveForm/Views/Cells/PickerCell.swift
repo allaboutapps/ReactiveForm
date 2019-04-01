@@ -113,7 +113,7 @@ extension PickerCell: UITextFieldDelegate {
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard let settings = field.settings as? PickerFieldSettings else { return false }
-        let selectedIndex = settings.pickerViewModel.items.index { (item) -> Bool in
+        let selectedIndex = settings.pickerViewModel.items.firstIndex { (item) -> Bool in
             guard let propertyValue = settings.pickerViewModel.selectedItem.value else { return false }
             return item.title == propertyValue.title
         }

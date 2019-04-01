@@ -54,7 +54,7 @@ public class StepperCell: FormFieldCell {
 
 public extension StepperCell {
     
-    public static var descriptor: CellDescriptor<FormField<Double>, StepperCell> {
+    static var descriptor: CellDescriptor<FormField<Double>, StepperCell> {
         return CellDescriptor("StepperCell", bundle: Bundle(for: StepperCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

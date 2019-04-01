@@ -23,32 +23,32 @@ public protocol Focusable {
 
 public extension Focusable where Self: FormFieldProtocol {
     
-    public var focusableIndex: Int {
-        guard let index = form.focusableFields.index(where: { self.identifier == $0.identifier }) else {
+    var focusableIndex: Int {
+        guard let index = form.focusableFields.firstIndex(where: { self.identifier == $0.identifier }) else {
             fatalError("Field not found in form.")
         }
         return index
     }
     
-    public var nextFocusableField: Focusable? {
+    var nextFocusableField: Focusable? {
         let nextIndex = focusableIndex + 1
         guard nextIndex < form.focusableFields.count else { return nil }
         return form.focusableFields[nextIndex]
     }
     
-    public var previousFocusableField: Focusable? {
+    var previousFocusableField: Focusable? {
         let nextIndex = focusableIndex - 1
         guard nextIndex >= 0 else { return nil }
         return form.focusableFields[nextIndex]
     }
     
-    public var isLastFocuFocusableField: Bool {
+    var isLastFocuFocusableField: Bool {
         return nextFocusableField == nil
     }
 }
 
 public extension Form {
-    public var focusableFields: [Focusable] {
+    var focusableFields: [Focusable] {
         let result = fields
             .filter {
                 return ($0.isHidden.value == false)

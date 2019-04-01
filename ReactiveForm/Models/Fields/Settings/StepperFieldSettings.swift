@@ -10,7 +10,7 @@ import Foundation
 
 public typealias FormatterClosure = ((_ value: Double) -> String?)
 
-public class StepperFieldSettings: FormFieldSettings {
+open class StepperFieldSettings: FormFieldSettings {
         
     public var minimumValue: Double
     public var maximumValue: Double

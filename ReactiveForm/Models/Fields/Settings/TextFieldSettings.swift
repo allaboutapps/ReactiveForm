@@ -8,14 +8,15 @@
 
 import UIKit
 
-public class TextFieldSettings: FormFieldSettings, UITextInputTraits {
+open class TextFieldSettings: FormFieldSettings, UITextInputTraits {
     
-    override public var isFocusable: Bool { return true }
+    override open var isFocusable: Bool { return true }
     
     /// Trims whitespace at start and end of string.
     public var shouldTrim: Bool = false
     
     public var keyboardType: UIKeyboardType = .default
+    public var keyboardAppearance: UIKeyboardAppearance = .default
     public var returnKeyType: UIReturnKeyType = .default
     public var textContentType: UITextContentType? = nil
     public var isSecureTextEntry: Bool = false
@@ -27,7 +28,7 @@ public class TextFieldSettings: FormFieldSettings, UITextInputTraits {
 
 public extension UITextField {
     
-    public func assignTraits(_ traits: UITextInputTraits?) {
+    func assignTraits(_ traits: UITextInputTraits?) {
         self.autocapitalizationType = traits?.autocapitalizationType ?? .none
         self.autocorrectionType = traits?.autocorrectionType ?? .default
         self.spellCheckingType = traits?.spellCheckingType ?? .default
@@ -46,7 +47,7 @@ public extension UITextField {
 
 public extension UITextView {
     
-    public func assignTraits(_ traits: UITextInputTraits?) {
+    func assignTraits(_ traits: UITextInputTraits?) {
         self.autocapitalizationType = traits?.autocapitalizationType ?? .none
         self.autocorrectionType = traits?.autocorrectionType ?? .default
         self.spellCheckingType = traits?.spellCheckingType ?? .default

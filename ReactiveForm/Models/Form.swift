@@ -12,7 +12,7 @@ import Result
 import ReactiveSwift
 import ReactiveCocoa
 
-public class Form {
+open class Form {
     
     public var dataSource: DataSource
     public weak var viewController: (UIViewController & FormViewController)?
@@ -191,7 +191,7 @@ public class Form {
 }
 
 public extension Section {
-    public func fields() -> [FormFieldProtocol] {
+    func fields() -> [FormFieldProtocol] {
         let result = rows.reduce(into: []) { (result: inout [FormFieldProtocol], row) in
             if let field = row.item as? FormFieldProtocol {
                 result.append(field)
@@ -200,7 +200,7 @@ public extension Section {
         return result
     }
     
-    public func hideables() -> [Hideable] {
+    func hideables() -> [Hideable] {
         let result = rows.reduce(into: []) { (result: inout [Hideable], row) in
             if let item = row.item as? Hideable {
                 result.append(item)

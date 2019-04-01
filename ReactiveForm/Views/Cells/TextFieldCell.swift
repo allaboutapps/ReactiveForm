@@ -36,7 +36,7 @@ public class TextFieldCell: FormFieldCell {
         if let settings = field.settings as? TextFieldSettings {
             textField.assignTraits(settings)
             if settings.shouldTrim {
-                disposable += contentBuffer <~ textField.reactive.continuousTextValues.map { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+                disposable += contentBuffer <~ textField.reactive.continuousTextValues.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             } else {
                 disposable += contentBuffer <~ textField.reactive.continuousTextValues
             }
@@ -84,7 +84,7 @@ public class TextFieldCell: FormFieldCell {
 
 public extension TextFieldCell {
     
-    public static var descriptors: [CellDescriptorType] {
+    static var descriptors: [CellDescriptorType] {
         return [
             CellDescriptor<FormField<Int>, TextFieldCell>("IntTextFieldCell", cellIdentifier: "TextFieldCell", bundle: Bundle(for: TextFieldCell.self))
                 .configure { (field, cell, _) in

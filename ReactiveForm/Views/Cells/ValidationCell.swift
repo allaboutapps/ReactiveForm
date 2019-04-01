@@ -40,7 +40,7 @@ public class ValidationCell: FormFieldCell {
 
 public extension ValidationCell {
     
-    public static var descriptor: CellDescriptor<FormField<ValidationState>, ValidationCell> {
+    static var descriptor: CellDescriptor<FormField<ValidationState>, ValidationCell> {
         return CellDescriptor("ValidationCell", bundle: Bundle(for: ValidationCell.self))
             .configure { (field, cell, _) in
                 cell.configure(field: field)

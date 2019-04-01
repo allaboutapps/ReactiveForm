@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class SegmentedFieldSettings: FormFieldSettings {
+open class SegmentedFieldSettings: FormFieldSettings {
     
-    override public var isExportable: Bool { return true }
+    override open var isExportable: Bool { return true }
     
     public var segments: [String]
     

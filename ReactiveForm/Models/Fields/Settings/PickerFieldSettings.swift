@@ -21,9 +21,9 @@ public protocol PickerItem: FormFieldContent {
     var title: String { get }
 }
 
-public class PickerFieldSettings: FormFieldSettings {
+open class PickerFieldSettings: FormFieldSettings {
         
-    override public var isFocusable: Bool { return true }
+    override open var isFocusable: Bool { return true }
 
     public var pickerViewModel: PickerViewModelProtocol
     
