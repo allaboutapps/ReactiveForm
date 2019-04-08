@@ -8,8 +8,6 @@
 
 import Foundation
 
-public typealias FormatterClosure = ((_ value: Double) -> String?)
-
 open class StepperFieldSettings: FormFieldSettings {
         
     public var minimumValue: Double

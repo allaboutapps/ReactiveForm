@@ -22,6 +22,7 @@ open class Form {
             [
                 PickerCell.descriptor,
                 SegmentedCell.descriptor,
+                SliderCell.descriptor,
                 StepperCell.descriptor,
                 ToggleCell.descriptor,
                 ValidationCell.descriptor

@@ -109,6 +109,40 @@ class AllFieldsViewController: UIViewController, FormViewController {
                 item.isHidden <~ self.tellMeMore.map { !$0 }
         }
         
+        let answerFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 0
+            return formatter
+        }()
+        let stepperField = FormField<Double>(type: .stepper,
+                                             title: "Stepper")
+            .configure { (field) -> FormFieldSettings? in
+                return StepperFieldSettings(minimumValue: 0, maximumValue: 42, stepValue: 1, formatterClosure: { (value) -> String? in
+                    field.isHidden <~ self.segmentedIndex.map { $0 != 2 }
+                    let valueString = answerFormatter.string(for: value) ?? ""
+                    return "The answer is \(valueString)"
+                })
+        }
+        
+        let sliderField = FormField<Double>(type: .slider,
+                                             title: "Slider")
+            .configure { (field) -> FormFieldSettings? in
+                return SliderFieldSettings(minimumValue: 0, maximumValue: 42, formatterClosure: { (value) -> String? in
+                    field.isHidden <~ self.segmentedIndex.map { $0 != 2 }
+                    let valueString = answerFormatter.string(for: value) ?? ""
+                    return "The answer is \(valueString)"
+                })
+        }
+        
+        let disabledField = FormField<String>(type: .textField,
+                                            title: "Disabled Field",
+                                            content: "You can't edit this field",
+                                            isRequired: true)
+            .configure { (field) -> FormFieldSettings? in
+                field.isEnabled.value = false
+                return nil
+        }
+        
         form.setSections(sections: [
             
             Section(rows: [
@@ -129,6 +163,8 @@ class AllFieldsViewController: UIViewController, FormViewController {
                     .row,
                 numberField.validationField()
                     .row,
+                
+                disabledField.row,
 
                 FormField<Bool>(type: .toggle, title: "Toggle Field")
                     .row,
@@ -169,6 +205,9 @@ class AllFieldsViewController: UIViewController, FormViewController {
                     .row,
                 emailField.validationField()
                     .row,
+                
+                stepperField.row,
+                sliderField.row,
                 
                 FormField<Bool>(type: .toggle, title: "Tell me more")
                     .configure { [weak self] field in

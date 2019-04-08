@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// Used for numeric formats.
+public typealias FormatterClosure = ((_ value: Double) -> String?)
+
 /// Settings that define various aspects of a content field, like e.g. the input traits of a text field.
 open class FormFieldSettings: NSObject {
     

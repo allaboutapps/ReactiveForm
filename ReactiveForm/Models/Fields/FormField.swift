@@ -16,6 +16,7 @@ public enum FormFieldType: Decodable, Equatable {
     case textField
     case picker
     case segmented
+    case slider
     case stepper
     case toggle
     
@@ -39,6 +40,7 @@ public enum FormFieldType: Decodable, Equatable {
         case "textField": self = .textField
         case "picker": self = .picker
         case "segmented": self = .segmented
+        case "slider": self = .slider
         case "stepper": self = .stepper
         case "toggle": self = .toggle
         case "validation": self = .validation

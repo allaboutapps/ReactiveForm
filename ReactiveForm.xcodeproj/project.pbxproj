@@ -25,6 +25,9 @@
 		4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
 		BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */; };
+		BC1AFDFC225B343B00E0C868 /* SliderFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1AFDFB225B343B00E0C868 /* SliderFieldSettings.swift */; };
+		BC1AFDFE225B36A000E0C868 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1AFDFD225B36A000E0C868 /* SliderCell.swift */; };
+		BC1AFE00225B36AE00E0C868 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1AFDFF225B36AE00E0C868 /* SliderCell.xib */; };
 		BC2E12EA224BB04B007B5820 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BC2E12E9224BB04B007B5820 /* Cartfile */; };
 		BC6792B71F8D02E8007BE23F /* Focusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7764EF1F8CFF3600C49D7E /* Focusable.swift */; };
 		BC6792B81F8D02E8007BE23F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7764F01F8CFF3600C49D7E /* Validation.swift */; };
@@ -115,6 +118,9 @@
 		BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperCell.swift; sourceTree = "<group>"; };
 		BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperCell.xib; sourceTree = "<group>"; };
 		BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperFieldSettings.swift; sourceTree = "<group>"; };
+		BC1AFDFB225B343B00E0C868 /* SliderFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderFieldSettings.swift; sourceTree = "<group>"; };
+		BC1AFDFD225B36A000E0C868 /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
+		BC1AFDFF225B36AE00E0C868 /* SliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		BC2E12E9224BB04B007B5820 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		BC6792D31F8D0614007BE23F /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		BC7764EF1F8CFF3600C49D7E /* Focusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focusable.swift; sourceTree = "<group>"; };
@@ -274,9 +280,10 @@
 			isa = PBXGroup;
 			children = (
 				BC7764F51F8CFF3600C49D7E /* PickerFieldSettings.swift */,
-				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
 				BCF3B2AF1FD004F800E20A0B /* SegmentedFieldSettings.swift */,
+				BC1AFDFB225B343B00E0C868 /* SliderFieldSettings.swift */,
 				BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */,
+				BC7764F91F8CFF3600C49D7E /* TextFieldSettings.swift */,
 				BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */,
 			);
 			path = Settings;
@@ -328,6 +335,8 @@
 				BCF3B2B21FD0053400E20A0B /* SegmentedCell.xib */,
 				BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */,
 				BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */,
+				BC1AFDFD225B36A000E0C868 /* SliderCell.swift */,
+				BC1AFDFF225B36AE00E0C868 /* SliderCell.xib */,
 				BC77650A1F8CFF3600C49D7E /* TextFieldCell.swift */,
 				BC7765151F8CFF3600C49D7E /* TextFieldCell.xib */,
 				BC77650C1F8CFF3600C49D7E /* ToggleCell.swift */,
@@ -510,6 +519,7 @@
 			files = (
 				BC2E12EA224BB04B007B5820 /* Cartfile in Resources */,
 				BCFBC5FC1FC3080200A657D1 /* Form.storyboard in Resources */,
+				BC1AFE00225B36AE00E0C868 /* SliderCell.xib in Resources */,
 				BC8A16E11FC2C941006D9173 /* StepperCell.xib in Resources */,
 				BC8A16E91FC2C941006D9173 /* ValidationCell.xib in Resources */,
 				BCAF24461FC6C9CD009403B1 /* .swiftlint.yml in Resources */,
@@ -591,10 +601,12 @@
 			files = (
 				BCFBC5FD1FC3080C00A657D1 /* ModalTransitioningDelegate.swift in Sources */,
 				BC6792B91F8D02E8007BE23F /* Form.swift in Sources */,
+				BC1AFDFC225B343B00E0C868 /* SliderFieldSettings.swift in Sources */,
 				BCC9084620DD092000529993 /* PickerTextField.swift in Sources */,
 				BC6792C01F8D02EC007BE23F /* FormFieldProtocol.swift in Sources */,
 				BCAF23F81FC58561009403B1 /* ReactiveItem.swift in Sources */,
 				BC6792C71F8D02F0007BE23F /* FormJSON.swift in Sources */,
+				BC1AFDFE225B36A000E0C868 /* SliderCell.swift in Sources */,
 				BCFBC5FE1FC3080C00A657D1 /* ModalPresentationController.swift in Sources */,
 				BC6792C31F8D02EC007BE23F /* TextFieldSettings.swift in Sources */,
 				BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */,
