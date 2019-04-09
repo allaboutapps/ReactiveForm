@@ -25,7 +25,7 @@ public extension Focusable where Self: FormFieldProtocol {
     
     var focusableIndex: Int {
         guard let index = form.focusableFields.firstIndex(where: { self.identifier == $0.identifier }) else {
-            fatalError("Field not found in form.")
+            fatalError("Field not found in form: \(identifier)")
         }
         return index
     }
