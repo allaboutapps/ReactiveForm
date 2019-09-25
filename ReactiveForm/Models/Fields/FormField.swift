@@ -109,9 +109,9 @@ open class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffabl
             return type.cellIdentifier
         }
     }
-    public lazy var row: RowType = {
+    public var row: RowType {
         return Row(self, identifier: cellIdentifier)
-    }()
+    }
     
     public let title = MutableProperty("")
     public let descriptionText = MutableProperty<String?>(nil)
