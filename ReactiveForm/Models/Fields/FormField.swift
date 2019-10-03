@@ -109,6 +109,7 @@ open class FormField<T: FormFieldContent>: FormFieldProtocol, Equatable, Diffabl
             return type.cellIdentifier
         }
     }
+    
     public var row: RowType {
         return Row(self, identifier: cellIdentifier)
     }

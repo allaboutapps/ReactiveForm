@@ -8,7 +8,6 @@
 
 import Foundation
 import DataSource
-import Result
 import ReactiveSwift
 import ReactiveCocoa
 

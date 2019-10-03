@@ -21,8 +21,6 @@
 		4C5C20A21F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */; };
 		4C5C20A31F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
 		4C5C20A51F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
-		4C5C20A61F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
-		4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20991F13750000D52B41 /* Result.framework */; };
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
 		BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */; };
 		BC1AFDFC225B343B00E0C868 /* SliderFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1AFDFB225B343B00E0C868 /* SliderFieldSettings.swift */; };
@@ -114,7 +112,6 @@
 		4C5C20951F13750000D52B41 /* DataSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DataSource.framework; path = Carthage/Build/iOS/DataSource.framework; sourceTree = "<group>"; };
 		4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		4C5C20981F13750000D52B41 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
-		4C5C20991F13750000D52B41 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperCell.swift; sourceTree = "<group>"; };
 		BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperCell.xib; sourceTree = "<group>"; };
 		BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperFieldSettings.swift; sourceTree = "<group>"; };
@@ -172,7 +169,6 @@
 				4C5C209A1F13750000D52B41 /* DataSource.framework in Frameworks */,
 				398E0263222D5FBC00739D4A /* Differ.framework in Frameworks */,
 				4C5C20A01F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */,
-				4C5C20A61F13750000D52B41 /* Result.framework in Frameworks */,
 				4C5C20A31F13750000D52B41 /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +179,6 @@
 			files = (
 				4C5C209C1F13750000D52B41 /* DataSource.framework in Frameworks */,
 				4C5C20A21F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */,
-				4C5C20A81F13750000D52B41 /* Result.framework in Frameworks */,
 				BC7FEC0C1F8D09E50011C443 /* SimpleButton.framework in Frameworks */,
 				398E0264222D5FBC00739D4A /* Differ.framework in Frameworks */,
 				4C5C20A51F13750000D52B41 /* ReactiveSwift.framework in Frameworks */,
@@ -270,7 +265,6 @@
 				4C5C20951F13750000D52B41 /* DataSource.framework */,
 				4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */,
 				4C5C20981F13750000D52B41 /* ReactiveSwift.framework */,
-				4C5C20991F13750000D52B41 /* Result.framework */,
 				BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */,
 			);
 			name = Carthage;
@@ -554,7 +548,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/DataSource.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SimpleButton.framework",
 			);
 			name = Carthage;
@@ -590,7 +583,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
