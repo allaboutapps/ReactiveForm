@@ -58,11 +58,11 @@ extension Int: FormFieldContent {
 extension Float: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
-        return numberFormatter.number(from: content)?.floatValue ?? 0
+        return numberFormatter.number(from: content)?.floatValue
     }
     
     public var stringValue: String {
-        return numberFormatter.string(from: NSNumber(value: self)) ?? "\(self)"
+        return numberFormatter.string(for: self) ?? "\(self)"
     }
     
 }
@@ -70,11 +70,11 @@ extension Float: FormFieldContent {
 extension Double: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
-        return numberFormatter.number(from: content)?.doubleValue ?? 0
+        return numberFormatter.number(from: content)?.doubleValue
     }
     
     public var stringValue: String {
-        return numberFormatter.string(from: NSNumber(value: self)) ?? "\(self)"
+        return numberFormatter.string(for: self) ?? "\(self)"
     }
     
 }
@@ -82,12 +82,12 @@ extension Double: FormFieldContent {
 extension CGFloat: FormFieldContent {
     
     public static func create(from content: String) -> FormFieldContent? {
-        let value = numberFormatter.number(from: content)?.doubleValue ?? 0
+        guard let value = numberFormatter.number(from: content)?.doubleValue else { return nil }
         return CGFloat(value)
     }
     
     public var stringValue: String {
-        return numberFormatter.string(from: NSNumber(value: Double(self))) ?? "\(self)"
+        return numberFormatter.string(for: self) ?? "\(self)"
     }
     
 }
