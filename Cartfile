@@ -1,3 +1,2 @@
 github "ReactiveCocoa/ReactiveCocoa" ~> 10.0
 github "allaboutapps/DataSource" ~> 8.0
-github "allaboutapps/SimpleButton" ~> 5.0

@@ -39,7 +39,6 @@
 		BC6792C61F8D02EC007BE23F /* ValidationFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7764FF1F8CFF3600C49D7E /* ValidationFieldSettings.swift */; };
 		BC6792C71F8D02F0007BE23F /* FormJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765001F8CFF3600C49D7E /* FormJSON.swift */; };
 		BC6792D91F8D0614007BE23F /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6792D31F8D0614007BE23F /* Toast.swift */; };
-		BC7FEC0C1F8D09E50011C443 /* SimpleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */; };
 		BC7FEC0E1F8D0A380011C443 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */; };
 		BC8A16D91FC2C941006D9173 /* FormFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765101F8CFF3600C49D7E /* FormFieldCell.swift */; };
 		BC8A16DC1FC2C941006D9173 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765061F8CFF3600C49D7E /* PickerCell.swift */; };
@@ -144,7 +143,6 @@
 		BC77651D1F8CFF3600C49D7E /* ModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentationController.swift; sourceTree = "<group>"; };
 		BC77651E1F8CFF3600C49D7E /* ModalAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAnimationController.swift; sourceTree = "<group>"; };
 		BC7765201F8CFF3600C49D7E /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
-		BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleButton.framework; path = Carthage/Build/iOS/SimpleButton.framework; sourceTree = "<group>"; };
 		BC7FEC0D1F8D0A380011C443 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		BC8D38071F90939500043D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Form.storyboard; sourceTree = "<group>"; };
 		BCAF23EC1FC441C3009403B1 /* AllFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFieldsViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 			files = (
 				4C5C209C1F13750000D52B41 /* DataSource.framework in Frameworks */,
 				4C5C20A21F13750000D52B41 /* ReactiveCocoa.framework in Frameworks */,
-				BC7FEC0C1F8D09E50011C443 /* SimpleButton.framework in Frameworks */,
 				398E0264222D5FBC00739D4A /* Differ.framework in Frameworks */,
 				4C5C20A51F13750000D52B41 /* ReactiveSwift.framework in Frameworks */,
 				4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */,
@@ -265,7 +262,6 @@
 				4C5C20951F13750000D52B41 /* DataSource.framework */,
 				4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */,
 				4C5C20981F13750000D52B41 /* ReactiveSwift.framework */,
-				BC7FEC0B1F8D09E40011C443 /* SimpleButton.framework */,
 			);
 			name = Carthage;
 			sourceTree = "<group>";
@@ -569,7 +565,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		BCC67BA1201B2AD2009FBF0A /* Run Script - SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
