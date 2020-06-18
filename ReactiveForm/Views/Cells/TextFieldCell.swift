@@ -52,7 +52,9 @@ public class TextFieldCell: FormFieldCell {
             } else {
                 field.setContent(nil)
             }
-            field.validationState.value = field.validate(value: field.content.value, errorText: field.validationErrorText)
+            if field.validationRule.value != nil {
+                field.validationState.value = field.validate(value: field.content.value, errorText: field.validationErrorText)
+            }
         }
         disposable += field.validationState <~ field.validationRule.map { (rule) -> ValidationState in
             return field.validate(value: field.content.value)

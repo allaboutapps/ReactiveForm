@@ -14,10 +14,12 @@ public class ValidationCell: FormFieldCell {
     
     @IBOutlet public weak var titleLabel: UILabel!
     
+    var onReload: (() -> Void)? = nil
+    
     public func configure(field: FormField<ValidationState>) {
         super.configure(field: field)
         guard field.type == .validation else { return }
-        
+        var lastText: String?
         disposable += field.content.producer.startWithValues { [weak self] state in
             guard let `self` = self,
                 let state = state else { return }
@@ -33,6 +35,10 @@ public class ValidationCell: FormFieldCell {
                 break
             }
             self.titleLabel.text = text
+            if lastText != self.titleLabel.text {
+                self.onReload?()
+            }
+            lastText = self.titleLabel.text
         }
     }
     

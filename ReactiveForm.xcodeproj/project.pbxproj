@@ -544,7 +544,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/DataSource.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SimpleButton.framework",
 			);
 			name = Carthage;
 			outputPaths = (
