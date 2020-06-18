@@ -13,10 +13,12 @@ import ReactiveCocoa
 
 open class Form {
     
-    public var dataSource: DataSource
+    public var dataSource: DataSource!
     public weak var viewController: (UIViewController & FormViewController)?
     
     public init(cellDescriptors: [CellDescriptorType] = [], sectionDescriptors: [SectionDescriptorType] = [], registerNibs: Bool = true, viewController: (UIViewController & FormViewController)? = nil) {
+        self.viewController = viewController
+        
         let defaultCellDescriptors: [CellDescriptorType] =
             [
                 PickerCell.descriptor,
@@ -25,11 +27,20 @@ open class Form {
                 StepperCell.descriptor,
                 ToggleCell.descriptor,
                 ValidationCell.descriptor
+                    .configure { [weak self] (field, cell, indexPath) in
+                        cell.configure(field: field)
+                        cell.onReload = { [weak self] in
+                            guard let tableView = self?.viewController?.tableView else { return }
+                            tableView.reloadRows(at: [indexPath], with: .fade)
+                        }
+                }
+                .isHidden { (field, _) in
+                    return field.isHidden.value
+                }
                 ]
                 + TextFieldCell.descriptors
 
         self.dataSource = DataSource(cellDescriptors: defaultCellDescriptors + cellDescriptors, sectionDescriptors: sectionDescriptors, registerNibs: registerNibs)
-        self.viewController = viewController
 
     }
     
