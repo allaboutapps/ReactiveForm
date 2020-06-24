@@ -22,6 +22,7 @@
 		4C5C20A31F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
 		4C5C20A51F13750000D52B41 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20981F13750000D52B41 /* ReactiveSwift.framework */; };
 		4C5C20AB1F13783E00D52B41 /* ReactiveForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5C20001F136F9800D52B41 /* ReactiveForm.framework */; };
+		937D57A424A35326005B9159 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937D57A324A35326005B9159 /* Package.swift */; };
 		BC13F8A41F9F629400AA95F7 /* StepperFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */; };
 		BC1AFDFC225B343B00E0C868 /* SliderFieldSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1AFDFB225B343B00E0C868 /* SliderFieldSettings.swift */; };
 		BC1AFDFE225B36A000E0C868 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1AFDFD225B36A000E0C868 /* SliderCell.swift */; };
@@ -111,6 +112,7 @@
 		4C5C20951F13750000D52B41 /* DataSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DataSource.framework; path = Carthage/Build/iOS/DataSource.framework; sourceTree = "<group>"; };
 		4C5C20971F13750000D52B41 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		4C5C20981F13750000D52B41 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		937D57A324A35326005B9159 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		BC13F89D1F9F483E00AA95F7 /* StepperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperCell.swift; sourceTree = "<group>"; };
 		BC13F89F1F9F4D8F00AA95F7 /* StepperCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperCell.xib; sourceTree = "<group>"; };
 		BC13F8A31F9F629400AA95F7 /* StepperFieldSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperFieldSettings.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		4C5C1FF61F136F9800D52B41 = {
 			isa = PBXGroup;
 			children = (
+				937D57A324A35326005B9159 /* Package.swift */,
 				BCAF24451FC6C9CD009403B1 /* .swiftlint.yml */,
 				4C5C20931F1373C400D52B41 /* README.md */,
 				4C5C202A1F13713000D52B41 /* ReactiveForm */,
@@ -607,6 +610,7 @@
 				BCF3B2B31FD0053500E20A0B /* SegmentedCell.swift in Sources */,
 				BC6792BD1F8D02EC007BE23F /* FormField.swift in Sources */,
 				BCFBC5FF1FC3080C00A657D1 /* ModalAnimationController.swift in Sources */,
+				937D57A424A35326005B9159 /* Package.swift in Sources */,
 				BC6792BE1F8D02EC007BE23F /* FormFieldSettings.swift in Sources */,
 				BC8A16D91FC2C941006D9173 /* FormFieldCell.swift in Sources */,
 				BC8A16DC1FC2C941006D9173 /* PickerCell.swift in Sources */,
