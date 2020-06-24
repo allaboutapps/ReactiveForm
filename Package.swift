@@ -10,7 +10,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/ReactiveCocoa/ReactiveCocoa", .upToNextMajor(from: "11.0.0")),
-        .package(url: "https://github.com/allaboutapps/DataSource", .upToNextMajor(from: "8.0.0"))
+        .package(url: "https://github.com/allaboutapps/DataSource", .upToNextMajor(from: "8.0.4"))
     ],
     targets: [
         .target(
