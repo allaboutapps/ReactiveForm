@@ -10,6 +10,7 @@ import Foundation
 import ReactiveSwift
 import ReactiveCocoa
 import DataSource
+import UIKit
 
 public class SegmentedCell: FormFieldCell {
     

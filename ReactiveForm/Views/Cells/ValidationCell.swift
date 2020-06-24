@@ -10,9 +10,40 @@ import UIKit
 import DataSource
 import ReactiveSwift
 
-public class ValidationCell: FormFieldCell {
+public class ValidationCell: FormFieldCell, AutoRegisterCell {
+    private var titleLabel: UILabel!
     
-    @IBOutlet public weak var titleLabel: UILabel!
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        customInit()
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        customInit()
+    }
+    
+    private func customInit() {
+        selectionStyle = .none
+        backgroundColor = .clear
+        contentView.backgroundColor = .white
+        titleLabel = UILabel()
+        titleLabel.textColor = .red
+        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.systemFont(ofSize: 16.0)
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+        ])
+    }
     
     var onReload: (() -> Void)? = nil
     
