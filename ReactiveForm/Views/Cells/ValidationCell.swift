@@ -10,7 +10,7 @@ import UIKit
 import DataSource
 import ReactiveSwift
 
-public class ValidationCell: FormFieldCell {
+public class ValidationCell: FormFieldCell, AutoRegisterCell {
     private var titleLabel: UILabel!
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
