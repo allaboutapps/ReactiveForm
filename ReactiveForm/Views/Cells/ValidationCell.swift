@@ -32,6 +32,7 @@ public class ValidationCell: FormFieldCell, AutoRegisterCell {
         titleLabel = UILabel()
         titleLabel.textColor = .red
         titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.systemFont(ofSize: 16.0)
         
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
