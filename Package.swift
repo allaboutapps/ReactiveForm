@@ -3,6 +3,9 @@ import PackageDescription
 
 let package = Package(
     name: "ReactiveForm",
+    platforms: [
+        .iOS(.v11),
+    ],
     products: [
         .library(
             name: "ReactiveForm",
