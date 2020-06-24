@@ -51,7 +51,6 @@
 		BC8A16E61FC2C941006D9173 /* ToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC77650C1F8CFF3600C49D7E /* ToggleCell.swift */; };
 		BC8A16E71FC2C941006D9173 /* ToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC77650B1F8CFF3600C49D7E /* ToggleCell.xib */; };
 		BC8A16E81FC2C941006D9173 /* ValidationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7765081F8CFF3600C49D7E /* ValidationCell.swift */; };
-		BC8A16E91FC2C941006D9173 /* ValidationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC77650D1F8CFF3600C49D7E /* ValidationCell.xib */; };
 		BCAF23ED1FC441C3009403B1 /* AllFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF23EC1FC441C3009403B1 /* AllFieldsViewController.swift */; };
 		BCAF23EF1FC563AD009403B1 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCAF23EE1FC563AD009403B1 /* TextCell.xib */; };
 		BCAF23F21FC571AF009403B1 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAF23F11FC571AF009403B1 /* FormViewController.swift */; };
@@ -137,7 +136,6 @@
 		BC77650A1F8CFF3600C49D7E /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		BC77650B1F8CFF3600C49D7E /* ToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToggleCell.xib; sourceTree = "<group>"; };
 		BC77650C1F8CFF3600C49D7E /* ToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCell.swift; sourceTree = "<group>"; };
-		BC77650D1F8CFF3600C49D7E /* ValidationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValidationCell.xib; sourceTree = "<group>"; };
 		BC7765101F8CFF3600C49D7E /* FormFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldCell.swift; sourceTree = "<group>"; };
 		BC7765151F8CFF3600C49D7E /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		BC7765181F8CFF3600C49D7E /* PickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 				BC77650C1F8CFF3600C49D7E /* ToggleCell.swift */,
 				BC77650B1F8CFF3600C49D7E /* ToggleCell.xib */,
 				BC7765081F8CFF3600C49D7E /* ValidationCell.swift */,
-				BC77650D1F8CFF3600C49D7E /* ValidationCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -514,7 +511,6 @@
 				BCFBC5FC1FC3080200A657D1 /* Form.storyboard in Resources */,
 				BC1AFE00225B36AE00E0C868 /* SliderCell.xib in Resources */,
 				BC8A16E11FC2C941006D9173 /* StepperCell.xib in Resources */,
-				BC8A16E91FC2C941006D9173 /* ValidationCell.xib in Resources */,
 				BCAF24461FC6C9CD009403B1 /* .swiftlint.yml in Resources */,
 				BC8A16E71FC2C941006D9173 /* ToggleCell.xib in Resources */,
 				BC8A16DD1FC2C941006D9173 /* PickerCell.xib in Resources */,
