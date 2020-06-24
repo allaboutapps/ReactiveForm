@@ -15,6 +15,6 @@ let package = Package(
     targets: [
         .target(
             name: "ReactiveForm",
-            dependencies: ["ReactiveCocoa", "DataSource"])
+            dependencies: ["ReactiveCocoa", "DataSource"], path: "ReactiveForm/")
     ]
 )
