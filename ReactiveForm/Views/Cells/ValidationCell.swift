@@ -66,6 +66,7 @@ public class ValidationCell: FormFieldCell, AutoRegisterCell {
                 break
             }
             self.titleLabel.text = text
+            // if the error text changes, the height of the label (and thus the cell) might change -> reload cell
             if lastText != self.titleLabel.text {
                 self.onReload?()
             }
