@@ -67,7 +67,7 @@ public class ValidationCell: FormFieldCell, AutoRegisterCell {
             }
             self.titleLabel.text = text
             // if the error text changes, the height of the label (and thus the cell) might change -> reload cell
-            if lastText != self.titleLabel.text {
+            if let lastText = lastText, let text = self.titleLabel.text, lastText != text {
                 self.onReload?()
             }
             lastText = self.titleLabel.text

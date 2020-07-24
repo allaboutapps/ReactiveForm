@@ -30,10 +30,11 @@ open class Form {
                     .configure { [weak self] (field, cell, indexPath) in
                         cell.configure(field: field)
                         cell.onReload = { [weak self] in
-                            guard let tableView = self?.viewController?.tableView else { return }
+                            guard let self = self else { return }
+                            guard let tableView = self.viewController?.tableView else { return }
                             // can only reload the validation cell, if it is currently visible
                             guard !field.isHidden.value else { return }
-                            tableView.reloadRows(at: [indexPath], with: .fade)
+                            self.dataSource.reloadDataAnimated(tableView)
                         }
                 }
                 .isHidden { (field, _) in
